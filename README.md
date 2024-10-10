@@ -1,2 +1,2 @@
 # Darkspire 
-Test 1 2 3
+This is our 3D Game Engine for our Group.
