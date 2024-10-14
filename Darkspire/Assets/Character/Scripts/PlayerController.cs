@@ -32,6 +32,15 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)] public float footstepAudioVolume = 0.5f;
 
 
+    [Header("Gravity and Ground Check")]
+    public float gravity = -9.81f;
+    public float groundedOffset = -0.14f; // Offset for ground check - EXPERIMENT WITH THIS VALUE!
+    public float groundedRadius = 0.5f; // Radius of the overlap sphere 
+    public LayerMask groundLayers; // Specifies which counts as ground layer - Flexible for future iterations
+    private bool isGrounded;
+    private Vector3 playerVelocity; // Store velocity for gravity - Changes velocity over time when falling
+
+
     // These are used for the movement calculations
     private Vector3 currentDirection;
     private Vector3 smoothMoveVelocity;
@@ -46,10 +55,31 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        GroundCheck();    
+        ApplyGravity();   
         HandleMovement();
         HandleRotation();
         PlayFootsteps();
         UpdateAnimations();
+    }
+
+    private void GroundCheck()
+    {
+        isGrounded = Physics.CheckSphere(transform.position + Vector3.up * groundedOffset, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore); // QueryTriggerInteraction ensures that it only collides with solid objects (not triggers)
+        if (isGrounded && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f; // Reset the velocity when grounded
+        }
+    }
+
+    private void ApplyGravity()
+    {
+        if (!isGrounded)
+        {
+            playerVelocity.y += gravity * Time.deltaTime;
+        }
+
+        characterController.Move(playerVelocity * Time.deltaTime); // Apply the velocity to the player 
     }
 
     private void HandleMovement()
