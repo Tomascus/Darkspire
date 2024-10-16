@@ -1,13 +1,14 @@
-using DG.Tweening;
 using InputSystem;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Controller References")]
     private PlayerControllerInputs inputs;
     private CharacterController characterController;
-    private Animator animator; 
+    private Animator animator;
 
 
     [Header("Movement Settings")]
@@ -20,10 +21,9 @@ public class PlayerController : MonoBehaviour
     public float rotationSmoothTime = 0.12f;
 
     // Dodge Settings
-    public float dodgeDistance = 4f; // Distance of the dodge
-    public float dodgeTimeout = 1f; // Cooldown timer for player to wait until next available dodge
-    private float lastDodgeTime; // Last time the player dodged
-    public float dodgeDuration = 0.8f; // Duration of the dodge movement
+    [Header("Dodge Settings")]
+    public float dodgeTimeout = 0.5f; // Cooldown timer for player to wait until next available dodge
+    private float lastDodgeTime; // Time since the last dodge
 
 
     // Audio Settings
@@ -46,21 +46,34 @@ public class PlayerController : MonoBehaviour
     private Vector3 smoothMoveVelocity;
     private Vector3 targetDirection;
 
-    private void Start()
+    private void Awake()
     {
         inputs = GetComponent<PlayerControllerInputs>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+        // Ensure that root motion is enabled for the animator - This is required for the dodge animation to work
+        animator.applyRootMotion = true;
     }
 
     private void Update()
     {
-        GroundCheck();    
-        ApplyGravity();   
         HandleMovement();
         HandleRotation();
         PlayFootsteps();
         UpdateAnimations();
+
+        // Check for dodge input
+        if (inputs.dodge && Time.time >= lastDodgeTime + dodgeTimeout && isGrounded)
+        {
+            Dodge(); // Trigger dodge if the player presses the dodge button
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        GroundCheck();
+        ApplyGravity();
     }
 
     private void GroundCheck()
@@ -76,10 +89,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!isGrounded)
         {
-            playerVelocity.y += gravity * Time.deltaTime;
+            playerVelocity.y += gravity * Time.fixedDeltaTime;
         }
 
-        characterController.Move(playerVelocity * Time.deltaTime); // Apply the velocity to the player 
+        characterController.Move(playerVelocity * Time.fixedDeltaTime); // Apply the velocity to the player 
     }
 
     private void HandleMovement()
@@ -120,21 +133,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Dodge using root motion (triggered by animation)
     private void Dodge()
     {
-        lastDodgeTime = Time.time; // Set last dodge time - Countdown
-        Vector3 dodgeDirection = currentDirection.normalized * dodgeDistance;
+        lastDodgeTime = Time.time; // Record the time of the dodge 
+        animator.SetBool("isDodging", true); // Trigger the dodge animation
 
-        PlayDodgeSound(); // Play dodge sound
-        animator.SetBool("isDodging", true);
+        // Animation Event
+        Invoke("EndDodge", animator.GetCurrentAnimatorStateInfo(0).length);
+    }
 
-        // Start the DOTween move action to smoothly move the player over time 
-        transform.DOMove(transform.position + dodgeDirection, dodgeDuration)
-                 .SetEase(Ease.OutCubic) // Set easing type
-                 .OnComplete(() =>
-                 {
-                     animator.SetBool("isDodging", false);
-                 });
+    // Called when the dodge animation finishes
+    private void EndDodge()
+    {
+        animator.SetBool("isDodging", false);
     }
 
     private void PlayFootsteps()
@@ -152,8 +164,8 @@ public class PlayerController : MonoBehaviour
     {
         if (footstepAudioClips.Length > 0)
         {
-            int index = Random.Range(0, footstepAudioClips.Length); 
-            AudioSource.PlayClipAtPoint(footstepAudioClips[index], transform.position, footstepAudioVolume); 
+            int index = Random.Range(0, footstepAudioClips.Length);
+            AudioSource.PlayClipAtPoint(footstepAudioClips[index], transform.position, footstepAudioVolume);
         }
     }
 
