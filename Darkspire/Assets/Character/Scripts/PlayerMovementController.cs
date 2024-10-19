@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
     [Header("Player Controller References")]
     private PlayerControllerInputs inputs;
@@ -22,8 +22,9 @@ public class PlayerController : MonoBehaviour
 
     // Dodge Settings
     [Header("Dodge Settings")]
-    public float dodgeTimeout = 0.5f; // Cooldown timer for player to wait until next available dodge
-    private float lastDodgeTime; // Time since the last dodge
+    //UPDATE FUNCTIONALITY (COOLDOWN)
+    public float dodgeCooldown = 0.8f; // Cooldown timer for player to wait until next available dodge
+    private bool canDodge = true; // Check if player can dodge
 
 
     // Audio Settings
@@ -51,9 +52,6 @@ public class PlayerController : MonoBehaviour
         inputs = GetComponent<PlayerControllerInputs>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-
-        // Ensure that root motion is enabled for the animator - This is required for the dodge animation to work
-        animator.applyRootMotion = true;
     }
 
     private void Update()
@@ -62,12 +60,6 @@ public class PlayerController : MonoBehaviour
         HandleRotation();
         PlayFootsteps();
         UpdateAnimations();
-
-        // Check for dodge input
-        if (inputs.dodge && Time.time >= lastDodgeTime + dodgeTimeout && isGrounded)
-        {
-            Dodge(); // Trigger dodge if the player presses the dodge button
-        }
     }
 
     private void FixedUpdate()
@@ -108,16 +100,15 @@ public class PlayerController : MonoBehaviour
         currentDirection = Vector3.SmoothDamp(currentDirection, targetDirection * speed, ref smoothMoveVelocity, 0.1f);
         characterController.Move(currentDirection * Time.deltaTime);
 
-        // Check for dodge - If the player is not dodging and the dodge input is pressed
-        if (inputs.dodge && Time.time >= lastDodgeTime + dodgeTimeout)
+        if (inputs.dodge && canDodge && isGrounded)
         {
-            Dodge();
+            speed = moveSpeed; 
+            StartDodge();
         }
     }
 
     private void UpdateAnimations()
     {
-        // FIX DODGE ANIMATION !
         // Set animation parameters based on player state
         animator.SetBool("isWalking", currentDirection.magnitude > 0.1f && !inputs.sprint);
         animator.SetBool("isSprinting", inputs.sprint);
@@ -134,19 +125,29 @@ public class PlayerController : MonoBehaviour
     }
 
     // Dodge using root motion (triggered by animation)
-    private void Dodge()
+    private void StartDodge()
     {
-        lastDodgeTime = Time.time; // Record the time of the dodge 
-        animator.SetBool("isDodging", true); // Trigger the dodge animation
+        
+       
+        // Enable root motion for dodge and trigger dodge animation
+        animator.applyRootMotion = true;
+        animator.SetBool("isDodging", true);
+        canDodge = false;
+
+        PlayDodgeSound();
 
         // Animation Event
         Invoke("EndDodge", animator.GetCurrentAnimatorStateInfo(0).length);
     }
 
-    // Called when the dodge animation finishes
     private void EndDodge()
     {
+        
+        // Reset dodge animation, disable root motion
         animator.SetBool("isDodging", false);
+        animator.applyRootMotion = false;
+        canDodge = true;
+
     }
 
     private void PlayFootsteps()
