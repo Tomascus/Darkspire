@@ -524,6 +524,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1637162062}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 083e5788149fb734ca26a212a1fc264b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637162067}
   m_SourcePrefab: {fileID: 100100000, guid: 083e5788149fb734ca26a212a1fc264b, type: 3}
 --- !u!1001 &264030596
 PrefabInstance:
@@ -1498,6 +1502,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   sprint: 0
   dodge: 0
+  attack: 0
   cursorLocked: 1
   cursorInGameLook: 1
 --- !u!4 &1235002264 stripped
@@ -1677,6 +1682,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 346b809c-565e-4a3d-9dfe-63d10470a46e
     m_ActionName: Player/Dodge[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1637162063}
+        m_TargetAssemblyTypeName: InputSystem.PlayerControllerInputs, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eae862ce-c167-40f0-a16e-22839d9b9c8b
+    m_ActionName: Player/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1698,6 +1719,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   sprint: 0
   dodge: 0
+  attack: 0
   cursorLocked: 1
   cursorInGameLook: 1
 --- !u!114 &1637162064
@@ -1751,6 +1773,19 @@ CharacterController:
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: -0.06}
+--- !u!114 &1637162067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637162060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a98193586d3f946b42f5069ea65f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 0.8
 --- !u!1 &1669916316
 GameObject:
   m_ObjectHideFlags: 0

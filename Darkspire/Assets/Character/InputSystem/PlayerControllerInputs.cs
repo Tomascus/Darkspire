@@ -10,6 +10,7 @@ namespace InputSystem
         public Vector2 look;
         public bool sprint;
         public bool dodge;
+        public bool attack;
 
         [Header("Mouse Cursor Settings")]
         public bool cursorLocked = true;
@@ -39,6 +40,11 @@ namespace InputSystem
             DodgeInput(context.ReadValueAsButton());
         }
 
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            AttackInput(context.ReadValueAsButton());
+        }
+
         // Input Methods - These are used to update the input values
         public void MoveInput(Vector2 newMoveDirection)
         {
@@ -58,6 +64,11 @@ namespace InputSystem
         public void DodgeInput(bool newDodgeState)
         {
             dodge = newDodgeState;
+        }
+
+        public void AttackInput(bool newAttackState)
+        {
+            attack = newAttackState;
         }
 
         // Cursor Settings 
