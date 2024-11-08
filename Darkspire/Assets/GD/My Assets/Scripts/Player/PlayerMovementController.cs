@@ -102,7 +102,7 @@ public class PlayerMovementController : MonoBehaviour
 
         if (inputs.dodge && canDodge && isGrounded)
         {
-            speed = moveSpeed; 
+            speed = moveSpeed;
             StartDodge();
         }
     }

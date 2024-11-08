@@ -12,9 +12,17 @@ namespace InputSystem
         public bool dodge;
         public bool attack;
 
+        private PlayerUI playerUI;
+
         [Header("Mouse Cursor Settings")]
         public bool cursorLocked = true;
         public bool cursorInGameLook = true; // True means it is used for ingame look, false means it is used for UI etc.
+
+        private void Awake()
+        {
+            //access the player UI script important for stamina checks for sprinting and dodging
+            playerUI = GetComponent<PlayerUI>();
+        }
 
         // Input Actions - These are used to set up the input actions in the input system
         public void OnMove(InputAction.CallbackContext context)
@@ -32,12 +40,29 @@ namespace InputSystem
 
         public void OnSprint(InputAction.CallbackContext context)
         {
-            SprintInput(context.ReadValueAsButton());
+            //when stamina is above 0, player can sprint
+            if (playerUI.CurrentStamina > 0)
+            {
+                SprintInput(context.ReadValueAsButton());
+            } else
+            {
+                //dont allow to sprint when stamina at 0
+                sprint = false;
+            }
         }
 
         public void OnDodge(InputAction.CallbackContext context)
         {
-            DodgeInput(context.ReadValueAsButton());
+            //when stamina is above 0, player can dodge
+            if (playerUI.CurrentStamina > 0)
+            {
+                DodgeInput(context.ReadValueAsButton());
+            }
+            else
+            {
+                //dont allow to dodge when stamina at 0
+                dodge = false;
+            }
         }
 
         public void OnAttack(InputAction.CallbackContext context)
