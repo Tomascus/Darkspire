@@ -67,14 +67,7 @@ namespace InputSystem
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if(playerUI.CurrentStamina > 0)
-            {
-                AttackInput(context.ReadValueAsButton());
-            } else
-            {
-                attack = false;
-            }
-           
+            AttackInput(context.ReadValueAsButton());
         }
 
         // Input Methods - These are used to update the input values
