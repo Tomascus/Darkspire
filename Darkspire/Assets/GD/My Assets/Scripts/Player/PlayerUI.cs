@@ -11,6 +11,7 @@ public class PlayerUI : MonoBehaviour
 
     //variable for accesing the player controller inputs
     private PlayerControllerInputs playerControllerInputs;
+    private PlayerCombatController PlayerCombatController;
 
     [Header("Health parameters")]
     [SerializeField] private float maxHealth = 100f;
@@ -32,7 +33,9 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private float staminaUseSprint = 5f;
     [SerializeField] private float staminaUseDodge = 20f;
     [SerializeField] private float dodgeCooldown = 1f;
+    [SerializeField] private float staminaUseAttack = 20f;
     private float lastDodgeTime = 0f;
+    private float lastAttackTime = 0f;
     private float currentStamina;
     private Coroutine regeneratingStamina;
     //action functions that will notify whoever is listening to the events
@@ -59,13 +62,16 @@ public class PlayerUI : MonoBehaviour
         currentHealth = maxHealth;
         currentStamina = maxStamina;
         lastDodgeTime = -dodgeCooldown; // Initialize lastDodgeTime to be able to perform the first dodge
+        lastAttackTime = -dodgeCooldown; // Initialize lastAttackTime to be able to perform the first attack
         playerControllerInputs = GetComponent<PlayerControllerInputs>();
+        PlayerCombatController = GetComponent<PlayerCombatController>();
     }
 
     private void Update()
     {
         HandleSprint();
         HandleDodge();
+        HandleAttack();
 
     }
 
@@ -160,6 +166,36 @@ public class PlayerUI : MonoBehaviour
         }
         //when player is not dodging and stamina is not max then start regenerating stamina after the delay
         if (!playerControllerInputs.dodge && currentStamina < maxStamina && regeneratingStamina == null)
+        {
+            regeneratingStamina = StartCoroutine(RegenerateStamina());
+        }
+    }
+
+    private void HandleAttack()
+    {
+        if (playerControllerInputs.attack && Time.time >= lastAttackTime + PlayerCombatController.AttackCooldown)
+        {
+            //if regeneration is already running, stop it
+            if (regeneratingStamina != null)
+            {
+                StopCoroutine(regeneratingStamina);
+                regeneratingStamina = null;
+            }
+            //takeaway from stamina by the dodge amount
+            currentStamina -= staminaUseAttack;
+            //update to track when the dodge was last used
+            lastAttackTime = Time.time;
+
+            //notify whoever is listening to the event that the stamina has changed (in UI.cs)
+            OnStaminaChange?.Invoke(currentStamina);
+
+            if (currentStamina <= 0)
+            {
+                currentStamina = 0;
+            }
+        }
+        //when player is not dodging and stamina is not max then start regenerating stamina after the delay
+        if (!playerControllerInputs.attack && currentStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
         }
