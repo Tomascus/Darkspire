@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4b07ba0d58bda45ac266029171ecd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicLibrary: {fileID: 0}
-  musicSource: {fileID: 0}
+  musicLibrary: {fileID: 64080314}
+  musicSource: {fileID: 480437738}
 --- !u!114 &64080314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db504109304c59149a9aeb1cb1f05ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxLibrary: {fileID: 0}
-  sfx2DSource: {fileID: 0}
+  sfxLibrary: {fileID: 64080316}
+  sfx2DSource: {fileID: 1941763589}
 --- !u!114 &64080316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9fe9372b91ff8448b4a556b4ae3eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects: []
+  soundEffects:
+  - groupID: Hit
+    clips:
+    - {fileID: 8300000, guid: 5bd39171ea6d07c41b855c3c628116ab, type: 3}
+  - groupID: Swinging
+    clips:
+    - {fileID: 8300000, guid: 0c6d8f20e64ceaa40acf6731ba3985aa, type: 3}
+  - groupID: GaspingAir
+    clips:
+    - {fileID: 8300000, guid: d70d7406df87e3b4591dbc27fdad1053, type: 3}
 --- !u!4 &64080317
 Transform:
   m_ObjectHideFlags: 0
@@ -2696,7 +2705,7 @@ MonoBehaviour:
   healthRegenRate: 2
   healthRegenDelay: 3
   healthRegenTimer: 0.1
-  maxStamina: 100
+  maxStamina: 10
   staminaRegenRate: 2
   staminaRegenDelay: 3
   staminaRegenTimer: 0.1

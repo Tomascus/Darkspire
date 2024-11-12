@@ -43,6 +43,9 @@ public class PlayerUI : MonoBehaviour
     //this provides an access to the current player stamina value from outside of this class without enabling it to be changed (used in PlayerInputController)
     public float CurrentStamina => currentStamina;
 
+    //Checking if this sound was played
+    private bool hasPlayedStaminaSound = false;
+
     // ***** Event Logic *****
     //Event handling for taking damage, only active when OnTakeDamage is called, in this case it is called in the whichever script that deals damage to the player
     private void OnEnable()
@@ -81,6 +84,7 @@ public class PlayerUI : MonoBehaviour
         currentHealth -= damage;
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
         OnDamage?.Invoke(currentHealth);
+        SoundManager.Instance.PlaySound2D("Hit");
 
         if (currentHealth <= 0)
         {
@@ -129,13 +133,21 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
+                if (!hasPlayedStaminaSound)
+                {
+                    PlayNoStaminaSound();
+                    hasPlayedStaminaSound = true;
+                }
+                
                 currentStamina = 0;
+                playerControllerInputs.sprint = false;
             }
         }
         //when player is not sprinting and stamina is not max then start regenerating stamina after the delay
         if (!playerControllerInputs.sprint && currentStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
+            hasPlayedStaminaSound = false;
         } 
     }
 
@@ -161,6 +173,7 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
+                PlayNoStaminaSound();
                 currentStamina = 0;
             }
         }
@@ -168,6 +181,7 @@ public class PlayerUI : MonoBehaviour
         if (!playerControllerInputs.dodge && currentStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
+            hasPlayedStaminaSound = false;
         }
     }
 
@@ -175,6 +189,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (playerControllerInputs.attack && Time.time >= lastAttackTime + PlayerCombatController.AttackCooldown)
         {
+            SoundManager.Instance.PlaySound2D("Swinging");
             //if regeneration is already running, stop it
             if (regeneratingStamina != null)
             {
@@ -191,6 +206,7 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
+                PlayNoStaminaSound();
                 currentStamina = 0;
             }
         }
@@ -198,6 +214,7 @@ public class PlayerUI : MonoBehaviour
         if (!playerControllerInputs.attack && currentStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
+            hasPlayedStaminaSound = false;
         }
     }
 
@@ -235,7 +252,7 @@ public class PlayerUI : MonoBehaviour
 
         while(currentStamina < maxStamina)
         {
-
+            
             currentStamina += staminaRegenRate;
 
             if (currentStamina > maxStamina)
@@ -248,5 +265,14 @@ public class PlayerUI : MonoBehaviour
             yield return timeToWait;
         }
         regeneratingStamina = null;
+    }
+
+    private void PlayNoStaminaSound()
+    {
+        if (!hasPlayedStaminaSound)
+        {
+            SoundManager.Instance.PlaySound2D("GaspingAir");
+            hasPlayedStaminaSound = true; // Set flag to prevent repeated calls
+        }
     }
 }
