@@ -31,6 +31,7 @@ public class PlayerMovementController : MonoBehaviour
     public AudioClip[] footstepAudioClips; // For Walking, Running, etc.
     public AudioClip dodgeAudioClip;
     [Range(0, 1)] public float footstepAudioVolume = 0.5f;
+    private bool alreadyPlayed =false;                 
 
 
     [Header("Gravity and Ground Check")]
@@ -93,10 +94,21 @@ public class PlayerMovementController : MonoBehaviour
         currentDirection = Vector3.SmoothDamp(currentDirection, targetDirection * speed, ref smoothMoveVelocity, 0.1f);
         characterController.Move(currentDirection * Time.deltaTime);
 
-        if (inputs.dodge && canDodge && isGrounded)
+        if (inputs.dodge && canDodge)
         {
             speed = moveSpeed;
             StartDodge();
+        }
+
+        if(!alreadyPlayed && moveInput !=Vector2.zero)
+        {
+            SoundManager.Instance.PlaySound2D("Walking");
+            alreadyPlayed = true;
+        }
+        else if(moveInput == Vector2.zero)
+        {
+            SoundManager.Instance.Stop();
+            alreadyPlayed = false;
         }
     }
 
@@ -127,6 +139,7 @@ public class PlayerMovementController : MonoBehaviour
         animator.SetBool("isDodging", true);
         canDodge = false;
 
+        SoundManager.Instance.PlaySound2D("Dodge");
         PlayDodgeSound();
 
         // Animation Event
@@ -150,7 +163,6 @@ public class PlayerMovementController : MonoBehaviour
         {
             // ADD LOGIC FOR PLAYING FOOTSTEPS 
             PlayFootstepSound();
-
         }
     }
 

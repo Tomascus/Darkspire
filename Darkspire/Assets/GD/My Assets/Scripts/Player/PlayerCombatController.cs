@@ -29,8 +29,8 @@ public class PlayerCombatController : MonoBehaviour
     {
         // If the time passed since the last attack is greater than the attack cooldown and the attack button is pressed, do attack
         if (Time.time > lastAttackTime + attackCooldown && inputs.attack)
-        {
-            PerformAttack();
+        {   
+                PerformAttack();
         }
     }
 

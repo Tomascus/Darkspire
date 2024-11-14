@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -32,4 +33,8 @@ public class SoundManager : MonoBehaviour
         sfx2DSource.PlayOneShot(sfxLibrary.GetClipFromName(soundName));
     }
 
+    internal void Stop()
+    {
+        sfx2DSource.Stop();
+    }
 }
