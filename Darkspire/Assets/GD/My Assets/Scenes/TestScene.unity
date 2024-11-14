@@ -2273,6 +2273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a77720a7c50ff94faa533f0aee8e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attributes: {fileID: 11400000, guid: 3a0676690dfbb2442ab818e462e50fa1, type: 2}
   player: {fileID: 1637162061}
 --- !u!195 &1446121242
 NavMeshAgent:
@@ -2705,7 +2706,7 @@ MonoBehaviour:
   healthRegenRate: 2
   healthRegenDelay: 3
   healthRegenTimer: 0.1
-  maxStamina: 10
+  maxStamina: 100
   staminaRegenRate: 2
   staminaRegenDelay: 3
   staminaRegenTimer: 0.1
@@ -2992,6 +2993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a77720a7c50ff94faa533f0aee8e8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attributes: {fileID: 11400000, guid: 3a0676690dfbb2442ab818e462e50fa1, type: 2}
   player: {fileID: 1637162061}
 --- !u!195 &1820628214
 NavMeshAgent:
