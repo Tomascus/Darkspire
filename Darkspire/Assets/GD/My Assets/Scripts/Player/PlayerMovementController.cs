@@ -35,7 +35,6 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Gravity and Ground Check")]
     public float gravity = -9.81f;
-    private bool isGrounded;
     private Vector3 playerVelocity; // Store velocity for gravity - Changes velocity over time when falling
 
 
@@ -72,7 +71,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void ApplyGravity()
     {
-        if (!isGrounded)
+        if (!GroundCheck())
         {
             playerVelocity.y += gravity * Time.fixedDeltaTime;
         }
@@ -93,7 +92,7 @@ public class PlayerMovementController : MonoBehaviour
         currentDirection = Vector3.SmoothDamp(currentDirection, targetDirection * speed, ref smoothMoveVelocity, 0.1f);
         characterController.Move(currentDirection * Time.deltaTime);
 
-        if (inputs.dodge && canDodge && isGrounded)
+        if (inputs.dodge && canDodge && GroundCheck())
         {
             speed = moveSpeed;
             StartDodge();
