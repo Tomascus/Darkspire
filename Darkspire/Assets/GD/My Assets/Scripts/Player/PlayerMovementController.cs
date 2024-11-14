@@ -35,9 +35,6 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Gravity and Ground Check")]
     public float gravity = -9.81f;
-    public float groundedOffset = -0.14f; // Offset for ground check - EXPERIMENT WITH THIS VALUE!
-    public float groundedRadius = 0.5f; // Radius of the overlap sphere 
-    public LayerMask groundLayers; // Specifies which counts as ground layer - Flexible for future iterations
     private bool isGrounded;
     private Vector3 playerVelocity; // Store velocity for gravity - Changes velocity over time when falling
 
@@ -68,13 +65,9 @@ public class PlayerMovementController : MonoBehaviour
         ApplyGravity();
     }
 
-    private void GroundCheck()
+    private bool GroundCheck()
     {
-        isGrounded = Physics.CheckSphere(transform.position + Vector3.up * groundedOffset, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore); // QueryTriggerInteraction ensures that it only collides with solid objects (not triggers)
-        if (isGrounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f; // Reset the velocity when grounded
-        }
+          return characterController.isGrounded; // Uses built-in CharacterController method to check if player is grounded
     }
 
     private void ApplyGravity()
