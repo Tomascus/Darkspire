@@ -36,5 +36,6 @@ public class NPCDialogue : MonoBehaviour
     private void OnTriggerExit(Collider other)
     { 
          playerInRange = false;
+        playerControllerInputs.inDialogue = false;
     }
 }
