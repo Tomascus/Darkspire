@@ -36,8 +36,6 @@ public class PlayerCombatController : MonoBehaviour
 
     private void PerformAttack()
     {
-        SoundManager.Instance.PlaySound2D("Hit");
-
         // Update the last attack time to the current time
         lastAttackTime = Time.time;
 

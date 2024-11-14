@@ -84,6 +84,7 @@ public class PlayerUI : MonoBehaviour
         currentHealth -= damage;
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
         OnDamage?.Invoke(currentHealth);
+        SoundManager.Instance.PlaySound2D("Hit");
 
         if (currentHealth <= 0)
         {
