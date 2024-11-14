@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    #region Fields
+
     [Header("Player Controller References")]
     private PlayerControllerInputs inputs;
     private CharacterController characterController;
@@ -26,13 +28,6 @@ public class PlayerMovementController : MonoBehaviour
     public float dodgeCooldown = 0.8f; // Cooldown timer for player to wait until next available dodge
     private bool canDodge = true; // Check if player can dodge
 
-
-    // Audio Settings
-    public AudioClip[] footstepAudioClips; // For Walking, Running, etc.
-    public AudioClip dodgeAudioClip;
-    [Range(0, 1)] public float footstepAudioVolume = 0.5f;
-
-
     [Header("Gravity and Ground Check")]
     public float gravity = -9.81f;
     public float groundedOffset = -0.14f; // Offset for ground check - EXPERIMENT WITH THIS VALUE!
@@ -47,6 +42,9 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 smoothMoveVelocity;
     private Vector3 targetDirection;
 
+    #endregion
+    #region Unity Startup Methods
+
     private void Awake()
     {
         inputs = GetComponent<PlayerControllerInputs>();
@@ -58,7 +56,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
-        PlayFootsteps();
         UpdateAnimations();
     }
 
@@ -67,14 +64,20 @@ public class PlayerMovementController : MonoBehaviour
         GroundCheck();
         ApplyGravity();
     }
+    #endregion
+    #region Gravity and Ground Check
 
     private void GroundCheck()
     {
+<<<<<<< Updated upstream
         isGrounded = Physics.CheckSphere(transform.position + Vector3.up * groundedOffset, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore); // QueryTriggerInteraction ensures that it only collides with solid objects (not triggers)
         if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f; // Reset the velocity when grounded
         }
+=======
+        return characterController.isGrounded; // Uses built-in CharacterController method to check if player is grounded
+>>>>>>> Stashed changes
     }
 
     private void ApplyGravity()
@@ -86,6 +89,8 @@ public class PlayerMovementController : MonoBehaviour
 
         characterController.Move(playerVelocity * Time.fixedDeltaTime); // Apply the velocity to the player 
     }
+    #endregion
+    #region Handeling Movement and Rotation
 
     private void HandleMovement()
     {
@@ -107,12 +112,6 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void UpdateAnimations()
-    {
-        // Set animation parameters based on player state
-        animator.SetBool("isWalking", currentDirection.magnitude > 0.1f && !inputs.sprint);
-        animator.SetBool("isSprinting", inputs.sprint);
-    }
 
     // Rotate the player based on the movement direction - Slerp is used to smooth out the rotation
     private void HandleRotation()
@@ -123,18 +122,30 @@ public class PlayerMovementController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSmoothTime);
         }
     }
+    #endregion
+    #region Animations
+
+
+    private void UpdateAnimations()
+    {
+        // Set animation parameters based on player state
+        animator.SetBool("isWalking", currentDirection.magnitude > 0.1f && !inputs.sprint);
+        animator.SetBool("isSprinting", inputs.sprint);
+    }
+
+    #endregion
+    #region Dodging
+
 
     // Dodge using root motion (triggered by animation)
     private void StartDodge()
     {
-        
-       
+
+
         // Enable root motion for dodge and trigger dodge animation
         animator.applyRootMotion = true;
         animator.SetBool("isDodging", true);
         canDodge = false;
-
-        PlayDodgeSound();
 
         // Animation Event
         Invoke("EndDodge", animator.GetCurrentAnimatorStateInfo(0).length);
@@ -142,40 +153,13 @@ public class PlayerMovementController : MonoBehaviour
 
     private void EndDodge()
     {
-        
+
         // Reset dodge animation, disable root motion
         animator.SetBool("isDodging", false);
         animator.applyRootMotion = false;
         canDodge = true;
 
     }
-
-    private void PlayFootsteps()
-    {
-        // Simple check to play footsteps - adjust the condition as needed
-        if (characterController.isGrounded && currentDirection.magnitude > 0.1f)
-        {
-            // ADD LOGIC FOR PLAYING FOOTSTEPS 
-            PlayFootstepSound();
-
-        }
-    }
-
-    private void PlayFootstepSound()
-    {
-        if (footstepAudioClips.Length > 0)
-        {
-            int index = Random.Range(0, footstepAudioClips.Length);
-            AudioSource.PlayClipAtPoint(footstepAudioClips[index], transform.position, footstepAudioVolume);
-        }
-    }
-
-    private void PlayDodgeSound()
-    {
-        if (dodgeAudioClip != null)
-        {
-            AudioSource.PlayClipAtPoint(dodgeAudioClip, transform.position, footstepAudioVolume);
-        }
-    }
-
+    #endregion
+    
 }
