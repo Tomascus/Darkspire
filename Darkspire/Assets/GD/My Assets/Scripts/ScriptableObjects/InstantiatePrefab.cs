@@ -17,11 +17,11 @@ public class InstantiatePrefab : ScriptableObject, IInstantiatePrefab
 
     public GameObject Instantiate(Transform transform)
     {
-        var item = Instantiate(prefab, transform);
+        var item = Instantiate(prefab, transform); //Instantiate the prefab at the transfrom location  
 
-        item.SetActive(isGeneratedActive);
+        item.SetActive(isGeneratedActive); // set it active 
 
-        return item;
+        return item; //give back the created item 
     }
 
 

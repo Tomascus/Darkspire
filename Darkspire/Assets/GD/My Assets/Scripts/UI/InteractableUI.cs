@@ -11,20 +11,12 @@ public class InteractableUI : MonoBehaviour
 
     private void Awake()
     {
-            interactableUI.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (playerInRange)
-        {
-            Debug.Log("Player is in range.");
-        }
+        interactableUI.SetActive(false); //make sure not to display when start the game
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) //when player gets in range display the UI 
         {
             playerInRange = true;
             if (interactableUI != null)
@@ -36,7 +28,7 @@ public class InteractableUI : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        playerInRange = false;
+        playerInRange = false; //when player is out of range hide the UI
         if (interactableUI != null)
         {
             interactableUI.SetActive(false);

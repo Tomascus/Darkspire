@@ -28,7 +28,7 @@ public class ChestBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.E)) //when player is in range and presses E drop the item
         {
             GenerateChestItem();
             
@@ -48,6 +48,7 @@ public class ChestBehaviour : MonoBehaviour
         playerInRange = false;
     }
 
+    //Generate the item, script based on Nial's code from class 
     private void GenerateChestItem()
     {
         if(item == null) Debug.LogError("Item is not set for the chest.");
