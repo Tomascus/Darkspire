@@ -84,7 +84,6 @@ public class PlayerUI : MonoBehaviour
         currentHealth -= damage;
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
         OnDamage?.Invoke(currentHealth);
-        SoundManager.Instance.PlaySound2D("Hit");
 
         if (currentHealth <= 0)
         {
@@ -111,7 +110,7 @@ public class PlayerUI : MonoBehaviour
 
     }
 
-    
+
 
     // ***** Stamina Logic *****
 
@@ -135,10 +134,9 @@ public class PlayerUI : MonoBehaviour
             {
                 if (!hasPlayedStaminaSound)
                 {
-                    PlayNoStaminaSound();
                     hasPlayedStaminaSound = true;
                 }
-                
+
                 currentStamina = 0;
                 playerControllerInputs.sprint = false;
             }
@@ -148,7 +146,7 @@ public class PlayerUI : MonoBehaviour
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
             hasPlayedStaminaSound = false;
-        } 
+        }
     }
 
 
@@ -173,7 +171,6 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
-                PlayNoStaminaSound();
                 currentStamina = 0;
             }
         }
@@ -206,7 +203,6 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
-                PlayNoStaminaSound();
                 currentStamina = 0;
             }
         }
@@ -250,29 +246,20 @@ public class PlayerUI : MonoBehaviour
         yield return new WaitForSeconds(staminaRegenDelay);
         WaitForSeconds timeToWait = new WaitForSeconds(staminaRegenTimer);
 
-        while(currentStamina < maxStamina)
+        while (currentStamina < maxStamina)
         {
-            
+
             currentStamina += staminaRegenRate;
 
             if (currentStamina > maxStamina)
             {
                 currentStamina = maxStamina;
             }
-            
+
             OnStaminaChange?.Invoke(currentStamina);
 
             yield return timeToWait;
         }
         regeneratingStamina = null;
-    }
-
-    private void PlayNoStaminaSound()
-    {
-        if (!hasPlayedStaminaSound)
-        {
-            SoundManager.Instance.PlaySound2D("GaspingAir");
-            hasPlayedStaminaSound = true; // Set flag to prevent repeated calls
-        }
     }
 }

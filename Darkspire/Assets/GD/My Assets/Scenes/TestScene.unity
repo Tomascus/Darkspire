@@ -374,6 +374,12 @@ MonoBehaviour:
   - groupID: GaspingAir
     clips:
     - {fileID: 8300000, guid: d70d7406df87e3b4591dbc27fdad1053, type: 3}
+  - groupID: Dodge
+    clips:
+    - {fileID: 8300000, guid: 3e65d120ccf873a43b8db486580e7176, type: 3}
+  - groupID: Walking
+    clips:
+    - {fileID: 8300000, guid: 5477e7f575b54544bacd3458c3984a20, type: 3}
 --- !u!4 &64080317
 Transform:
   m_ObjectHideFlags: 0
@@ -574,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141527527}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.0890803, y: 9.59, z: 15.761486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -585,7 +591,7 @@ Transform:
   - {fileID: 1235002264}
   - {fileID: 422603394}
   - {fileID: 1881767194}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1669916317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &168517359
 PrefabInstance:
@@ -2769,6 +2775,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1637162061}
+  - {fileID: 141527528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1743746463
@@ -3476,7 +3483,7 @@ Transform:
   m_GameObject: {fileID: 1941763587}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -141.92159, y: 8.501845, z: 8.711803}
+  m_LocalPosition: {x: -144.61, y: 8.501845, z: 8.711803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3869,7 +3876,6 @@ SceneRoots:
   - {fileID: 785601315}
   - {fileID: 1567668850}
   - {fileID: 1669916317}
-  - {fileID: 141527528}
   - {fileID: 1743746465}
   - {fileID: 1580430671}
   - {fileID: 1314201344}
