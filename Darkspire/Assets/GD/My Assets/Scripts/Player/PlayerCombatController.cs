@@ -1,3 +1,4 @@
+using DG.Tweening;
 using InputSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,8 +30,8 @@ public class PlayerCombatController : MonoBehaviour
     {
         // If the time passed since the last attack is greater than the attack cooldown and the attack button is pressed, do attack
         if (Time.time > lastAttackTime + attackCooldown && inputs.attack)
-        {
-            PerformAttack();
+        {   
+                PerformAttack();
         }
     }
 
@@ -38,8 +39,10 @@ public class PlayerCombatController : MonoBehaviour
     {
         // Update the last attack time to the current time
         lastAttackTime = Time.time;
+        
 
         // Play the attack animation
         animator.SetTrigger("Attack");
+        SoundManager.PlaySound(SoundType.SWING);
     }
 }

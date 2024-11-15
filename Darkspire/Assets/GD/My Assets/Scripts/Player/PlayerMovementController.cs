@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    #region Feilds
+
     [Header("Player Controller References")]
     private PlayerControllerInputs inputs;
     private CharacterController characterController;
@@ -26,13 +28,6 @@ public class PlayerMovementController : MonoBehaviour
     public float dodgeCooldown = 0.8f; // Cooldown timer for player to wait until next available dodge
     private bool canDodge = true; // Check if player can dodge
 
-
-    // Audio Settings
-    public AudioClip[] footstepAudioClips; // For Walking, Running, etc.
-    public AudioClip dodgeAudioClip;
-    [Range(0, 1)] public float footstepAudioVolume = 0.5f;
-
-
     [Header("Gravity and Ground Check")]
     public float gravity = -9.81f;
     private Vector3 playerVelocity; // Store velocity for gravity - Changes velocity over time when falling
@@ -42,6 +37,9 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 currentDirection;
     private Vector3 smoothMoveVelocity;
     private Vector3 targetDirection;
+
+    #endregion
+    #region Unity Starter Methods
 
     private void Awake()
     {
@@ -54,7 +52,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
-        PlayFootsteps();
         UpdateAnimations();
     }
 
@@ -62,7 +59,8 @@ public class PlayerMovementController : MonoBehaviour
     {
         GroundCheck();
         ApplyGravity();
-    }
+    } 
+    #endregion
 
     private bool GroundCheck()
     {
@@ -97,6 +95,7 @@ public class PlayerMovementController : MonoBehaviour
             speed = moveSpeed;
             StartDodge();
         }
+
     }
 
     private void UpdateAnimations()
@@ -126,8 +125,6 @@ public class PlayerMovementController : MonoBehaviour
         animator.SetBool("isDodging", true);
         canDodge = false;
 
-        PlayDodgeSound();
-
         // Animation Event
         Invoke("EndDodge", animator.GetCurrentAnimatorStateInfo(0).length);
     }
@@ -140,34 +137,6 @@ public class PlayerMovementController : MonoBehaviour
         animator.applyRootMotion = false;
         canDodge = true;
 
-    }
-
-    private void PlayFootsteps()
-    {
-        // Simple check to play footsteps - adjust the condition as needed
-        if (characterController.isGrounded && currentDirection.magnitude > 0.1f)
-        {
-            // ADD LOGIC FOR PLAYING FOOTSTEPS 
-            PlayFootstepSound();
-
-        }
-    }
-
-    private void PlayFootstepSound()
-    {
-        if (footstepAudioClips.Length > 0)
-        {
-            int index = Random.Range(0, footstepAudioClips.Length);
-            AudioSource.PlayClipAtPoint(footstepAudioClips[index], transform.position, footstepAudioVolume);
-        }
-    }
-
-    private void PlayDodgeSound()
-    {
-        if (dodgeAudioClip != null)
-        {
-            AudioSource.PlayClipAtPoint(dodgeAudioClip, transform.position, footstepAudioVolume);
-        }
     }
 
 }

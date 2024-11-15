@@ -78,13 +78,34 @@ public class PlayerUI : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        CheckStamina();
+    }
+
+    private void CheckStamina()
+    {
+        if(currentStamina <=0)
+        {
+            if(!hasPlayedStaminaSound)
+            {
+                SoundManager.PlaySound(SoundType.NO_STAMINA);
+                hasPlayedStaminaSound = true;
+            }
+           
+        }
+        else if(currentStamina >1)
+        {
+            hasPlayedStaminaSound = false;
+        }
+    }
+
     // ***** Health Logic *****
     private void ApplyDamage(float damage)
     {
         currentHealth -= damage;
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
         OnDamage?.Invoke(currentHealth);
-        SoundManager.Instance.PlaySound2D("Hit");
 
         if (currentHealth <= 0)
         {
@@ -111,7 +132,7 @@ public class PlayerUI : MonoBehaviour
 
     }
 
-    
+
 
     // ***** Stamina Logic *****
 
@@ -133,12 +154,6 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
-                if (!hasPlayedStaminaSound)
-                {
-                    PlayNoStaminaSound();
-                    hasPlayedStaminaSound = true;
-                }
-                
                 currentStamina = 0;
                 playerControllerInputs.sprint = false;
             }
@@ -148,7 +163,7 @@ public class PlayerUI : MonoBehaviour
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
             hasPlayedStaminaSound = false;
-        } 
+        }
     }
 
 
@@ -173,7 +188,6 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
-                PlayNoStaminaSound();
                 currentStamina = 0;
             }
         }
@@ -189,7 +203,6 @@ public class PlayerUI : MonoBehaviour
     {
         if (playerControllerInputs.attack && Time.time >= lastAttackTime + PlayerCombatController.AttackCooldown)
         {
-            SoundManager.Instance.PlaySound2D("Swinging");
             //if regeneration is already running, stop it
             if (regeneratingStamina != null)
             {
@@ -206,8 +219,8 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
-                PlayNoStaminaSound();
                 currentStamina = 0;
+                playerControllerInputs.attack = false;
             }
         }
         //when player is not dodging and stamina is not max then start regenerating stamina after the delay
@@ -250,29 +263,20 @@ public class PlayerUI : MonoBehaviour
         yield return new WaitForSeconds(staminaRegenDelay);
         WaitForSeconds timeToWait = new WaitForSeconds(staminaRegenTimer);
 
-        while(currentStamina < maxStamina)
+        while (currentStamina < maxStamina)
         {
-            
+
             currentStamina += staminaRegenRate;
 
             if (currentStamina > maxStamina)
             {
                 currentStamina = maxStamina;
             }
-            
+
             OnStaminaChange?.Invoke(currentStamina);
 
             yield return timeToWait;
         }
         regeneratingStamina = null;
-    }
-
-    private void PlayNoStaminaSound()
-    {
-        if (!hasPlayedStaminaSound)
-        {
-            SoundManager.Instance.PlaySound2D("GaspingAir");
-            hasPlayedStaminaSound = true; // Set flag to prevent repeated calls
-        }
     }
 }
