@@ -7,17 +7,26 @@ public class EnemyController : MonoBehaviour
     public EnemyAttributes attributes; // ScriptableObject for enemy stats
     private float currentHealth;
 
-    [Header("Detection and Combat")]
+    [Header("Detection")]
     public Transform player;
     private bool isPlayerDetected = false;
     private bool inAttackRange = false;
 
-    [Header("AI Navigation")]
+    [Header("Combat Settings")]
+    [SerializeField] private float attackCooldown = 2f; 
+    private float lastAttackTime = 0f;
+    [SerializeField] private float attackDamage; 
+
+    [Header("AI Navigation & Animator")]
     private NavMeshAgent agent;
+    private Animator animator;
+
+    private bool isDead = false; 
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -27,6 +36,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
+
         DetectPlayer();
 
         if (isPlayerDetected)
@@ -34,13 +45,29 @@ public class EnemyController : MonoBehaviour
             RotateTowardsPlayer();
             ChasePlayer();
 
+            if (inAttackRange)
+            {
+                PerformAttack();
+            }
+            else
+            {
+                ChasePlayer();
+            }
         }
+        UpdateAnimations();
+    }
+
+    private void UpdateAnimations()
+    {
+        // Set animation parameters based on enemy state
+        animator.SetBool("isWalking", agent.velocity.magnitude > 0.1f);
     }
 
     private void getEnemyStats()
     {
         currentHealth = attributes.health;
         agent.speed = attributes.movementSpeed;
+        attackDamage = attributes.attackDamage;
     }
 
     private void DetectPlayer()
@@ -92,6 +119,64 @@ public class EnemyController : MonoBehaviour
         {
             agent.destination = player.position;
         }
+    }
+
+    private void PerformAttack()
+    {
+        // Checks if the time that has passed since the last attack is greater than the attack cooldown -> executes attack if so and damages the player
+        if (Time.time >= lastAttackTime + attackCooldown) 
+        {
+            lastAttackTime = Time.time;
+
+            // Randomly choose between two attack animations
+            int randAttack = Random.Range(0, 2); 
+
+            if (randAttack == 0)
+            {
+                // Trigger first attack animation
+                animator.SetTrigger("Attack1");
+            }
+            else
+            {
+                // Trigger second attack animation
+                animator.SetTrigger("Attack2");
+            }
+
+            Debug.Log("Enemy attack");
+            
+            DamagePlayer();
+        }
+    }
+
+    private void DamagePlayer()
+    {
+        // Checks if the player is within attack range and damages the player if so
+        if (player.gameObject.CompareTag("Player"))
+        {
+            
+            PlayerUI.OnTakeDamage(attackDamage); 
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+
+        animator.SetTrigger("TakeDamage");
+    }
+
+    private void Die()
+    { 
+         isDead = true;
+        Debug.Log("You killed the enemy");
+        animator.SetTrigger("Die");
+        agent.isStopped = true; // Stop the enemy movement
+        Destroy(gameObject, 5f); 
     }
 
 }

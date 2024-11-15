@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    #region Feilds
+    #region Fields
 
     [Header("Player Controller References")]
     private PlayerControllerInputs inputs;
@@ -28,7 +28,7 @@ public class PlayerMovementController : MonoBehaviour
     public float dodgeCooldown = 0.8f; // Cooldown timer for player to wait until next available dodge
     private bool canDodge = true; // Check if player can dodge
 
-    [Header("Gravity and Ground Check")]
+    [Header("Gravity")]
     public float gravity = -9.81f;
     private Vector3 playerVelocity; // Store velocity for gravity - Changes velocity over time when falling
 
