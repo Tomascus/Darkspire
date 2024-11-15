@@ -78,6 +78,28 @@ public class PlayerUI : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        CheckStamina();
+    }
+
+    private void CheckStamina()
+    {
+        if(currentStamina <=0)
+        {
+            if(!hasPlayedStaminaSound)
+            {
+                SoundManager.PlaySound(SoundType.NO_STAMINA);
+                hasPlayedStaminaSound = true;
+            }
+           
+        }
+        else if(currentStamina >1)
+        {
+            hasPlayedStaminaSound = false;
+        }
+    }
+
     // ***** Health Logic *****
     private void ApplyDamage(float damage)
     {
@@ -132,11 +154,6 @@ public class PlayerUI : MonoBehaviour
 
             if (currentStamina <= 0)
             {
-                if (!hasPlayedStaminaSound)
-                {
-                    hasPlayedStaminaSound = true;
-                }
-
                 currentStamina = 0;
                 playerControllerInputs.sprint = false;
             }
@@ -203,6 +220,7 @@ public class PlayerUI : MonoBehaviour
             if (currentStamina <= 0)
             {
                 currentStamina = 0;
+                playerControllerInputs.attack = false;
             }
         }
         //when player is not dodging and stamina is not max then start regenerating stamina after the delay
