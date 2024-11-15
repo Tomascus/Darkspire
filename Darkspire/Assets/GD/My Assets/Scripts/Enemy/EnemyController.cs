@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
+    private bool isDead = false; 
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -34,6 +36,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
+
         DetectPlayer();
 
         if (isPlayerDetected)
@@ -50,6 +54,13 @@ public class EnemyController : MonoBehaviour
                 ChasePlayer();
             }
         }
+        UpdateAnimations();
+    }
+
+    private void UpdateAnimations()
+    {
+        // Set animation parameters based on enemy state
+        animator.SetBool("isWalking", agent.velocity.magnitude > 0.1f);
     }
 
     private void getEnemyStats()
@@ -116,8 +127,23 @@ public class EnemyController : MonoBehaviour
         if (Time.time >= lastAttackTime + attackCooldown) 
         {
             lastAttackTime = Time.time;
-            Debug.Log("Enemy attack");
 
+            // Randomly choose between two attack animations
+            int randAttack = Random.Range(0, 2); 
+
+            if (randAttack == 0)
+            {
+                // Trigger first attack animation
+                animator.SetTrigger("Attack1");
+            }
+            else
+            {
+                // Trigger second attack animation
+                animator.SetTrigger("Attack2");
+            }
+
+            Debug.Log("Enemy attack");
+            
             DamagePlayer();
         }
     }
@@ -140,12 +166,16 @@ public class EnemyController : MonoBehaviour
         {
             Die();
         }
+
+        animator.SetTrigger("TakeDamage");
     }
 
     private void Die()
-    {
-        
+    { 
+         isDead = true;
         Debug.Log("You killed the enemy");
+        animator.SetTrigger("Die");
+        agent.isStopped = true; // Stop the enemy movement
         Destroy(gameObject, 5f); 
     }
 
