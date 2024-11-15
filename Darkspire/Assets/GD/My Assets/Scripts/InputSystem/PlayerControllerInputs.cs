@@ -17,6 +17,7 @@ namespace InputSystem
         [Header("Mouse Cursor Settings")]
         public bool cursorLocked = true;
         public bool cursorInGameLook = true; // True means it is used for ingame look, false means it is used for UI etc.
+        public bool inDialogue = false;
 
         private void Awake()
         {
@@ -67,7 +68,13 @@ namespace InputSystem
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if(playerUI.CurrentStamina > 0)
+            if (inDialogue) //when in dialogue do not attack 
+            {
+                attack = false;
+                return;
+            }
+
+            if(playerUI.CurrentStamina > 0) //when stamina is above 0, player can attack
             {
                 AttackInput(context.ReadValueAsButton());
             } else
@@ -112,8 +119,20 @@ namespace InputSystem
         private void SetCursorState(bool newState)
         {
             Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !newState;
         }
 
+        public void ShowCursor()
+        {
+            cursorLocked = false;
+            SetCursorState(cursorLocked);
+        }
+
+        public void HideCursor()
+        {
+            cursorLocked = true;
+            SetCursorState(cursorLocked);
+        }
     }
 
 }
