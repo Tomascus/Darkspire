@@ -1,37 +1,42 @@
-using System;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
+//New updated sound system: https://www.youtube.com/watch?v=g5WT91Sn3hg
+
+public enum SoundType
+{
+    SWING,
+    HIT,
+    DODGE,
+    TALK,
+    FOOTSTEP,
+    RUN,
+    INTERACTING,
+    NO_STAMINA,
+    LOW_HEALTH,
+
+
+}
+
+[RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-
-    public static SoundManager Instance;
-
-    [Tooltip("Get Script from Inspector of AudioManager")]
-    [SerializeField]
-    private SoundLibrary sfxLibrary;
-
-    [Tooltip("Object for Activation of Sounds, Get from Hierarchy")]
-    [SerializeField]
-    private AudioSource sfx2DSource;
+    [SerializeField] private AudioClip[] soundList;
+    public static SoundManager instance;
+    private AudioSource audioSource;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-       
+        instance = this;
     }
 
-    //Any UI eg Healing or Damage
-    public void PlaySound2D(string soundName)
+    private void Start()
     {
-        sfx2DSource.PlayOneShot(sfxLibrary.GetClipFromName(soundName));
+        audioSource = GetComponent< AudioSource >();
     }
 
-    internal void Stop( )
+    public static void PlaySound(SoundType sound, float volume = 1)
     {
-        sfx2DSource.Stop();
+        instance.audioSource.PlayOneShot(instance.soundList[(int)sound], volume);
     }
 }

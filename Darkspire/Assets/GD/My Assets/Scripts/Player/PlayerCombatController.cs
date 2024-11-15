@@ -1,3 +1,4 @@
+using DG.Tweening;
 using InputSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,8 +39,10 @@ public class PlayerCombatController : MonoBehaviour
     {
         // Update the last attack time to the current time
         lastAttackTime = Time.time;
+        
 
         // Play the attack animation
         animator.SetTrigger("Attack");
+        SoundManager.PlaySound(SoundType.SWING);
     }
 }

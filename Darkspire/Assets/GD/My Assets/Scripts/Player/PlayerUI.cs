@@ -186,7 +186,6 @@ public class PlayerUI : MonoBehaviour
     {
         if (playerControllerInputs.attack && Time.time >= lastAttackTime + PlayerCombatController.AttackCooldown)
         {
-            SoundManager.Instance.PlaySound2D("Swinging");
             //if regeneration is already running, stop it
             if (regeneratingStamina != null)
             {
