@@ -7,17 +7,24 @@ public class EnemyController : MonoBehaviour
     public EnemyAttributes attributes; // ScriptableObject for enemy stats
     private float currentHealth;
 
-    [Header("Detection and Combat")]
+    [Header("Detection")]
     public Transform player;
     private bool isPlayerDetected = false;
     private bool inAttackRange = false;
 
-    [Header("AI Navigation")]
+    [Header("Combat Settings")]
+    [SerializeField] private float attackCooldown = 2f; 
+    private float lastAttackTime = 0f;
+    [SerializeField] private float attackDamage; 
+
+    [Header("AI Navigation & Animator")]
     private NavMeshAgent agent;
+    private Animator animator;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -34,6 +41,14 @@ public class EnemyController : MonoBehaviour
             RotateTowardsPlayer();
             ChasePlayer();
 
+            if (inAttackRange)
+            {
+                PerformAttack();
+            }
+            else
+            {
+                ChasePlayer();
+            }
         }
     }
 
@@ -41,6 +56,7 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth = attributes.health;
         agent.speed = attributes.movementSpeed;
+        attackDamage = attributes.attackDamage;
     }
 
     private void DetectPlayer()
@@ -92,6 +108,45 @@ public class EnemyController : MonoBehaviour
         {
             agent.destination = player.position;
         }
+    }
+
+    private void PerformAttack()
+    {
+        // Checks if the time that has passed since the last attack is greater than the attack cooldown -> executes attack if so and damages the player
+        if (Time.time >= lastAttackTime + attackCooldown) 
+        {
+            lastAttackTime = Time.time;
+            Debug.Log("Enemy attack");
+
+            DamagePlayer();
+        }
+    }
+
+    private void DamagePlayer()
+    {
+        // Checks if the player is within attack range and damages the player if so
+        if (player.gameObject.CompareTag("Player"))
+        {
+            
+            PlayerUI.OnTakeDamage(attackDamage); 
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        
+        Debug.Log("You killed the enemy");
+        Destroy(gameObject, 5f); 
     }
 
 }
