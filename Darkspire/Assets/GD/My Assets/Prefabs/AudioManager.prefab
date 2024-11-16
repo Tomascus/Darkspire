@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 722309026124244094}
   - component: {fileID: 1701183072368053110}
   - component: {fileID: 944465582457896440}
+  - component: {fileID: 7975391305611064746}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -159,6 +160,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7975391305611064746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663801924436044019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db504109304c59149a9aeb1cb1f05ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundList:
+  - name: SWING
+    sounds:
+    - {fileID: 8300000, guid: 0c6d8f20e64ceaa40acf6731ba3985aa, type: 3}
+  - name: HIT
+    sounds:
+    - {fileID: 8300000, guid: 5bd39171ea6d07c41b855c3c628116ab, type: 3}
+  - name: DODGE
+    sounds:
+    - {fileID: 8300000, guid: 3e65d120ccf873a43b8db486580e7176, type: 3}
+  - name: TALK
+    sounds: []
+  - name: FOOTSTEP
+    sounds:
+    - {fileID: 8300000, guid: 5567f388be40b354aa3a17ce1560ea25, type: 3}
+  - name: RUN
+    sounds:
+    - {fileID: 8300000, guid: 68fd319e6d4ba0b41ac3f2f44505a723, type: 3}
+  - name: INTERACTING
+    sounds:
+    - {fileID: 8300000, guid: 8f64f4f7b53a258418e0042c05858d37, type: 3}
+  - name: NO_STAMINA
+    sounds:
+    - {fileID: 8300000, guid: d70d7406df87e3b4591dbc27fdad1053, type: 3}
+  - name: LOW_HEALTH
+    sounds:
+    - {fileID: 8300000, guid: 436546c07393fff46a44f24308024da7, type: 3}
+  - name: HOVER
+    sounds: []
+  - name: CLICK
+    sounds: []
+  audioList: []
 --- !u!1 &3222411128093403872
 GameObject:
   m_ObjectHideFlags: 0
