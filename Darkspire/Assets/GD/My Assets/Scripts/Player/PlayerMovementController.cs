@@ -16,6 +16,7 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float sprintSpeed = 10f;
+    private bool canMove = true;
 
     // Useful for different weight limits - light, medium, heavy builds ingame
     [Tooltip("Rotation Speed")]
@@ -83,19 +84,29 @@ public class PlayerMovementController : MonoBehaviour
         Vector2 moveInput = inputs.move;
         targetDirection = new Vector3(moveInput.x, 0, moveInput.y).normalized;
 
-        // Determine speed based on sprint state - (if/else)
-        float speed = inputs.sprint ? sprintSpeed : moveSpeed;
-
-        // Move the character - SmoothDamp is used to smooth out the movement
-        currentDirection = Vector3.SmoothDamp(currentDirection, targetDirection * speed, ref smoothMoveVelocity, 0.1f);
-        characterController.Move(currentDirection * Time.deltaTime);
-
-        if (inputs.dodge && canDodge && GroundCheck())
+        if (canMove)
         {
-            speed = moveSpeed;
-            StartDodge();
-        }
+            // Determine speed based on sprint state - (if/else)
+            float speed = inputs.sprint ? sprintSpeed : moveSpeed;
+            Vector3 moveVelocity = targetDirection * speed;
 
+            // Moves the player based velocity, time and direction as well as smooths out the movement
+            currentDirection = Vector3.SmoothDamp(currentDirection, moveVelocity, ref smoothMoveVelocity, 0.1f);
+            characterController.Move(currentDirection * Time.deltaTime);
+
+            if (inputs.dodge && canDodge && GroundCheck())
+            {
+                speed = moveSpeed;
+                StartDodge();
+            }
+
+        }
+    }
+
+    // Used to enable or disable movement during cutscenes, dialogue, combat, etc.
+    public void SetMovementEnabled(bool enabled)
+    {
+        canMove = enabled;
     }
 
     private void UpdateAnimations()
@@ -105,21 +116,30 @@ public class PlayerMovementController : MonoBehaviour
         animator.SetBool("isSprinting", inputs.sprint);
     }
 
-    // Rotate the player based on the movement direction - Slerp is used to smooth out the rotation
+    // Rotate the player based on input
     private void HandleRotation()
+{
+    // Ignore rotation if no meaningful input
+    if (inputs.move.sqrMagnitude < 0.1f) return;
+
+    // Calculates the target direction based on input
+    Vector3 inputDirection = new Vector3(inputs.move.x, 0, inputs.move.y).normalized;
+
+    // Rotates the player towards the target direction if there is valid input
+    if (inputDirection != Vector3.zero)
     {
-        if (targetDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(currentDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSmoothTime);
-        }
+        // Calculate the target rotation
+        Quaternion targetRotation = Quaternion.LookRotation(inputDirection);
+        
+        // Smooth out the rotation using Slerp
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
     }
+}
 
     // Dodge using root motion (triggered by animation)
     private void StartDodge()
     {
         
-       
         // Enable root motion for dodge and trigger dodge animation
         animator.applyRootMotion = true;
         animator.SetBool("isDodging", true);
