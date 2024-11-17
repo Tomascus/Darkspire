@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4dc920146429e4fb8b8c91687c9149, type: 3}
-  m_Name: Health_Potion
+  m_Script: {fileID: 11500000, guid: 936a70783a63d834095e7f4c7f0555ac, type: 3}
+  m_Name: Health_Position_Data
   m_EditorClassIdentifier: 
-  description: Health Potion for regenerating health
-  prefab: {fileID: 160208, guid: 170d5c1a9243bed498801f398ce205e0, type: 3}
-  isGeneratedActive: 1
+  itemName: Health Positon
+  itemIcon: {fileID: 0}
+  description: 
+  prefab: {fileID: 2334684456772615894, guid: 21a928be3730ada4181b181fc8e6e541, type: 3}
