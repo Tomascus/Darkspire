@@ -3465,6 +3465,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1637162061}
+    - target: {fileID: 6080030306396481864, guid: 3d81b1a89203e7e459f737ba1a9e9267,
+        type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080030306396481864, guid: 3d81b1a89203e7e459f737ba1a9e9267,
+        type: 3}
+      propertyPath: patrolPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080030306396481864, guid: 3d81b1a89203e7e459f737ba1a9e9267,
+        type: 3}
+      propertyPath: patrolPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

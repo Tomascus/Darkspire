@@ -1,7 +1,6 @@
 using DG.Tweening;
 using InputSystem;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
@@ -9,6 +8,7 @@ public class PlayerCombatController : MonoBehaviour
     [Header("Player Controller References")]
     private PlayerControllerInputs inputs;
     private Animator animator;
+    private PlayerMovementController movementController;
 
     [Header("Combat Settings")]
     [SerializeField] private Collider attackCollider;
@@ -16,11 +16,13 @@ public class PlayerCombatController : MonoBehaviour
     private float lastAttackTime = 0;
     public float AttackCooldown => attackCooldown;
 
+    private bool isAttacking = false;
+
     private void Awake()
     {
-        // Get the required components
         inputs = GetComponent<PlayerControllerInputs>();
         animator = GetComponent<Animator>();
+        movementController = GetComponent<PlayerMovementController>();
     }
 
     private void Update()
@@ -30,7 +32,6 @@ public class PlayerCombatController : MonoBehaviour
 
     private void HandleAttackInput()
     {
-        // If the time passed since the last attack is greater than the attack cooldown and the attack button is pressed, do attack
         if (Time.time > lastAttackTime + attackCooldown && inputs.attack)
         {
             PerformAttack();
@@ -39,26 +40,38 @@ public class PlayerCombatController : MonoBehaviour
 
     private void PerformAttack()
     {
-        // Update the last attack time to the current time
         lastAttackTime = Time.time;
 
+        // Disable movement but keep rotation enabled
+        isAttacking = true;
+        movementController.SetMovementEnabled(false);
 
-        // Play the attack animation
         animator.SetTrigger("Attack");
         SoundManager.PlaySound(SoundType.SWING);
 
-        // This enables the attack collider for a short duration so it is not always active, helps with performance and prevents unwanted hits
         StartCoroutine(ActivateAttackCollider());
+
+        // Re-enable movement after the attack animation
+        StartCoroutine(AllowMovement());
     }
 
-    // IN PROGRESS - REGISTERS MULTIPLE HITS
     private IEnumerator ActivateAttackCollider()
     {
         attackCollider.enabled = true;
 
-        // This is the time the attack collider is active for (adjust as needed for animations)
-        yield return new WaitForSeconds(0.1f); 
+        // Time the collider stays active
+        yield return new WaitForSeconds(0.1f);
 
         attackCollider.enabled = false;
     }
+
+    private IEnumerator AllowMovement()
+    {
+        // Time the player has to wait before they can move again
+        yield return new WaitForSeconds(attackCooldown);
+
+        isAttacking = false;
+        movementController.SetMovementEnabled(true);
+    }
+
 }
