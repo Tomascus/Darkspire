@@ -68,6 +68,7 @@ public class EnemyController : MonoBehaviour
         currentHealth = attributes.health;
         agent.speed = attributes.movementSpeed;
         attackDamage = attributes.attackDamage;
+        agent.stoppingDistance = attributes.attackRange;
     }
 
     private void DetectPlayer()
@@ -90,16 +91,28 @@ public class EnemyController : MonoBehaviour
         {
             inAttackRange = true;
         }
+        else
+        {
+            inAttackRange = false;
+        }
 
 
         if (isPlayerDetected)
         {
-            agent.destination = player.position; // Set destination to the player's position if detected
-            agent.isStopped = false;
+            // This will make the enemy move towards the player if the player is detected, but stops moving based on attack range (stopping distance)
+            if (playerDistance > agent.stoppingDistance)
+            {
+                agent.destination = player.position; 
+                agent.isStopped = false;
+            }
+            else
+            {
+                agent.isStopped = true; 
+            }
         }
         else
         {
-            agent.isStopped = true; // Enemy stops moving if player is not detected
+            agent.isStopped = true; 
         }
     }
 

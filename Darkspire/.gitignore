@@ -8,8 +8,8 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
-/[Uu]ser[Ss]ettings/
-/[Aa]ssets/Plugins/Sirenix/
+/[Aa]ssets/GD/Third Party Assets/Plugins/Sirenix/
+/[Aa]ssets/GD/Third Party Assets/Plugins/Behavior Designer/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
