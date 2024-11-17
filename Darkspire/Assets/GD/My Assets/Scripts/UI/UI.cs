@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider staminaBar;
+    [SerializeField] private TextMeshProUGUI potionCount;
+    [SerializeField] private Inventory playerInventory;
+    [SerializeField] private ItemData healthPotionItem;
 
     private void OnEnable()
     {
@@ -15,7 +19,9 @@ public class UI : MonoBehaviour
         PlayerUI.OnHeal += UpdateHealth;
         //when player uses stamina, update stamina bar
         PlayerUI.OnStaminaChange += UpdateStamina;
+
     }
+    
 
     private void OnDisable()
     {
@@ -24,13 +30,15 @@ public class UI : MonoBehaviour
         PlayerUI.OnHeal -= UpdateHealth;
 
         PlayerUI.OnStaminaChange -= UpdateStamina;
+
     }
 
     private void Start()
     {
         //at start set default 100 health and stamina
         UpdateHealth(100);
-        UpdateStamina(100); 
+        UpdateStamina(100);
+        UpdatePotionCount();
     }
 
     //**** Bar Updates ****
@@ -43,5 +51,16 @@ public class UI : MonoBehaviour
     private void UpdateStamina(float currentStamina)
     {
         staminaBar.value = currentStamina;
+    }
+
+    private void UpdatePotionCount()
+    {
+        int potionCountValue = playerInventory.Count(healthPotionItem);
+        potionCount.text = potionCountValue.ToString();
+    }
+
+    public void OnInventoryChange()
+    {
+        UpdatePotionCount();
     }
 }

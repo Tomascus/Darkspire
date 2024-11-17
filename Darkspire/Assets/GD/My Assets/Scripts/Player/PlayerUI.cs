@@ -46,6 +46,8 @@ public class PlayerUI : MonoBehaviour
     //Checking if this sound was played
     private bool hasPlayedStaminaSound = false;
 
+
+
     // ***** Event Logic *****
     //Event handling for taking damage, only active when OnTakeDamage is called, in this case it is called in the whichever script that deals damage to the player
     private void OnEnable()
