@@ -209,8 +209,8 @@ MonoBehaviour:
   - name: HOVER
     sounds: []
   - name: CLICK
-    sounds: []
-  audioList: []
+    sounds:
+    - {fileID: 8300000, guid: d12b5232d4346ac4bac7d0f179ff4524, type: 3}
 --- !u!1 &3222411128093403872
 GameObject:
   m_ObjectHideFlags: 0
