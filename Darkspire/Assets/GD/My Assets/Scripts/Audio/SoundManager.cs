@@ -18,17 +18,17 @@ public enum SoundType
     CLICK
 }
 
+//TODO complete code so that audio doens't stop playing once it goes less than 1
+
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private SoundList[] soundList;
     public static SoundManager instance;
-    private AudioSource audioSource;
+    [SerializeField]private AudioSource audioSource;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        
         if (instance != null)
         {
             Destroy(gameObject);
