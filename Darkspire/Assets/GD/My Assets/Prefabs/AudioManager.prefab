@@ -51,9 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - trackName: MainMenu
-    clip: {fileID: 8300000, guid: 9cf126dddd98a08478bf6d63feaf5f15, type: 3}
+    clip: {fileID: 8300000, guid: 6e27b34c3b116a942918cec99cde6eec, type: 3}
   - trackName: Gameplay
-    clip: {fileID: 8300000, guid: a67f5a993ee3715468a206846fa19429, type: 3}
+    clip: {fileID: 8300000, guid: eb76cf4091c02df488ff2c8f8b7913aa, type: 3}
 --- !u!114 &1701183072368053110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,13 +179,13 @@ MonoBehaviour:
   soundList:
   - name: SWING
     sounds:
-    - {fileID: 8300000, guid: 0c6d8f20e64ceaa40acf6731ba3985aa, type: 3}
+    - {fileID: 8300000, guid: 96f7bc4fa94bd0747986305ba096e589, type: 3}
   - name: HIT
     sounds:
-    - {fileID: 8300000, guid: 5bd39171ea6d07c41b855c3c628116ab, type: 3}
+    - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
   - name: DODGE
     sounds:
-    - {fileID: 8300000, guid: 3e65d120ccf873a43b8db486580e7176, type: 3}
+    - {fileID: 8300000, guid: bd61f1a64a36df14daa81fef4d2fde17, type: 3}
   - name: TALK
     sounds:
     - {fileID: 8300000, guid: 71c2a35ae22d7204d95f104788f97d8c, type: 3}
@@ -199,18 +199,19 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1b7d469f0210f4f40b38943fe51c8ee8, type: 3}
   - name: INTERACTING
     sounds:
-    - {fileID: 8300000, guid: 8f64f4f7b53a258418e0042c05858d37, type: 3}
+    - {fileID: 8300000, guid: 6fa5bfd707e3ab64889734ecee823842, type: 3}
   - name: NO_STAMINA
-    sounds:
-    - {fileID: 8300000, guid: d70d7406df87e3b4591dbc27fdad1053, type: 3}
+    sounds: []
   - name: LOW_HEALTH
     sounds:
-    - {fileID: 8300000, guid: 436546c07393fff46a44f24308024da7, type: 3}
+    - {fileID: 8300000, guid: 04d9b865c9b564b45bea83b81cc5c6cc, type: 3}
   - name: HOVER
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: d0da80866c6ea294b952cc5e1618a118, type: 3}
   - name: CLICK
     sounds:
-    - {fileID: 8300000, guid: d12b5232d4346ac4bac7d0f179ff4524, type: 3}
+    - {fileID: 8300000, guid: 0e9a40fc41d388443af7428499f6454b, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &3222411128093403872
 GameObject:
   m_ObjectHideFlags: 0

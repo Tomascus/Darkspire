@@ -15,6 +15,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private AudioSource musicSource;
 
+   
+
     private void Awake()
     {
         if (Instance != null)
@@ -27,6 +29,7 @@ public class MusicManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
       
+
     }
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)

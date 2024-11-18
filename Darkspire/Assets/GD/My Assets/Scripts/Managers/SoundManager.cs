@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 //New updated sound system: https://www.youtube.com/watch?v=g5WT91Sn3hg
 
@@ -40,6 +41,7 @@ public class SoundManager : MonoBehaviour
         }
         //instance = this;
     }
+
 
     public static void PlaySound(SoundType sound, float volume = 1)
     {
