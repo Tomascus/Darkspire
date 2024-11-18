@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class GameEventListener : MonoBehaviour
 {
+    /*LISTENS FOR GAME EVENTS AND RESPONDS WITH INVOKING UNITY EVENT*/
+
     [Tooltip("Event to register with.")]
     public GameEvent gameEvent;
 

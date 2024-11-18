@@ -6,6 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Inventory", menuName = "GD/Inventory/Inventory")]
 public class Inventory : SerializedScriptableObject, IEnumerable<KeyValuePair<ItemData, int>>
 {
+    /*THIS SCRIPT ALLOWS TO CREATE A SCRIPTABLE OBJECT INVENTORY WHICH ALLOWS US TO MANAGE COLLECTION OF ITEMS
+     *AND COUNTS OF THE ITEMS, PROVIDES METHOD ADD, REMOVE AND CLEAR WITH RAISING EVENTS ON CHANGE OF INVENTORY 
+     *  NIAL'S CODE LOGIC FROM CLASS FOR INVENTORY MANAGEMENT
+     */
+
     #region Fields
 
     [SerializeField]
@@ -24,7 +29,7 @@ public class Inventory : SerializedScriptableObject, IEnumerable<KeyValuePair<It
 
     #region Properties
 
-    public int this[ItemData itemData]
+    public int this[ItemData itemData] //indexer that gets the count of the item in the inventory, takes in itemData which is another scriptable object itemData.cs
     {
         get
         {
@@ -116,7 +121,7 @@ public class Inventory : SerializedScriptableObject, IEnumerable<KeyValuePair<It
     }
 
     #region Methods - IEnumerable Implementation
-
+    //these methods are used to implement IEnumerable interface to allow us to iterate over the inventory
     public IEnumerator<KeyValuePair<ItemData, int>> GetEnumerator()
     {
         return contents.GetEnumerator();
