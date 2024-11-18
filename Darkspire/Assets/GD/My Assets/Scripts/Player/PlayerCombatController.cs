@@ -47,7 +47,6 @@ public class PlayerCombatController : MonoBehaviour
         movementController.SetMovementEnabled(false);
 
         animator.SetTrigger("Attack");
-        SoundManager.PlaySound(SoundType.SWING);
 
         StartCoroutine(ActivateAttackCollider());
 
