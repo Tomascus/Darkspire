@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        
         if (instance != null)
         {
             Destroy(gameObject);
@@ -37,9 +38,7 @@ public class SoundManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
         //instance = this;
-        
     }
 
     public static void PlaySound(SoundType sound, float volume = 1)
