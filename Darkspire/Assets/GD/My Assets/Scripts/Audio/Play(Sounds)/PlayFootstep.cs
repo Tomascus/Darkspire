@@ -2,13 +2,8 @@ using UnityEngine;
 
 public class PlayFootstep : MonoBehaviour
 {
-   public void PlayFootstepSound()
+   public void PlaySound()
     {
         SoundManager.PlaySound(SoundType.FOOTSTEP);
     }
-
-   public void PlaySprintSound()
-   {
-        SoundManager.PlaySound(SoundType.RUN);
-   }
 }
