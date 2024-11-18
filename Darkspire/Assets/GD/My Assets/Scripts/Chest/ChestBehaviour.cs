@@ -12,6 +12,7 @@ public class ChestBehaviour : MonoBehaviour
     [SerializeField] ScriptableObject item;
 
     private bool playerInRange = false;
+    private bool itemGenerated = false; //for dropping only once 
 
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class ChestBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E)) //when player is in range and presses E drop the item
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !itemGenerated) //when player is in range and presses E drop the item
         {
             GenerateChestItem();
             
@@ -58,6 +59,8 @@ public class ChestBehaviour : MonoBehaviour
 
         var newItem = generator.Instantiate(spawningPoint);
         if (newItem == null) Debug.LogError("Item failed to generated.");
+
+        itemGenerated = true;
     }
 
 }
