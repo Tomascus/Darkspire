@@ -16,7 +16,15 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
@@ -24,7 +32,6 @@ public class MusicManager : MonoBehaviour
         StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));
     }
 
-    //Music That Can Change Flawlessly
     IEnumerator AnimateMusicCrossfade(AudioClip nextTrack, float fadeDuration = 0.5f)
     {
         float percent = 0;
