@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,13 @@ public class EnemyController : MonoBehaviour
     public Transform player;
     private bool isPlayerDetected = false;
     private bool inAttackRange = false;
+
+    [Header("Patrolling Settings")]
+    [SerializeField] private Vector3 patrolCenter; // The starting point of the patrol area - enemy position
+    [SerializeField] private Vector3 patrolSize; // Adjustments for the size of the patrol area
+    private Vector3 patrolDestination; 
+    private bool isPatrolling = true;
+    private bool isWaiting = false; // This a check to see if the enemy is waiting before moving to the next patrol point
 
     [Header("Combat Settings")]
     [SerializeField] private float attackCooldown = 2f; 
@@ -32,6 +40,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         getEnemyStats();
+        NewPatrolPoint();
     }
 
     private void Update()
@@ -42,18 +51,20 @@ public class EnemyController : MonoBehaviour
 
         if (isPlayerDetected)
         {
-            RotateTowardsPlayer();
-            ChasePlayer();
-
-            if (inAttackRange)
-            {
-                PerformAttack();
-            }
-            else
-            {
-                ChasePlayer();
-            }
+            PlayerDetectedAction();
         }
+        else if (isPatrolling && !isWaiting)
+        {
+            Patrol();
+        }
+
+        // This is for the check when enemy loses the player is outside the patrol area - it will return the enemy to a point within the patrol area and start patrolling again
+        if (!isPlayerDetected && !isWaiting && !IsInPatrolArea())
+        {
+            NewPatrolPoint(); // Return to patrol if outside patrol area
+            isPatrolling = true; // Ensure the enemy resumes patrolling
+        }
+
         UpdateAnimations();
     }
 
@@ -69,8 +80,10 @@ public class EnemyController : MonoBehaviour
         agent.speed = attributes.movementSpeed;
         attackDamage = attributes.attackDamage;
         agent.stoppingDistance = attributes.attackRange;
+        patrolCenter = transform.position; // Sets the start of patrolling to the enemy locations
     }
 
+    // Constant check for player detection - when detected it changes the flags to start AI actions
     private void DetectPlayer()
     {
         // Use a small detection range to start following the player
@@ -95,26 +108,70 @@ public class EnemyController : MonoBehaviour
         {
             inAttackRange = false;
         }
+    }
 
+    // This will make the enemy move towards the player if the player is detected and if in range it attacks
+    private void PlayerDetectedAction()
+    {
+        isPatrolling = false; // Stop patrolling when the player is detected
 
-        if (isPlayerDetected)
+        RotateTowardsPlayer();
+        ChasePlayer();
+
+        if (inAttackRange)
         {
-            // This will make the enemy move towards the player if the player is detected, but stops moving based on attack range (stopping distance)
-            if (playerDistance > agent.stoppingDistance)
-            {
-                agent.destination = player.position; 
-                agent.isStopped = false;
-            }
-            else
-            {
-                agent.isStopped = true; 
-            }
-        }
-        else
-        {
-            agent.isStopped = true; 
+            PerformAttack();
         }
     }
+
+    private void Patrol()
+    {
+        // Check if the enemy has reached the patrol destination (a point within the patrol area) and also checks if it is still calculating path
+        if (agent.remainingDistance < 0.5f && !agent.pathPending) // 
+        {
+            if (!isWaiting)
+            {
+                StartCoroutine(WaitBeforeNextPatrol()); // Sets the enemy to idle state to wait for next patrol point
+            }
+        }
+    }
+
+    private IEnumerator WaitBeforeNextPatrol()
+    {
+        isWaiting = true;
+        agent.isStopped = true; 
+        yield return new WaitForSeconds(5f); 
+        agent.isStopped = false;
+
+        NewPatrolPoint(); // Sets a new patrol point after waiting
+        isWaiting = false;
+    }
+
+    private void NewPatrolPoint()
+    {
+        // Create a random point within the the patrol area - calculates the point by picking random x and z values within the patrol area (divided by 2 to have substantial moves each time)
+        Vector3 randomPoint = new Vector3(
+            Random.Range(patrolCenter.x - patrolSize.x / 2, patrolCenter.x + patrolSize.x / 2),
+            patrolCenter.y,
+            Random.Range(patrolCenter.z - patrolSize.z / 2, patrolCenter.z + patrolSize.z / 2)
+        );
+
+        // Uses navmesh to find the closest point on the NavMesh to the random point 
+        if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, patrolSize.magnitude / 2, NavMesh.AllAreas))
+        {
+            // Sets new destination to new navmesh point that was found and makes the enemy move to it
+            patrolDestination = hit.position;
+            agent.SetDestination(patrolDestination);
+        }
+    }
+
+    private bool IsInPatrolArea()
+    {
+        // Checks if the enemy is within the patrol area, if not it will return false
+        return patrolCenter.x - patrolSize.x / 2 <= transform.position.x && transform.position.x <= patrolCenter.x + patrolSize.x / 2 &&
+               patrolCenter.z - patrolSize.z / 2 <= transform.position.z && transform.position.z <= patrolCenter.z + patrolSize.z / 2;
+    }
+
 
     private void RotateTowardsPlayer()
     {
@@ -125,12 +182,17 @@ public class EnemyController : MonoBehaviour
         //IMPLEMENT CUSTOM ROTATION SPEED ??
     }
 
-    private void ChasePlayer()
+     private void ChasePlayer()
     {
-        // Move towards the player if detected and not in attack range
-        if (isPlayerDetected && !inAttackRange)
+        // Move the enemy towards the player if it is not in attack range
+        if (!inAttackRange)
         {
             agent.destination = player.position;
+            agent.isStopped = false;
+        }
+        else
+        {
+            agent.isStopped = true; // Stops moving when in attack range
         }
     }
 
@@ -192,4 +254,10 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject, 5f); 
     }
 
+    // Visualize the patrol area in the scene view
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(patrolCenter, patrolSize);
+    }
 }
