@@ -201,7 +201,8 @@ MonoBehaviour:
     sounds:
     - {fileID: 8300000, guid: 6fa5bfd707e3ab64889734ecee823842, type: 3}
   - name: NO_STAMINA
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 6fa5bfd707e3ab64889734ecee823842, type: 3}
   - name: LOW_HEALTH
     sounds:
     - {fileID: 8300000, guid: 04d9b865c9b564b45bea83b81cc5c6cc, type: 3}
