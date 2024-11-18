@@ -22,14 +22,24 @@ public enum SoundType
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private SoundList[] soundList;
-    [SerializeField] private AudioClip[] audioList;
     public static SoundManager instance;
     private AudioSource audioSource;
 
     private void Awake()
     {
-        instance = this;
         audioSource = GetComponent<AudioSource>();
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        //instance = this;
+        
     }
 
     public static void PlaySound(SoundType sound, float volume = 1)
@@ -37,8 +47,6 @@ public class SoundManager : MonoBehaviour
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
         instance.audioSource.PlayOneShot(randClip, volume);
-
-        //instance.audioSource.PlayOneShot(instance.audioList[(int)sound], volume);
     }
 
     

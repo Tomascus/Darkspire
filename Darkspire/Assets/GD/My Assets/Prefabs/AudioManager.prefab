@@ -49,7 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58101f38745aa31459f18236349e4f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tracks: []
+  tracks:
+  - trackName: MainMenu
+    clip: {fileID: 8300000, guid: 9cf126dddd98a08478bf6d63feaf5f15, type: 3}
+  - trackName: Gameplay
+    clip: {fileID: 8300000, guid: a67f5a993ee3715468a206846fa19429, type: 3}
 --- !u!114 &1701183072368053110
 MonoBehaviour:
   m_ObjectHideFlags: 0

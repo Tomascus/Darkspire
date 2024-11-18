@@ -1,6 +1,7 @@
 using System.Collections;
-using System.ComponentModel;
 using UnityEngine;
+
+//refereance music manager : https://www.youtube.com/watch?v=Q-bKHocRvE0&t=55s
 
 public class MusicManager : MonoBehaviour
 {
@@ -16,7 +17,16 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+      
     }
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
