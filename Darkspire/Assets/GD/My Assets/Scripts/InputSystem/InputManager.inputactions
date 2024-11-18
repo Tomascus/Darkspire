@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Heal",
-                    "type": "Button",
-                    "id": "179659f3-6a10-46f3-80e0-57828ecf397d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -245,17 +236,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6ec8bf64-6011-4bfe-8ea1-871fcaed72e2",
-                    "path": "<Keyboard>/1",
-                    "interactions": "Tap",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

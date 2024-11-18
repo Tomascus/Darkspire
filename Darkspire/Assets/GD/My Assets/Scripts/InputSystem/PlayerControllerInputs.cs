@@ -11,7 +11,6 @@ namespace InputSystem
         public bool sprint;
         public bool dodge;
         public bool attack;
-        public bool heal;
 
         private PlayerUI playerUI;
 
@@ -85,13 +84,6 @@ namespace InputSystem
            
         }
 
-        public void OnHeal(InputAction.CallbackContext context)
-        {
-            HealInput(context.ReadValueAsButton());
-
-            playerUI.ConsumePotion();
-        }
-
         // Input Methods - These are used to update the input values
         public void MoveInput(Vector2 newMoveDirection)
         {
@@ -116,12 +108,6 @@ namespace InputSystem
         public void AttackInput(bool newAttackState)
         {
             attack = newAttackState;
-        }
-
-        public void HealInput(bool newHealState)
-        {
-            heal = newHealState;
-            Debug.Log("Heal Input");
         }
 
         // Cursor Settings 

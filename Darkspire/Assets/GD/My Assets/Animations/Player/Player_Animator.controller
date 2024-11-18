@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b24be33d1c3bf43a73eb08ade3e21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 0
+  sound: 5
   volume: 1
 --- !u!1101 &8502798213153862921
 AnimatorStateTransition:

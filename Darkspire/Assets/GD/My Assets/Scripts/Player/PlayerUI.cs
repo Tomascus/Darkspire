@@ -12,17 +12,14 @@ public class PlayerUI : MonoBehaviour
     //variable for accesing the player controller inputs
     private PlayerControllerInputs playerControllerInputs;
     private PlayerCombatController PlayerCombatController;
-    [SerializeField] private Inventory playerInventory;
 
     [Header("Health parameters")]
     [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private ItemData potionItemData;
-    [SerializeField] private float potionHealAmount = 50f;
-    [SerializeField] private float potionCooldown = 1.0f;
-    [SerializeField] private bool isConsumingPotion = false;
+    [SerializeField] private float healthRegenRate = 2f;
+    [SerializeField] private float healthRegenDelay = 3f;
+    [SerializeField] private float healthRegenTimer = 0.1f;
     private float currentHealth;
     private Coroutine regeneratingHealth;
-
     //action functions that will notify whoever is listening to the events
     public static Action<float> OnDamage;
     public static Action<float> OnHeal;
@@ -80,7 +77,6 @@ public class PlayerUI : MonoBehaviour
         HandleSprint();
         HandleDodge();
         HandleAttack();
-        
 
     }
 
@@ -117,13 +113,13 @@ public class PlayerUI : MonoBehaviour
         {
             KillPlayer();
         }
-        ////if health is above zero and regeneration is running then stop it 
-        //else if (regeneratingHealth != null)
-        //{
-        //    StopCoroutine(regeneratingHealth);
-        //}
-        ////start regeneration of health after the corutine delay has passed
-        //regeneratingHealth = StartCoroutine(RegenerateHealth());
+        //if health is above zero and regeneration is running then stop it 
+        else if (regeneratingHealth != null)
+        {
+            StopCoroutine(regeneratingHealth);
+        }
+        //start regeneration of health after the corutine delay has passed
+        regeneratingHealth = StartCoroutine(RegenerateHealth());
     }
 
     private void KillPlayer()
@@ -237,38 +233,31 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    private void HealPlayer(float healAmount)
-    {
-        currentHealth += healAmount; //heal by potion amount 
+    // ***** Regeneration-Corutine Logic *****
 
-        if(currentHealth > maxHealth) //heal only until max health 
+    //IEnumerator menaing the method is a coroutine allowing for pausing and resuming execusion
+    private IEnumerator RegenerateHealth()
+    {
+        //wait for the delay before starting the regeneration
+        yield return new WaitForSeconds(healthRegenDelay);
+        //after what delay the health will regenerate
+        WaitForSeconds timeToWait = new WaitForSeconds(healthRegenTimer);
+        //until health is less than max regenerate by regen amount 
+        while (currentHealth < maxHealth)
         {
-            currentHealth = maxHealth;
+            currentHealth += healthRegenRate;
+            //when at max stop regenerating
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+            //notify whoever is listening to the event that the health has changed (in UI.cs)
+            OnHeal?.Invoke(currentHealth);
+            //wait for the time to pass before regenerating again
+            yield return timeToWait;
         }
-
-        OnHeal?.Invoke(currentHealth); //notify listeners that health has changed (UI.cs)
-    }
-
-    public void ConsumePotion()
-    {
-        //check if player has in inventory potion 
-        if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal)
-        {
-            playerInventory.Remove(potionItemData, 1); //after use remove one potion from inv 
-
-            HealPlayer(potionHealAmount); //heal player 
-
-            StartCoroutine(PotionCooldown()); //start cooldown for potion use
-        }
-    }
-    
-    //CORUTIINES
-
-    private IEnumerator PotionCooldown()
-    {
-        isConsumingPotion = true;
-        yield return new WaitForSeconds(potionCooldown);
-        isConsumingPotion = false;
+        //end of corutine 
+        regeneratingHealth = null;
     }
 
     private IEnumerator RegenerateStamina()

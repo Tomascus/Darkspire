@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Health Positon
   itemIcon: {fileID: 0}
   description: 
-  prefab: {fileID: 1009356640940742554, guid: 5809dff31978c824e9f0655b38fa7d97, type: 3}
+  prefab: {fileID: 2334684456772615894, guid: 21a928be3730ada4181b181fc8e6e541, type: 3}

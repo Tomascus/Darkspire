@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Darkspire/Assets/GD/My Assets/Audio/Master.mixer.meta
 guid: 60fc60f6706feeb43820419ece12f4da
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 24100000
-========
-guid: bd90b0bdaa83cef4f8e7a1b67bfedb11
-PrefabImporter:
-  externalObjects: {}
->>>>>>>> main:Darkspire/Assets/GD/My Assets/Spawners/Interactables/Chest_Drop Variant.prefab.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
