@@ -14,23 +14,21 @@ public class PlayerMovementController : MonoBehaviour
 
 
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;
-    public float sprintSpeed = 10f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float sprintSpeed = 10f;
     private bool canMove = true;
 
     // Useful for different weight limits - light, medium, heavy builds ingame
     [Tooltip("Rotation Speed")]
     [Range(0.0f, 0.3f)]
-    public float rotationSmoothTime = 0.12f;
+    [SerializeField] private float rotationSmoothTime = 0.12f;
 
     // Dodge Settings
     [Header("Dodge Settings")]
-    //UPDATE FUNCTIONALITY (COOLDOWN)
-    public float dodgeCooldown = 0.8f; // Cooldown timer for player to wait until next available dodge
     private bool canDodge = true; // Check if player can dodge
 
     [Header("Gravity")]
-    public float gravity = -9.81f;
+    [SerializeField] private float gravity = -9.81f;
     private Vector3 playerVelocity; // Store velocity for gravity - Changes velocity over time when falling
 
 
