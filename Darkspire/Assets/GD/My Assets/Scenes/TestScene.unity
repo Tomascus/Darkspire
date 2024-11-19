@@ -2972,6 +2972,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 983033016}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1884721936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8302302378987013704, guid: d337c03ba74583244b6c8d27ac132ff7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7597910628522035101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1884721940
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884721936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2100155, y: 0.40627852, z: 0.7177227}
+  m_Center: {x: 0, y: 0.11624016, z: 0.35886124}
 --- !u!1 &1932346389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3754,6 +3781,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1297541027771299669, guid: d65ab4a9ec8385f45998ba6477096145,
         type: 3}
+      propertyPath: swordCollider
+      value: 
+      objectReference: {fileID: 130001006}
+    - target: {fileID: 1297541027771299669, guid: d65ab4a9ec8385f45998ba6477096145,
+        type: 3}
       propertyPath: attackCollider
       value: 
       objectReference: {fileID: 130001002}
@@ -4006,7 +4038,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8302302378987013704, guid: d337c03ba74583244b6c8d27ac132ff7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1884721940}
   m_SourcePrefab: {fileID: 100100000, guid: d337c03ba74583244b6c8d27ac132ff7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
