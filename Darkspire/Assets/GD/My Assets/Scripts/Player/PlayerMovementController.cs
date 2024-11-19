@@ -22,7 +22,7 @@ public class PlayerMovementController : MonoBehaviour
     // Useful for different weight limits - light, medium, heavy builds ingame
     [Tooltip("Rotation Speed")]
     [Range(0.0f, 0.3f)]
-    [SerializeField] private float rotationSmoothTime = 0.12f;
+    [SerializeField] public float rotationSmoothTime = 0.12f;
 
     // Dodge Settings
     [Header("Dodge Settings")]

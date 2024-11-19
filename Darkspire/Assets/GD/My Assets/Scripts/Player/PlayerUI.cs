@@ -12,6 +12,8 @@ public class PlayerUI : MonoBehaviour
     //variable for accesing the player controller inputs
     private PlayerControllerInputs playerControllerInputs;
     private PlayerCombatController PlayerCombatController;
+    private PlayerMovementController PlayerMovementController;
+    private Animator animator;
     [SerializeField] private Inventory playerInventory;
 
     [Header("Health parameters")]
@@ -72,7 +74,9 @@ public class PlayerUI : MonoBehaviour
         lastDodgeTime = -dodgeCooldown; // Initialize lastDodgeTime to be able to perform the first dodge
         lastAttackTime = -dodgeCooldown; // Initialize lastAttackTime to be able to perform the first attack
         playerControllerInputs = GetComponent<PlayerControllerInputs>();
+        PlayerMovementController = GetComponent<PlayerMovementController>();
         PlayerCombatController = GetComponent<PlayerCombatController>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -80,8 +84,7 @@ public class PlayerUI : MonoBehaviour
         HandleSprint();
         HandleDodge();
         HandleAttack();
-        
-
+       
     }
 
     private void FixedUpdate()
@@ -110,12 +113,19 @@ public class PlayerUI : MonoBehaviour
     private void ApplyDamage(float damage)
     {
         currentHealth -= damage;
+        animator.SetTrigger("Hit");
+        PlayerMovementController.SetMovementEnabled(false);
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
         OnDamage?.Invoke(currentHealth);
 
         if (currentHealth <= 0)
         {
             KillPlayer();
+        }
+        else
+        {
+            // Re-enable movement after a short delay
+            StartCoroutine(AllowMovement(0.5f));  // Disable movement for a short time after taking damage - temporary value here
         }
         ////if health is above zero and regeneration is running then stop it 
         //else if (regeneratingHealth != null)
@@ -126,6 +136,12 @@ public class PlayerUI : MonoBehaviour
         //regeneratingHealth = StartCoroutine(RegenerateHealth());
     }
 
+    private IEnumerator AllowMovement(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayerMovementController.SetMovementEnabled(true); 
+    }
+
     private void KillPlayer()
     {
         currentHealth = 0;
@@ -134,7 +150,10 @@ public class PlayerUI : MonoBehaviour
         {
             StopCoroutine(regeneratingHealth);
         }
+        animator.SetTrigger("Die");
         Debug.Log("Dead");
+        //IMPLEMENT DEATH SCREEN AND RESTART - TO DO 
+
 
     }
 

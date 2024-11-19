@@ -131,12 +131,12 @@ public class EnemyController : MonoBehaviour
         {
             if (!isWaiting)
             {
-                StartCoroutine(WaitBeforeNextPatrol()); // Sets the enemy to idle state to wait for next patrol point
+                StartCoroutine(NextPatrolDelay()); // Sets the enemy to idle state to wait for next patrol point
             }
         }
     }
 
-    private IEnumerator WaitBeforeNextPatrol()
+    private IEnumerator NextPatrolDelay()
     {
         isWaiting = true;
         agent.isStopped = true; 
@@ -247,7 +247,7 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     { 
-         isDead = true;
+        isDead = true;
         Debug.Log("You killed the enemy");
         animator.SetTrigger("Die");
         agent.isStopped = true; // Stop the enemy movement

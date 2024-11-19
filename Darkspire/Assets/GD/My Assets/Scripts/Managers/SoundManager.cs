@@ -7,16 +7,22 @@ using UnityEngine.SceneManagement;
 public enum SoundType
 {
     SWING,
-    HIT,
+    HIT,    
     DODGE,
     TALK,
-    FOOTSTEP,
+    FOOTSTEP,    
     RUN,
     INTERACTING,
     NO_STAMINA,
     LOW_HEALTH,
     HOVER,
-    CLICK
+    CLICK,
+    DIED,
+    ENEMYSWING,
+    ENEMYOVERHEADSWING,
+    ENEMYHIT,
+    ENEMYFOOTSTEP,
+    ENEMYDIED
 }
 
 //TODO complete code so that audio doens't stop playing once it goes less than 1
