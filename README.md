@@ -1,5 +1,9 @@
 # Darkspire 
-This is our 3D Game Engine for our Group.
+This is our 3D-Game Engine project for our Group.** Squirrel Antics**. <br />The roles within the project go as following <br /><br />
+**Tomascus:** Leader, Combat Programmer, User Testing<br />
+**Smartisek:** UI Programmer, Git Master<br />
+**xMaFey:** 3D Modeller, Level Design<br />
+**DovydasJakuciunas:** UX Hightligher, Sound Design<br />
 
 ## About
 Test your skills with engaging and realistic combat, navigate dangerous corridors and rooms of the eerie dungeon and prepare to fight unimaginable enemies that lurk inside the Darkspire. 
