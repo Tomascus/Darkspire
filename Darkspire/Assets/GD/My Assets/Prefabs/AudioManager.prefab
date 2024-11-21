@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7993212187675069844}
   - component: {fileID: 7061282108681637268}
   - component: {fileID: 6981957554824714818}
-  - component: {fileID: 6985427769688026860}
+  - component: {fileID: 4229324001914237326}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -164,22 +164,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6985427769688026860
+--- !u!114 &4229324001914237326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453920675617250630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db504109304c59149a9aeb1cb1f05ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundList:
-  - name: SWING
+  - name: PLAYERSWING
     sounds:
-    - {fileID: 8300000, guid: 96f7bc4fa94bd0747986305ba096e589, type: 3}
+    - {fileID: 8300000, guid: fe51c2468afb41b4988b536dfebf3b73, type: 3}
   - name: HIT
     sounds:
     - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
@@ -188,31 +188,56 @@ MonoBehaviour:
     - {fileID: 8300000, guid: bd61f1a64a36df14daa81fef4d2fde17, type: 3}
   - name: TALK
     sounds:
-    - {fileID: 8300000, guid: 71c2a35ae22d7204d95f104788f97d8c, type: 3}
+    - {fileID: 8300000, guid: 355a5db44cdb74145ac7df605100bc39, type: 3}
   - name: FOOTSTEP
     sounds:
-    - {fileID: 8300000, guid: 94c1419d8bc2b1a4eaeb2b9208f79ea5, type: 3}
     - {fileID: 8300000, guid: 71c2a35ae22d7204d95f104788f97d8c, type: 3}
+    - {fileID: 8300000, guid: 94c1419d8bc2b1a4eaeb2b9208f79ea5, type: 3}
   - name: RUN
     sounds:
     - {fileID: 8300000, guid: 59c6edcb89ab9fe4183e2b0589ad4fca, type: 3}
     - {fileID: 8300000, guid: 1b7d469f0210f4f40b38943fe51c8ee8, type: 3}
   - name: INTERACTING
     sounds:
-    - {fileID: 8300000, guid: 2229f163b1418e74bbc2f0d794c69fa7, type: 3}
+    - {fileID: 8300000, guid: c12b688e15fd00c499353a544b91bcd9, type: 3}
   - name: NO_STAMINA
     sounds:
     - {fileID: 8300000, guid: 6fa5bfd707e3ab64889734ecee823842, type: 3}
   - name: LOW_HEALTH
     sounds:
-    - {fileID: 8300000, guid: cd5b0d4c37610b54e997fc3aae1efdfb, type: 3}
+    - {fileID: 8300000, guid: 04d9b865c9b564b45bea83b81cc5c6cc, type: 3}
   - name: HOVER
     sounds:
     - {fileID: 8300000, guid: d0da80866c6ea294b952cc5e1618a118, type: 3}
   - name: CLICK
     sounds:
     - {fileID: 8300000, guid: 0e9a40fc41d388443af7428499f6454b, type: 3}
-  audioSource: {fileID: 1382050825599308293}
+  - name: DIED
+    sounds:
+    - {fileID: 8300000, guid: 59afb3beaf9deeb4cbb5c2c59f281922, type: 3}
+  - name: ENEMYSWING
+    sounds:
+    - {fileID: 8300000, guid: 77ca603088be1874984e73ed5bc701b5, type: 3}
+    - {fileID: 8300000, guid: 5bd30c88d32e28046922ebec77223730, type: 3}
+  - name: ENEMYOVERHEADSWING
+    sounds:
+    - {fileID: 8300000, guid: 40100505d93852b48a53115db0cd858e, type: 3}
+  - name: ENEMYHIT
+    sounds:
+    - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
+  - name: ENEMYFOOTSTEP
+    sounds:
+    - {fileID: 8300000, guid: 4e58da93e25564345a2af3bf834b135d, type: 3}
+  - name: ENEMYDIED
+    sounds:
+    - {fileID: 8300000, guid: ab9903f96c4861548b964e0601d6d543, type: 3}
+  - name: PLAYERPOKE
+    sounds:
+    - {fileID: 8300000, guid: 43f1ea4eee452e8409445f27661e67f1, type: 3}
+  - name: PLAYEROVERHEAD
+    sounds:
+    - {fileID: 8300000, guid: df4574f43d3737f42beba6a2fde3e674, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &1724709721573884527
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +378,7 @@ GameObject:
   - component: {fileID: 6160603231523277747}
   - component: {fileID: 1382050825599308293}
   m_Layer: 0
-  m_Name: SFX2DSource
+  m_Name: SoundFX2DSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
