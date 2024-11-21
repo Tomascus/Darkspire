@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Health_Position_Data
   m_EditorClassIdentifier: 
   itemName: Health Positon
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 20d98f2f46ad1c248bc617cfc3c6cc4c, type: 3}
   description: 
   prefab: {fileID: 1009356640940742554, guid: 5809dff31978c824e9f0655b38fa7d97, type: 3}
