@@ -37,5 +37,6 @@ public class Lever : MonoBehaviour
         {
             gate.StartMoving();
         }
+        SoundManager.PlaySound(SoundType.GATEOPEN);
     }
 }

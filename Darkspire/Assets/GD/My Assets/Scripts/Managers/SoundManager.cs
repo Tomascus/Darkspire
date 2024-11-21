@@ -12,7 +12,7 @@ public enum SoundType
     TALK,
     FOOTSTEP,    
     RUN,
-    INTERACTING,
+    PICKUP,
     NO_STAMINA,
     LOW_HEALTH,
     HOVER,
@@ -24,7 +24,10 @@ public enum SoundType
     ENEMYFOOTSTEP,
     ENEMYDIED,
     PLAYERPOKE,
-    PLAYEROVERHEAD
+    PLAYEROVERHEAD,
+    GATEOPEN,
+    DOOROPEN,
+    CHESTOPEN
 }
 
 

@@ -46,6 +46,7 @@ public class PlayerInventory : MonoBehaviour
                         Inventory playerInventory = inventoryCollection[0];
                         playerInventory.Add(itemData, 1);
                         Debug.Log($"Item added to inventory: {itemData.ItemName}");
+                        
                     }
                     catch (Exception e)
                     {
@@ -64,6 +65,7 @@ public class PlayerInventory : MonoBehaviour
 
             Destroy(nearbyItem.gameObject);
             nearbyItem = null;
+            SoundManager.PlaySound(SoundType.PICKUP);
         }
     }
 }
