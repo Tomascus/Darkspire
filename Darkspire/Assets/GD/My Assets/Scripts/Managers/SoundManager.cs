@@ -27,7 +27,6 @@ public enum SoundType
     PLAYEROVERHEAD
 }
 
-//TODO complete code so that audio doens't stop playing once it goes less than 1
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
