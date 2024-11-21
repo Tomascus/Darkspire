@@ -30,7 +30,7 @@ public class Gate : MonoBehaviour
     private void MoveUp()
     {
         transform.position = Vector3.MoveTowards(transform.position, initialPosition + Vector3.up * moveDistance, moveSpeed * Time.deltaTime);
-
+        
         if (transform.position == initialPosition + Vector3.up * moveDistance)
         {
             isMovingUp = false;

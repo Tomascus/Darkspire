@@ -58,6 +58,7 @@ public class DoorBehaviour : MonoBehaviour
         {
             playerInventory.Remove(keyItem, 1);
             isOpen = true;
+            SoundManager.PlaySound(SoundType.DOOROPEN);
         }
         else
         {
