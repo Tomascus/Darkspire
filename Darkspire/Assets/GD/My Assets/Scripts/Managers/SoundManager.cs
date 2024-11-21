@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public enum SoundType
 {
-    SWING,
+    PLAYERSWING,
     HIT,    
     DODGE,
     TALK,
@@ -22,7 +22,9 @@ public enum SoundType
     ENEMYOVERHEADSWING,
     ENEMYHIT,
     ENEMYFOOTSTEP,
-    ENEMYDIED
+    ENEMYDIED,
+    PLAYERPOKE,
+    PLAYEROVERHEAD
 }
 
 //TODO complete code so that audio doens't stop playing once it goes less than 1
