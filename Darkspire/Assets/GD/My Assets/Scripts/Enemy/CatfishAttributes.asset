@@ -15,6 +15,6 @@ MonoBehaviour:
   enemyName: Catfish
   health: 20
   attackDamage: 10
-  attackRange: 1
+  attackRange: 2
   movementSpeed: 5
   detectionRange: 5
