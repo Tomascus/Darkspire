@@ -45,11 +45,10 @@ public class SoundManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        //instance = this;
     }
 
 
-    public static void PlaySound(SoundType sound, float volume = 1)
+    public static void PlaySound(SoundType sound, float volume = 1f)
     {
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
