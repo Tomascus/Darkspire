@@ -45,7 +45,6 @@ public class SoundManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        //instance = this;
     }
 
 
