@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private bool isConsumingPotion = false;
     private float currentHealth;
     private Coroutine regeneratingHealth;
+    private bool isDead = false;
 
     //action functions that will notify whoever is listening to the events
     public static Action<float> OnDamage;
@@ -112,6 +114,8 @@ public class PlayerUI : MonoBehaviour
     // ***** Health Logic *****
     private void ApplyDamage(float damage)
     {
+        if (isDead) return;
+
         currentHealth -= damage;
         animator.SetTrigger("Hit");
         PlayerMovementController.SetMovementEnabled(false);
@@ -144,17 +148,29 @@ public class PlayerUI : MonoBehaviour
 
     private void KillPlayer()
     {
-        currentHealth = 0;
+        if (isDead) return;
 
+        currentHealth = 0;
+        isDead = true;
         if (regeneratingHealth != null)
         {
             StopCoroutine(regeneratingHealth);
         }
         animator.SetTrigger("Die");
+        animator.ResetTrigger("Hit"); // Reset the trigger to avoid the player getting up after dying
+        animator.ResetTrigger("Attack"); // Reset the trigger to avoid the player attacking after dying
+        playerControllerInputs.enabled = false;
         Debug.Log("Dead");
         //IMPLEMENT DEATH SCREEN AND RESTART - TO DO 
 
+        StartCoroutine(RestartScene(3f));
 
+    }
+
+    private IEnumerator RestartScene(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
