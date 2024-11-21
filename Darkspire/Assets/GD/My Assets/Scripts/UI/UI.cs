@@ -11,7 +11,8 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI potionCount;
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private ItemData healthPotionItem;
-
+    [SerializeField] private ItemData keyItem;
+    [SerializeField] private TextMeshProUGUI keyCount;
     private void OnEnable()
     {
         //when player takes damage or heals, update health bar
@@ -39,6 +40,7 @@ public class UI : MonoBehaviour
         UpdateHealth(100);
         UpdateStamina(100);
         UpdatePotionCount();
+        UpdateKeyAcquired();
     }
 
     //**** Bar Updates ****
@@ -57,10 +59,17 @@ public class UI : MonoBehaviour
     {
         int potionCountValue = playerInventory.Count(healthPotionItem);
         potionCount.text = potionCountValue.ToString();
+    } 
+
+    private void UpdateKeyAcquired()
+    {
+       int keyCountValue = playerInventory.Count(keyItem);
+        keyCount.text = keyCountValue.ToString();
     }
 
-    public void OnInventoryChange()
+        public void OnInventoryChange()
     {
         UpdatePotionCount();
+        UpdateKeyAcquired();
     }
 }

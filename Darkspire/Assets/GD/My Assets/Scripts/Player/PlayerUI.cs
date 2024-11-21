@@ -287,7 +287,7 @@ public class PlayerUI : MonoBehaviour
     public void ConsumePotion()
     {
         //check if player has in inventory potion 
-        if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal)
+        if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != maxHealth)
         {
             playerInventory.Remove(potionItemData, 1); //after use remove one potion from inv 
 
