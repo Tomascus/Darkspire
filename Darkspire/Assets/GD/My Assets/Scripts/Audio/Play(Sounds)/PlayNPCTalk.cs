@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class PlayNPCTalk : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void PlayIntroMerchant()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SoundManager.PlaySound(SoundType.TALK);
     }
 }
