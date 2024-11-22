@@ -5,6 +5,7 @@ namespace InputSystem
 {
     public class PlayerControllerInputs : MonoBehaviour
     {
+        #region Fields
         [Header("Character Input Values")]
         public Vector2 move;
         public Vector2 look;
@@ -20,11 +21,15 @@ namespace InputSystem
         public bool cursorInGameLook = true; // True means it is used for ingame look, false means it is used for UI etc.
         public bool inDialogue = false;
 
+        #endregion
+        #region Unity Base Methods
         private void Awake()
         {
             //access the player UI script important for stamina checks for sprinting and dodging
             playerUI = GetComponent<PlayerUI>();
-        }
+        } 
+        #endregion
+        #region Setup New Actions in Input System
 
         // Input Actions - These are used to set up the input actions in the input system
         public void OnMove(InputAction.CallbackContext context)
@@ -46,7 +51,8 @@ namespace InputSystem
             if (playerUI.CurrentStamina > 0)
             {
                 SprintInput(context.ReadValueAsButton());
-            } else
+            }
+            else
             {
                 //dont allow to sprint when stamina at 0
                 sprint = false;
@@ -69,20 +75,22 @@ namespace InputSystem
 
         public void OnAttack(InputAction.CallbackContext context)
         {
+
             if (inDialogue) //when in dialogue do not attack 
             {
                 attack = false;
                 return;
             }
 
-            if(playerUI.CurrentStamina > 0) //when stamina is above 0, player can attack
+            if (playerUI.CurrentStamina > 0) //when stamina is above 0, player can attack
             {
                 AttackInput(context.ReadValueAsButton());
-            } else
+            }
+            else
             {
                 attack = false;
             }
-           
+
         }
 
         public void OnHeal(InputAction.CallbackContext context)
@@ -92,6 +100,8 @@ namespace InputSystem
             playerUI.ConsumePotion();
         }
 
+        #endregion
+        #region Inputs New Variables
         // Input Methods - These are used to update the input values
         public void MoveInput(Vector2 newMoveDirection)
         {
@@ -124,6 +134,9 @@ namespace InputSystem
             Debug.Log("Heal Input");
         }
 
+        #endregion
+        #region Cursor Settings
+
         // Cursor Settings 
         private void OnApplicationFocus(bool hasFocus)
         {
@@ -147,6 +160,7 @@ namespace InputSystem
             cursorLocked = true;
             SetCursorState(cursorLocked);
         }
-    }
+    } 
+    #endregion
 
 }

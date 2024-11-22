@@ -1,0 +1,25 @@
+public enum SoundType
+{
+    PLAYERSWING,
+    HIT,
+    DODGE,
+    TALK,
+    FOOTSTEP,
+    RUN,
+    PICKUP,
+    NO_STAMINA,
+    LOW_HEALTH,
+    HOVER,
+    CLICK,
+    DIED,
+    ENEMYSWING,
+    ENEMYOVERHEADSWING,
+    ENEMYHIT,
+    ENEMYFOOTSTEP,
+    ENEMYDIED,
+    PLAYERPOKE,
+    PLAYEROVERHEAD,
+    GATEOPEN,
+    DOOROPEN,
+    CHESTOPEN
+}

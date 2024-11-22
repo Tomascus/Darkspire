@@ -83,9 +83,13 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        HandleSprint();
-        HandleDodge();
-        HandleAttack();
+        if(!PauseMenu.isPaused)
+        {
+            HandleSprint();
+            HandleDodge();
+            HandleAttack();
+        }
+        
        
     }
 

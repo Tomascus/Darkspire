@@ -4,33 +4,6 @@ using UnityEngine.SceneManagement;
 
 //New updated sound system: https://www.youtube.com/watch?v=g5WT91Sn3hg
 
-public enum SoundType
-{
-    PLAYERSWING,
-    HIT,    
-    DODGE,
-    TALK,
-    FOOTSTEP,    
-    RUN,
-    PICKUP,
-    NO_STAMINA,
-    LOW_HEALTH,
-    HOVER,
-    CLICK,
-    DIED,
-    ENEMYSWING,
-    ENEMYOVERHEADSWING,
-    ENEMYHIT,
-    ENEMYFOOTSTEP,
-    ENEMYDIED,
-    PLAYERPOKE,
-    PLAYEROVERHEAD,
-    GATEOPEN,
-    DOOROPEN,
-    CHESTOPEN
-}
-
-
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
@@ -59,25 +32,21 @@ public class SoundManager : MonoBehaviour
         instance.audioSource.PlayOneShot(randClip, volume);
     }
 
-    
 
-    #if UNITY_EDITOR
+
+#if UNITY_EDITOR
+    //Trying to match the enum to the sound list
     private void OnEnable()
     {
-        //Names based on enum names
         string[] names = Enum.GetNames(typeof(SoundType));
-
-        //Change name bassed on enum
         Array.Resize(ref soundList, names.Length);
 
-        //Set name of sound
         for (int i = 0; i < names.Length; i++)
         {
-            soundList[i].name = names[i];
-            
+            soundList[i].name = names[i]; 
         }
     }
-    #endif
+#endif
 }
 
 

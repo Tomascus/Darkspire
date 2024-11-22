@@ -50,9 +50,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        HandleRotation();
-        UpdateAnimations();
+        if(!PauseMenu.isPaused)
+        { 
+            HandleMovement();
+            HandleRotation();
+            UpdateAnimations();
+        }
     }
 
     private void FixedUpdate()

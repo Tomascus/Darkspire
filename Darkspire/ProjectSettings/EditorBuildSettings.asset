@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/GD/My Assets/Scenes/MainMenu.unity
     guid: 63527e66850d818428019a4f59c1330f
   - enabled: 1
-    path: Assets/GD/My Assets/Scenes/TestScene.unity
-    guid: 6db09edb2bb146745a1d958b4f5c969f
+    path: Assets/GD/My Assets/Scenes/MapPrototype.unity
+    guid: 6122e885779424a479d0267838bf2f3f
   m_configObjects: {}

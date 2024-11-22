@@ -31,7 +31,11 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Update()
     {
-        HandleAttackInput();
+        if (!PauseMenu.isPaused)
+        {
+            HandleAttackInput();
+        }
+        
     }
 
     private void HandleAttackInput()
