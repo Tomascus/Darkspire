@@ -13,6 +13,8 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        if (!Application.isPlaying) return; // Makes it so the sound manager only runs in play mode
+
         if (instance != null)
         {
             Destroy(gameObject);
