@@ -134,9 +134,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - trackName: MainMenu
-    clip: {fileID: 8300000, guid: 6e27b34c3b116a942918cec99cde6eec, type: 3}
+    clip: {fileID: 8300000, guid: dded28a968b9f7644aa28b10f57efb42, type: 3}
   - trackName: Gameplay
-    clip: {fileID: 8300000, guid: eb76cf4091c02df488ff2c8f8b7913aa, type: 3}
+    clip: {fileID: 8300000, guid: dded28a968b9f7644aa28b10f57efb42, type: 3}
 --- !u!114 &7061282108681637268
 MonoBehaviour:
   m_ObjectHideFlags: 0
