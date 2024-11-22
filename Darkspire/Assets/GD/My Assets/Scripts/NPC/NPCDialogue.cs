@@ -22,7 +22,7 @@ public class NPCDialogue : MonoBehaviour
         {
             ConversationManager.Instance.StartConversation(dialogueNPC); //start the conversation when in ragne
             playerControllerInputs.ShowCursor(); // show cursor for dialogue 
-            playerControllerInputs.inDialogue = true; // set attacking off
+           // playerControllerInputs.inDialogue = true; // set attacking off
             SoundManager.PlaySound(SoundType.TALK); // play dialogue sound
         }
     }
@@ -31,6 +31,7 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            playerControllerInputs.inDialogue = true; // set attacking off
         }
     }
 
