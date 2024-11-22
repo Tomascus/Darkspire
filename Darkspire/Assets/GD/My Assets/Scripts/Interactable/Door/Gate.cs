@@ -17,6 +17,7 @@ public class Gate : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+       
     }
 
     private void Update()
@@ -40,5 +41,6 @@ public class Gate : MonoBehaviour
     public void StartMoving()
     {
         isMovingUp = true;
+            SoundManager.PlaySound(SoundType.GATEOPEN);
     }
 }
