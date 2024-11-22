@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    #region Fields
     [Header("Player Controller References")]
     private PlayerControllerInputs inputs;
     private Animator animator;
@@ -21,6 +22,8 @@ public class PlayerCombatController : MonoBehaviour
     // List of animations for player combo system - better to use a list for flexibility and scalability
     private readonly string[] attackAnimations = { "Attack1", "Attack2", "Attack3" };
 
+    #endregion
+    #region Unity Code
     private void Awake()
     {
         inputs = GetComponent<PlayerControllerInputs>();
@@ -35,9 +38,10 @@ public class PlayerCombatController : MonoBehaviour
         {
             HandleAttackInput();
         }
-        
-    }
 
+    }
+    #endregion
+    #region Perform Attacks
     private void HandleAttackInput()
     {
         if (Time.time > lastAttackTime + attackCooldown && inputs.attack && !isAttacking)
@@ -66,6 +70,8 @@ public class PlayerCombatController : MonoBehaviour
         StartCoroutine(AllowMovement());
     }
 
+    #endregion
+    #region Enum for movement
     private IEnumerator AllowMovement()
     {
         // Time the player has to wait before they can move again
@@ -74,6 +80,7 @@ public class PlayerCombatController : MonoBehaviour
         isAttacking = false;
         weaponCollider.SetAttacking(false); // Stop the weapon collider from registering attacks
         movementController.SetMovementEnabled(true);
-    }
+    } 
+    #endregion
 
 }

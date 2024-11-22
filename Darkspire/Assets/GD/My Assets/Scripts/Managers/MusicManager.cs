@@ -19,6 +19,7 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        //Code to prevent audio manager from being destroyed when changing scenes
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -34,7 +35,7 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
     {
-        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));
+        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));   //Play Music Based
     }
 
     //Music That Can Change Flawlessly

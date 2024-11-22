@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class InteractableUI : MonoBehaviour
 {
+    #region Fields
+
     [Tooltip("UI to show when player is in range.")]
     [SerializeField] private GameObject interactableUI;
 
     private bool playerInRange = false;
 
+    #endregion
+    #region Interactable Funcionality
     private void Awake()
     {
         interactableUI.SetActive(false); //make sure not to display when start the game
@@ -35,4 +39,5 @@ public class InteractableUI : MonoBehaviour
         }
     }
 
+    #endregion
 }
