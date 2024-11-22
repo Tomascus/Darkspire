@@ -27,7 +27,11 @@ namespace InputSystem
         {
             //access the player UI script important for stamina checks for sprinting and dodging
             playerUI = GetComponent<PlayerUI>();
-        } 
+        }
+        private void Start()
+        {
+            HideCursor();
+        }
         #endregion
         #region Setup New Actions in Input System
 
