@@ -1,9 +1,12 @@
+using InputSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public static bool isPaused;   
+    public static bool isPaused;
+    private PlayerControllerInputs playerControllerInputs;
 
     private void Start()
     {
@@ -16,6 +19,7 @@ public class PauseMenu : MonoBehaviour
         {
             if (isPaused)
             {
+                playerControllerInputs.ShowCursor();
                 ResumeGame();
             }
             else
@@ -38,6 +42,17 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 
