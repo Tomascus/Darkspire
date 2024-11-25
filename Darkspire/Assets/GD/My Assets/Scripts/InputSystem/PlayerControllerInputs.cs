@@ -15,11 +15,15 @@ namespace InputSystem
         public bool heal;
 
         private PlayerUI playerUI;
+        [SerializeField] private InventoryUIManager inventoryUIManager;
+        
 
         [Header("Mouse Cursor Settings")]
         public bool cursorLocked = true;
         public bool cursorInGameLook = true; // True means it is used for ingame look, false means it is used for UI etc.
         public bool inDialogue = false;
+        public bool inInventory = false;
+
 
         #endregion
         #region Unity Base Methods
@@ -27,6 +31,7 @@ namespace InputSystem
         {
             //access the player UI script important for stamina checks for sprinting and dodging
             playerUI = GetComponent<PlayerUI>();
+            inventoryUIManager = FindObjectOfType<InventoryUIManager>();
         }
         private void Start()
         {
@@ -80,7 +85,7 @@ namespace InputSystem
         public void OnAttack(InputAction.CallbackContext context)
         {
 
-            if (inDialogue) //when in dialogue do not attack 
+            if (inDialogue || inInventory) //when in dialogue or inventory do not attack 
             {
                 attack = false;
                 return;
@@ -138,6 +143,32 @@ namespace InputSystem
             Debug.Log("Heal Input");
         }
 
+        public void OnToggleInventory(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                //Debug.Log("Toggle Inventory action performed.");
+                if (inventoryUIManager != null)
+                {
+                    inventoryUIManager.ToggleInventoryPanel();
+
+                    if (Cursor.visible)
+                    {
+                        ShowCursor();
+                        inInventory = true;
+                    } else
+                    {
+                        HideCursor();
+                        inInventory = false;
+                    }
+                }
+                else
+                {
+                    Debug.LogError("InventoryUIManager is not assigned.");
+                }
+            }
+        }
+
         #endregion
         #region Cursor Settings
 
@@ -164,7 +195,7 @@ namespace InputSystem
             cursorLocked = true;
             SetCursorState(cursorLocked);
         }
-    } 
+    }
     #endregion
 
 }
