@@ -52,6 +52,7 @@ public class Inventory : SerializedScriptableObject, IEnumerable<KeyValuePair<It
             contents.Add(item, count);
 
         onInventoryChange?.Raise(); // Tell interested parties that the inventory has changed
+
     }
 
     /// <summary>
