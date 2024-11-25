@@ -152,7 +152,7 @@ namespace InputSystem
                 {
                     inventoryUIManager.ToggleInventoryPanel();
 
-                    if (Cursor.visible)
+                    if (inventoryUIManager.IsInventoryPanelActive())
                     {
                         ShowCursor();
                         inInventory = true;
