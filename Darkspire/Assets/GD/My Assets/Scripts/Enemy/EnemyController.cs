@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
+    [Header("Health Bar Slider")]
+    [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private Slider healthBar;
+
     private bool isDead = false; 
 
     private void Awake()
@@ -41,6 +46,7 @@ public class EnemyController : MonoBehaviour
     {
         getEnemyStats();
         NewPatrolPoint();
+        InitializeHealthBar(); //initialize the health bar 
     }
 
     private void Update()
@@ -66,6 +72,7 @@ public class EnemyController : MonoBehaviour
         }
 
         UpdateAnimations();
+
     }
 
     private void UpdateAnimations()
@@ -223,6 +230,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void InitializeHealthBar()
+    {
+        GameObject healthBarInstance = Instantiate(healthBarPrefab, transform); // Instantiates the health bar prefab
+        healthBar = healthBarInstance.GetComponentInChildren<Slider>(); // Gets the slider component from the health bar prefab
+
+        //Set initial values 
+        healthBar.maxValue = attributes.health;
+        healthBar.value = currentHealth;
+
+    }
+
     private void DamagePlayer()
     {
         // Checks if the player is within attack range and damages the player if so
@@ -236,6 +254,11 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        if(healthBar != null)
+        {
+            healthBar.value = currentHealth;
+        }
 
         if (currentHealth <= 0)
         {
