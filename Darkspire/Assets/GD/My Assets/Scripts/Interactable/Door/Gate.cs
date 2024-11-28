@@ -35,6 +35,5 @@ public class Gate : MonoBehaviour
     public void StartMoving()
     {
         isMovingUp = true;
-            SoundManager.PlaySound(SoundType.GATEOPEN);
     }
 }
