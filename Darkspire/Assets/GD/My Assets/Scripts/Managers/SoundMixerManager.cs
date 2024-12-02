@@ -39,7 +39,6 @@ public class SoundMixerManager : MonoBehaviour
         if (PlayerPrefs.HasKey("MasterVolume"))
         {
             float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.8f);
-            Debug.Log($"Loaded MasterVolume: {masterVolume}");
             audioMixer.SetFloat("MasterVolume", Mathf.Log10(masterVolume) * 20f);
             if (masterSlider != null) masterSlider.value = masterVolume;    //Updating slider
         }
@@ -78,7 +77,7 @@ public class SoundMixerManager : MonoBehaviour
         audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20f);
         PlayerPrefs.SetFloat("SoundFXVolume", level);
         PlayerPrefs.Save();
-        Debug.Log($"Saved SFXSOUND: {level}");
+
     }
 
     public void SetMusicVolume(float level)
