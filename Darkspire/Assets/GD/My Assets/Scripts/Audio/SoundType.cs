@@ -21,5 +21,7 @@ public enum SoundType
     PLAYEROVERHEAD,
     GATEOPEN,
     DOOROPEN,
-    CHESTOPEN
+    CHESTOPEN,
+    HITWALL,
+    HITBARREL
 }
