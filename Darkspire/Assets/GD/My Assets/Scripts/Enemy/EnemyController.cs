@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public class EnemyController : MonoBehaviour
     [Header("Health Bar Slider")]
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Slider healthBar;
+
+    [Header("Damage Numbers")]
+    [SerializeField] private TextMeshProUGUI damageText;
 
     private bool isDead = false; 
 
@@ -230,11 +234,21 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private IEnumerator ShowDamageNumber(int damage)
+    {
+        damageText.text =  "-" + damage.ToString();
+        damageText.gameObject.SetActive(true);  
+
+        yield return new WaitForSeconds(1f);
+        damageText.gameObject.SetActive(false);
+        damageText.text = string.Empty;
+    }
+
     private void InitializeHealthBar()
     {
         GameObject healthBarInstance = Instantiate(healthBarPrefab, transform); // Instantiates the health bar prefab
         healthBar = healthBarInstance.GetComponentInChildren<Slider>(); // Gets the slider component from the health bar prefab
-
+       
         //Set initial values 
         healthBar.maxValue = attributes.health;
         healthBar.value = currentHealth;
@@ -258,6 +272,11 @@ public class EnemyController : MonoBehaviour
         if(healthBar != null)
         {
             healthBar.value = currentHealth;
+        }
+
+        if(damageText != null)
+        {
+            StartCoroutine(ShowDamageNumber(damage));
         }
 
         if (currentHealth <= 0)
