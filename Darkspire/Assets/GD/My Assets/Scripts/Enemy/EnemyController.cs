@@ -35,8 +35,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Slider healthBar;
 
-    [Header("Damage Numbers")]
+    [Header("Damage Numbers & Particles")]
     [SerializeField] private TextMeshProUGUI damageText;
+    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private Transform hitPoint;
 
     private bool isDead = false; 
 
@@ -269,7 +271,9 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if(healthBar != null)
+        hitParticle();
+
+        if (healthBar != null)
         {
             healthBar.value = currentHealth;
         }
@@ -294,6 +298,15 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Die");
         agent.isStopped = true; // Stop the enemy movement
         Destroy(gameObject, 5f); 
+    }
+
+    private void hitParticle()
+    {
+        if (hitEffect != null && hitPoint != null) // Here I check if the values are defined for the enemy
+        {
+            GameObject effect = Instantiate(hitEffect, hitPoint.position, Quaternion.identity); // I create new object at the hit point, indenity quaterion means no rotation
+            Destroy(effect, 2.0f);
+        }
     }
 
     // Visualize the patrol area in the scene view
