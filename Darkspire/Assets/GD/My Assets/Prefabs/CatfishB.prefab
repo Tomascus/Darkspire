@@ -151,6 +151,11 @@ MonoBehaviour:
   patrolSize: {x: 0, y: 0, z: 0}
   attackCooldown: 2
   attackDamage: 10
+  healthBarPrefab: {fileID: 0}
+  healthBar: {fileID: 0}
+  damageText: {fileID: 0}
+  hitEffect: {fileID: 0}
+  hitPoint: {fileID: 0}
 --- !u!136 &5971012287014438528
 CapsuleCollider:
   m_ObjectHideFlags: 0
