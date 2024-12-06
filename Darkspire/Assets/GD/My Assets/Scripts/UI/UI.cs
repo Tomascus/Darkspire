@@ -8,8 +8,6 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider staminaBar;
-   // [SerializeField] private Slider xpBar;
-   // [SerializeField] private Button levelUpButton;
     [SerializeField] private TextMeshProUGUI potionCount;
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private ItemData healthPotionItem;
@@ -18,10 +16,12 @@ public class UI : MonoBehaviour
 
     //Stats attributes
     [SerializeField] private playerAttributes playerAttributes;
+    [SerializeField] private TextMeshProUGUI levelNotification;
     [SerializeField] private GameObject statWindow;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI staminaText;
     [SerializeField] private TextMeshProUGUI strengthText;
+    [SerializeField] private Slider xpBar;
 
     private void OnEnable()
     {
@@ -31,8 +31,8 @@ public class UI : MonoBehaviour
         //when player uses stamina, update stamina bar
         PlayerUI.OnStaminaChange += UpdateStamina;
 
-       // PlayerUI.OnXpChange += updateXP;
-       // PlayerUI.OnLevelUp += ShowLevelUpButton;
+        PlayerUI.OnXPChange += updateXP;
+        playerAttributes.OnLevelUp += ShowLevelNotif;
 
     }
     
@@ -45,14 +45,19 @@ public class UI : MonoBehaviour
 
         PlayerUI.OnStaminaChange -= UpdateStamina;
 
+        PlayerUI.OnXPChange -= updateXP;
+        playerAttributes.OnLevelUp -= ShowLevelNotif;
+
     }
 
     private void Start()
     {
         //at start set default 100 health and stamina
         statWindow.SetActive(false);
-        UpdateHealth(100);
-        UpdateStamina(100);
+        levelNotification.gameObject.SetActive(false);
+        updateXP(playerAttributes.currentXP);
+        UpdateHealth(playerAttributes.maxHealth);
+        UpdateStamina(playerAttributes.maxStamina);
         UpdatePotionCount();
         UpdateKeyAcquired();
     }
@@ -98,5 +103,15 @@ public class UI : MonoBehaviour
     public void HideStats()
     {
         statWindow.SetActive(false);
+    }
+
+    private void updateXP(int currentXP)
+    {
+        xpBar.value = currentXP;
+    }
+
+    private void ShowLevelNotif()
+    {
+        levelNotification.gameObject.SetActive(true);
     }
 }

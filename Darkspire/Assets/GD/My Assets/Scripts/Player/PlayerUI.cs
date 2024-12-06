@@ -48,6 +48,8 @@ public class PlayerUI : MonoBehaviour
     private Coroutine regeneratingStamina;
     //action functions that will notify whoever is listening to the events
     public static Action<float> OnStaminaChange;
+    public static Action<int> OnXPChange;
+    public static Action OnLevelUp;
     //this provides an access to the current player stamina value from outside of this class without enabling it to be changed (used in PlayerInputController)
     public float CurrentStamina => currentStamina;
 
@@ -88,9 +90,10 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+   
+        if(Input.GetKeyDown(KeyCode.H))
         {
-            playerAttributes.AddXP(20);
+            AddXP(20);
         }
 
         if (!PauseMenu.isPaused)
@@ -108,7 +111,24 @@ public class PlayerUI : MonoBehaviour
         CheckStamina();
     }
 
-    private void CheckStamina()
+    public void AddXP(int amout)
+    {
+        playerAttributes.AddXP(amout);
+        OnXPChange?.Invoke(playerAttributes.currentXP); //notify listeners that XP has changed (UI.cs)
+
+        if (playerAttributes.currentXP >= playerAttributes.xpToNextLevel)
+        {
+            LevelUp(); 
+        }
+    }
+
+    private void LevelUp()
+    {
+        
+        OnLevelUp?.Invoke(); //notify listeners that player has leveled up (UI.cs)
+    }
+
+        private void CheckStamina()
     {
         if(currentStamina <=0)
         {

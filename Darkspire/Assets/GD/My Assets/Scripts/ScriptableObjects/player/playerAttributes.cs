@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class playerAttributes : ScriptableObject
     public int currentLevel;
     public int currentXP;
     public int xpToNextLevel;
+   
+
+    public static Action OnLevelUp;
 
     public void AddXP(int amount)
     {
@@ -30,10 +34,11 @@ public class playerAttributes : ScriptableObject
         }
     }
 
-    private void LevelUp()
+    public void LevelUp()
     {
         currentLevel++;
         xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.5f);
+        OnLevelUp?.Invoke(); //notify subscribers that the player has leveled up
     }
 
     public void ResetAttributes()

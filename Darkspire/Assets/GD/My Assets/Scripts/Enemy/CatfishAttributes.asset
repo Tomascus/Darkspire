@@ -18,3 +18,4 @@ MonoBehaviour:
   attackRange: 2
   movementSpeed: 5
   detectionRange: 5
+  xpReward: 20
