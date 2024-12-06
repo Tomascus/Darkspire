@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayFootstep : MonoBehaviour
 {
+    #region Playing Sound for Player
     public void PlayFootStompSound()
     {
         SoundManager.PlaySound(SoundType.FOOTSTEP);
@@ -29,5 +30,6 @@ public class PlayFootstep : MonoBehaviour
     public void PlayDodgeSound()
     {
         SoundManager.PlaySound(SoundType.DODGE);
-    }
+    } 
+    #endregion
 }

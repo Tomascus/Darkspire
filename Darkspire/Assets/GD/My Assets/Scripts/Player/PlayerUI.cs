@@ -298,6 +298,8 @@ public class PlayerUI : MonoBehaviour
         //check if player has in inventory potion 
         if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != maxHealth)
         {
+            SoundManager.PlaySound(SoundType.PLAYERHEAL);   //Sound for potion use
+
             playerInventory.Remove(potionItemData, 1); //after use remove one potion from inv 
 
             HealPlayer(potionHealAmount); //heal player 

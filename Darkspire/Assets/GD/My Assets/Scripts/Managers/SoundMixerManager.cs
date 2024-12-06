@@ -6,6 +6,7 @@ using Slider = UnityEngine.UI.Slider;
 
 public class SoundMixerManager : MonoBehaviour
 {
+    #region Fields
     public static SoundMixerManager Instance;
 
     [SerializeField] private AudioMixer audioMixer;
@@ -13,6 +14,8 @@ public class SoundMixerManager : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider soundFXSlider;
 
+    #endregion
+    #region Unity In Build Methods
     private void Awake()
     {
         if (Instance != null)
@@ -31,7 +34,9 @@ public class SoundMixerManager : MonoBehaviour
         Debug.Log($"MusicVolume Loaded: {musicSlider}");
         Debug.Log($"SoundFXVolume Loaded: {soundFXSlider}");
 
-    }
+    } 
+    #endregion
+    #region Load User Preferences
 
     private void LoadPreferences()          //Methods to check if the player has set the volume before, if has then set to save variable, if hasn't then set to default
 
@@ -57,19 +62,21 @@ public class SoundMixerManager : MonoBehaviour
             if (soundFXSlider != null) soundFXSlider.value = soundFXVolume; // Updating slider
         }
     }
+    #endregion
+    #region Setting Audio
+    //Not needed anymore, as all sounds have sliders more in-depth
+    //public void SetGameVolume(float volume)
+    //{
+    //    AudioListener.volume = volume;
+    //    PlayerPrefs.SetFloat("volume", volume);
+    //    PlayerPrefs.Save();
 
-    public void SetGameVolume(float volume)
-    {
-        AudioListener.volume = volume; 
-        PlayerPrefs.SetFloat("volume", volume);
-        PlayerPrefs.Save();
-        
-    }
+    //}
 
     public void SetMasterVolume(float level)
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(level) * 20f);
-        PlayerPrefs.SetFloat("MasterVolume", level); 
+        PlayerPrefs.SetFloat("MasterVolume", level);
         PlayerPrefs.Save();
     }
     public void SetSoundFXVolume(float level)
@@ -86,5 +93,6 @@ public class SoundMixerManager : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", level);
         PlayerPrefs.Save();
 
-    }
+    } 
+    #endregion
 }

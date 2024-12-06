@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour    
 {
     public static GameManager Instance;
 
+    #region Scene Loading Methods
     private void Awake()
     {
         if (Instance != null)
@@ -28,9 +26,9 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) //Play music based on Scene
     {
-        if(scene.name == "MainMenu")
+        if (scene.name == "MainMenu")
         {
             MusicManager.Instance.PlayMusic("MainMenu");
         }
@@ -38,6 +36,7 @@ public class GameManager : MonoBehaviour
         {
             MusicManager.Instance.PlayMusic("Gameplay");
         }
-        
-    }
+
+    } 
+    #endregion
 }
