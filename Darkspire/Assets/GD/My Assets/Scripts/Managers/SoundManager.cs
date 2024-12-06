@@ -1,19 +1,17 @@
 using UnityEngine;
 using System;
-using UnityEngine.SceneManagement;
-
-//New updated sound system: https://www.youtube.com/watch?v=g5WT91Sn3hg
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private SoundList[] soundList;
+    [SerializeField] private SoundList[] soundList; // Holds all sounds
     public static SoundManager instance;
-    [SerializeField]private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
 
     private void Awake()
     {
-        if (!Application.isPlaying) return; // Makes it so the sound manager only runs in play mode
+        if (!Application.isPlaying) return;
 
         if (instance != null)
         {
@@ -26,7 +24,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-
     public static void PlaySound(SoundType sound, float volume = 1f)
     {
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
@@ -34,29 +31,42 @@ public class SoundManager : MonoBehaviour
         instance.audioSource.PlayOneShot(randClip, volume);
     }
 
-
-
 #if UNITY_EDITOR
-    //Trying to match the enum to the sound list
     private void OnEnable()
+    {
+        UpdateSoundList();
+    }
+
+    private void OnValidate()
+    {
+        UpdateSoundList();
+    }
+
+    private void UpdateSoundList()
     {
         string[] names = Enum.GetNames(typeof(SoundType));
         Array.Resize(ref soundList, names.Length);
 
         for (int i = 0; i < names.Length; i++)
         {
-            soundList[i].name = names[i]; 
+            if (soundList[i].name != names[i])
+            {
+                soundList[i] = new SoundList
+                {
+                    name = names[i], // Assign the enum name to the SoundList's name
+                    sounds = soundList[i].Sounds // Preserve existing sound references
+                };
+            }
         }
     }
 #endif
 }
 
-
 [Serializable]
 public struct SoundList
 {
-    public AudioClip[] Sounds { get => sounds; }
     public string name;
-    [SerializeField] private AudioClip[] sounds;
+    [SerializeField] public AudioClip[] sounds;
 
+    public AudioClip[] Sounds => sounds;
 }

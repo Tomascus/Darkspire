@@ -23,5 +23,7 @@ public enum SoundType
     DOOROPEN,
     CHESTOPEN,
     HITWALL,
-    HITBARREL
+    HITBARREL,
+    SKELETONSWING,
+    SKELETONWALK
 }
