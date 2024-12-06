@@ -26,6 +26,7 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI staminaText;
     [SerializeField] private TextMeshProUGUI strengthText;
     [SerializeField] private TextMeshProUGUI currentLevel;
+    [SerializeField] private TextMeshProUGUI availablePoint;
     [SerializeField] private Slider xpBar;
     //Level up buttons
     [SerializeField] private Button LevelUpHealthButton;
@@ -40,7 +41,7 @@ public class UI : MonoBehaviour
         //when player uses stamina, update stamina bar
         PlayerUI.OnStaminaChange += UpdateStamina;
 
-        PlayerUI.OnXPChange += updateXP;
+        PlayerUI.OnXPChange += UpdateXP;
         playerAttributes.OnLevelUp += ShowLevelNotif;
 
         LevelUpHealthButton.onClick.AddListener(LevelUpHealth);
@@ -57,7 +58,7 @@ public class UI : MonoBehaviour
 
         PlayerUI.OnStaminaChange -= UpdateStamina;
 
-        PlayerUI.OnXPChange -= updateXP;
+        PlayerUI.OnXPChange -= UpdateXP;
         playerAttributes.OnLevelUp -= ShowLevelNotif;
 
         LevelUpHealthButton.onClick.RemoveListener(LevelUpHealth);
@@ -71,7 +72,7 @@ public class UI : MonoBehaviour
         //at start set default player stat health and stamina
         statWindow.SetActive(false);
         levelNotification.gameObject.SetActive(false);
-        updateXP(playerAttributes.currentXP);
+        UpdateXP(playerAttributes.currentXP);
         UpdateHealth(playerAttributes.maxHealth);
         UpdateStamina(playerAttributes.maxStamina);
         UpdatePotionCount();
@@ -98,7 +99,7 @@ public class UI : MonoBehaviour
         potionCount.text = potionCountValue.ToString();
     }
 
-    private void updateXP(int currentXP)
+    private void UpdateXP(int currentXP)
     {
         xpBar.maxValue = playerAttributes.xpToNextLevel;
         xpBar.value = currentXP;
@@ -123,6 +124,7 @@ public class UI : MonoBehaviour
         staminaText.text = playerAttributes.maxStamina.ToString();
         strengthText.text = playerAttributes.currentStrength.ToString();
         currentLevel.text = playerAttributes.currentLevel.ToString();
+        availablePoint.text = playerAttributes.availableLevels.ToString();
     }
 
     private void UpdateStatsUI()
@@ -131,6 +133,7 @@ public class UI : MonoBehaviour
         staminaText.text = playerAttributes.maxStamina.ToString();
         strengthText.text = playerAttributes.currentStrength.ToString();
         currentLevel.text = playerAttributes.currentLevel.ToString();
+        availablePoint.text = playerAttributes.availableLevels.ToString();
 
         healthBar.maxValue = playerAttributes.maxHealth;
         staminaBar.maxValue = playerAttributes.maxStamina;
@@ -145,8 +148,13 @@ public class UI : MonoBehaviour
     private void ShowLevelNotif()
     {
         levelNotification.gameObject.SetActive(true);
-        updateXP(playerAttributes.currentXP);
+        UpdateXP(playerAttributes.currentXP);
         UpdateStatsUI();
+    }
+
+    private void HideLevelNotif()
+    {
+        levelNotification.gameObject.SetActive(false);
     }
 
     private void LevelUpHealth()
@@ -166,7 +174,9 @@ public class UI : MonoBehaviour
         // Update the health bar value to reflect the new max health
         healthBar.maxValue = newHealth;
         healthBar.value = playerAttributes.maxHealth;
-        UpdateStatsUI();
+            HideLevelNotif();
+            UpdateStatsUI();
+
         }
        
                   
@@ -187,6 +197,7 @@ public class UI : MonoBehaviour
 
             staminaBar.maxValue = newStamina;
             staminaBar.value = playerAttributes.maxStamina;
+            HideLevelNotif();
             UpdateStatsUI(); 
         }
                  
@@ -197,6 +208,7 @@ public class UI : MonoBehaviour
         if (playerAttributes.availableLevels > 0)
         {
             playerAttributes.LevelUpStrength();
+            HideLevelNotif();
             UpdateStatsUI();
         }
        
