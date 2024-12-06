@@ -13,6 +13,7 @@ public class playerAttributes : ScriptableObject
     private int defaultHealth = 100;
     private int defaultStamina = 100;
     private int defaultStrength = 10;
+    private int defaultAvailableLevels = 0;
 
     public int maxHealth;
     public int maxStamina;
@@ -20,7 +21,9 @@ public class playerAttributes : ScriptableObject
     public int currentLevel;
     public int currentXP;
     public int xpToNextLevel;
-   
+    public int availableLevels;
+
+
 
     public static Action OnLevelUp;
 
@@ -38,7 +41,41 @@ public class playerAttributes : ScriptableObject
     {
         currentLevel++;
         xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.5f);
-        OnLevelUp?.Invoke(); //notify subscribers that the player has leveled up
+        availableLevels++;
+         OnLevelUp?.Invoke(); //notify subscribers that the player has leveled up
+    }
+
+    public void LevelUpHealth()
+    {
+        if (availableLevels > 0)
+        {
+        maxHealth += 20;
+        availableLevels--;
+        OnLevelUp?.Invoke();
+        }
+       
+    }
+
+    public void LevelUpStamina()
+    {
+        if (availableLevels > 0)
+        {
+        maxStamina += 20;
+        availableLevels--;
+        OnLevelUp?.Invoke();
+        }
+       
+    }
+
+    public void LevelUpStrength()
+    {
+        if (availableLevels > 0)
+        {
+            currentStrength += 5;
+            availableLevels--;
+            OnLevelUp?.Invoke();
+        }
+      
     }
 
     public void ResetAttributes()
@@ -49,5 +86,6 @@ public class playerAttributes : ScriptableObject
         maxHealth = defaultHealth;
         maxStamina = defaultStamina;
         currentStrength = defaultStrength;
+        availableLevels = defaultAvailableLevels;
     }
 }

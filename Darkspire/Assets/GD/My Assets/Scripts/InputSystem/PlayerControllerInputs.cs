@@ -87,7 +87,7 @@ namespace InputSystem
         public void OnAttack(InputAction.CallbackContext context)
         {
 
-            if (inDialogue || inInventory) //when in dialogue or inventory do not attack 
+            if (inDialogue || inInventory || inStats) //when in dialogue or inventory do not attack 
             {
                 attack = false;
                 return;
@@ -165,10 +165,10 @@ namespace InputSystem
                         inInventory = false;
                     }
                 }
-                //else
-                //{
-                //    Debug.LogError("InventoryUIManager is not assigned.");
-                //}
+                else
+                {
+                    Debug.LogError("InventoryUIManager is not assigned.");
+                }
             }
         }
 
@@ -184,6 +184,7 @@ namespace InputSystem
                         // Hide the stats window
                         ui.HideStats(); // Assuming you have a method to hide the stats
                         HideCursor();
+                      
                         inStats = false;
                     }
                     else
@@ -191,6 +192,7 @@ namespace InputSystem
                         // Show the stats window
                         ui.ShowStats();
                         ShowCursor();
+
                         inStats = true;
                     }
                 }
