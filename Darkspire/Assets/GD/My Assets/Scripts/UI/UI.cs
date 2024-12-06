@@ -15,6 +15,14 @@ public class UI : MonoBehaviour
     [SerializeField] private ItemData healthPotionItem;
     [SerializeField] private ItemData keyItem;
     [SerializeField] private TextMeshProUGUI keyCount;
+
+    //Stats attributes
+    [SerializeField] private playerAttributes playerAttributes;
+    [SerializeField] private GameObject statWindow;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI staminaText;
+    [SerializeField] private TextMeshProUGUI strengthText;
+
     private void OnEnable()
     {
         //when player takes damage or heals, update health bar
@@ -42,6 +50,7 @@ public class UI : MonoBehaviour
     private void Start()
     {
         //at start set default 100 health and stamina
+        statWindow.SetActive(false);
         UpdateHealth(100);
         UpdateStamina(100);
         UpdatePotionCount();
@@ -76,5 +85,18 @@ public class UI : MonoBehaviour
     {
         UpdatePotionCount();
         UpdateKeyAcquired();
+    }
+
+    public void ShowStats()
+    {
+        statWindow.SetActive(true);
+        healthText.text = playerAttributes.maxHealth.ToString();
+        staminaText.text = playerAttributes.maxStamina.ToString();
+        strengthText.text = playerAttributes.currentStrength.ToString();
+    }
+
+    public void HideStats()
+    {
+        statWindow.SetActive(false);
     }
 }

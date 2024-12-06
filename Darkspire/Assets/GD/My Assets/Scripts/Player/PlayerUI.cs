@@ -88,7 +88,12 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        if(!PauseMenu.isPaused)
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            playerAttributes.AddXP(20);
+        }
+
+        if (!PauseMenu.isPaused)
         {
             HandleSprint();
             HandleDodge();
