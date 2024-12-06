@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class InGameSettings : MonoBehaviour
 {
     #region ResolutionFields
+
+    
 
     [SerializeField] private TMP_Dropdown resolutionDropdown;
 
@@ -61,4 +64,5 @@ public class InGameSettings : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
     }
+
 }
