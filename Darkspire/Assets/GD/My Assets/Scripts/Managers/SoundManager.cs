@@ -5,10 +5,13 @@ using Unity.VisualScripting;
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private SoundList[] soundList; // Holds all sounds
     public static SoundManager instance;
     [SerializeField] private AudioSource audioSource;
 
+    #endregion
+    #region Unity In Built Settings
     private void Awake()
     {
         if (!Application.isPlaying) return;
@@ -23,8 +26,10 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    #endregion
 
-    public static void PlaySound(SoundType sound, float volume = 1f)
+    #region Sound List Playability and Readability
+    public static void PlaySound(SoundType sound, float volume = 1f)    //To play any sound in the list
     {
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
@@ -37,12 +42,12 @@ public class SoundManager : MonoBehaviour
         UpdateSoundList();
     }
 
-    private void OnValidate()
+    private void OnValidate()   
     {
         UpdateSoundList();
     }
 
-    private void UpdateSoundList()
+    private void UpdateSoundList()  //Update sound list when the enum is changed
     {
         string[] names = Enum.GetNames(typeof(SoundType));
         Array.Resize(ref soundList, names.Length);
@@ -60,13 +65,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 #endif
-}
+} 
+#endregion
 
 [Serializable]
-public struct SoundList
+public struct SoundList //Method for converting the enum to a list of sounds
 {
     public string name;
     [SerializeField] public AudioClip[] sounds;
-
     public AudioClip[] Sounds => sounds;
 }

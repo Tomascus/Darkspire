@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
+    #region Fields
     public static MusicManager Instance;
 
     [Tooltip("Put Music Script from Inspector")]
@@ -14,9 +15,8 @@ public class MusicManager : MonoBehaviour
     [Tooltip("Put Music Object from Hierarchy")]
     [SerializeField]
     private AudioSource musicSource;
-
-   
-
+    #endregion
+    #region Unity In Built Methods
     private void Awake()
     {
         //Code to prevent audio manager from being destroyed when changing scenes
@@ -29,9 +29,11 @@ public class MusicManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-      
+
 
     }
+    #endregion
+    #region Music Playability
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
     {
@@ -59,5 +61,6 @@ public class MusicManager : MonoBehaviour
             musicSource.volume = Mathf.Lerp(0, 1f, percent);
             yield return null;
         }
-    }
+    } 
+    #endregion
 }

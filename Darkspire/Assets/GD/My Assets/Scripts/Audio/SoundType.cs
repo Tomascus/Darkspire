@@ -26,4 +26,4 @@ public enum SoundType
     HITBARREL,
     SKELETONSWING,
     SKELETONWALK
-}
+}   //Enum of all sounds in the game
