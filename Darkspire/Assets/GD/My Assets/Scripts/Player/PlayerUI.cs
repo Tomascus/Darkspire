@@ -16,9 +16,10 @@ public class PlayerUI : MonoBehaviour
     private PlayerMovementController PlayerMovementController;
     private Animator animator;
     [SerializeField] private Inventory playerInventory;
+    [SerializeField] private playerAttributes playerAttributes;
 
     [Header("Health parameters")]
-    [SerializeField] private float maxHealth = 100f;
+    private int maxHealth;
     [SerializeField] private ItemData potionItemData;
     [SerializeField] private float potionHealAmount = 50f;
     [SerializeField] private float potionCooldown = 1.0f;
@@ -33,7 +34,7 @@ public class PlayerUI : MonoBehaviour
     public static Action<float> OnTakeDamage; //listens to script that deals damage to player
 
     [Header("Stamina parameters")]
-    [SerializeField] private float maxStamina = 100f;
+    private int maxStamina;
     [SerializeField] private float staminaRegenRate = 2f;
     [SerializeField] private float staminaRegenDelay = 3f;
     [SerializeField] private float staminaRegenTimer = 0.1f;
@@ -71,6 +72,9 @@ public class PlayerUI : MonoBehaviour
     //accesses all the neccessary components and initializes the player health and stamina
     private void Awake()
     {
+        maxHealth = playerAttributes.maxHealth;
+        maxStamina = playerAttributes.maxStamina;
+
         currentHealth = maxHealth;
         currentStamina = maxStamina;
         lastDodgeTime = -dodgeCooldown; // Initialize lastDodgeTime to be able to perform the first dodge

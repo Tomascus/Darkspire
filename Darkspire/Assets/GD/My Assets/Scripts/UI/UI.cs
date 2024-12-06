@@ -8,6 +8,8 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider staminaBar;
+   // [SerializeField] private Slider xpBar;
+   // [SerializeField] private Button levelUpButton;
     [SerializeField] private TextMeshProUGUI potionCount;
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private ItemData healthPotionItem;
@@ -20,6 +22,9 @@ public class UI : MonoBehaviour
         PlayerUI.OnHeal += UpdateHealth;
         //when player uses stamina, update stamina bar
         PlayerUI.OnStaminaChange += UpdateStamina;
+
+       // PlayerUI.OnXpChange += updateXP;
+       // PlayerUI.OnLevelUp += ShowLevelUpButton;
 
     }
     
