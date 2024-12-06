@@ -8,7 +8,7 @@ public class WeaponCollider : MonoBehaviour
     private bool isAttacking = false;
 
     [Header("Damage Settings")]
-    [SerializeField] private int attackDamage = 10; 
+    [SerializeField] private playerAttributes playerAttributes;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,7 +36,7 @@ public class WeaponCollider : MonoBehaviour
         // Gets the EnemyController component of hit object to call the TakeDamage method on the enemy
         if (enemy != null)
         { 
-        enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
+        enemy.GetComponent<EnemyController>().TakeDamage(playerAttributes.currentStrength);
         }
     }
 }

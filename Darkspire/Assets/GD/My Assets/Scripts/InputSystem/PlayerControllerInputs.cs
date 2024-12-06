@@ -147,7 +147,8 @@ namespace InputSystem
         {
             if (context.performed)
             {
-                //Debug.Log("Toggle Inventory action performed.");
+                
+                Debug.Log("Toggle Inventory action performed.");
                 if (inventoryUIManager != null)
                 {
                     inventoryUIManager.ToggleInventoryPanel();
@@ -162,10 +163,10 @@ namespace InputSystem
                         inInventory = false;
                     }
                 }
-                else
-                {
-                    Debug.LogError("InventoryUIManager is not assigned.");
-                }
+                //else
+                //{
+                //    Debug.LogError("InventoryUIManager is not assigned.");
+                //}
             }
         }
 

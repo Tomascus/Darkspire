@@ -72,6 +72,7 @@ public class PlayerUI : MonoBehaviour
     //accesses all the neccessary components and initializes the player health and stamina
     private void Awake()
     {
+        playerAttributes.ResetAttributes();
         maxHealth = playerAttributes.maxHealth;
         maxStamina = playerAttributes.maxStamina;
 
