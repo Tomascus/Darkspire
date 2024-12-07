@@ -75,11 +75,12 @@ public class PlayerUI : MonoBehaviour
     private void Awake()
     {
         playerAttributes.ResetAttributes();
-        currentHealth = playerAttributes.maxHealth;
-        currentStamina = playerAttributes.maxStamina;
+        maxHealth = playerAttributes.maxHealth; //set max values to be default values from playersAttributes
+        maxStamina = playerAttributes.maxStamina;
 
-        //currentHealth = maxHealth;
-        //currentStamina = maxStamina;
+        currentHealth = maxHealth;
+        currentStamina = maxStamina;
+
         lastDodgeTime = -dodgeCooldown; // Initialize lastDodgeTime to be able to perform the first dodge
         lastAttackTime = -dodgeCooldown; // Initialize lastAttackTime to be able to perform the first attack
         playerControllerInputs = GetComponent<PlayerControllerInputs>();
@@ -111,9 +112,9 @@ public class PlayerUI : MonoBehaviour
         CheckStamina();
     }
 
-    public void AddXP(int amout)
+    public void AddXP(int amout) //add experience into the player attribute XP and notify listeners
     {
-        playerAttributes.AddXP(amout);
+        playerAttributes.AddXP(amout); //function from playerAttributes.cs
         OnXPChange?.Invoke(playerAttributes.currentXP); //notify listeners that XP has changed (UI.cs)
         Debug.Log("Added XP");
         
@@ -142,7 +143,8 @@ public class PlayerUI : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
-        
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // get the correct value for health
+
         animator.SetTrigger("Hit");
         PlayerMovementController.SetMovementEnabled(false);
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
@@ -164,6 +166,19 @@ public class PlayerUI : MonoBehaviour
         //}
         ////start regeneration of health after the corutine delay has passed
         //regeneratingHealth = StartCoroutine(RegenerateHealth());
+    }
+
+    //Updating the max health of the player so that the first hit he takes after levelling does not take double based on old max health
+    public void UpdateMaxHealth(int newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        currentHealth = maxHealth;
+    }
+    //Updating the max stamina of the player so that the first use after levelling does not take double based on old max stamina
+    public void UpdateMaxStamina(int newMaxStamina)
+    {
+        maxStamina = newMaxStamina;
+        currentStamina = maxStamina;
     }
 
     private IEnumerator AllowMovement(float delay)
