@@ -174,6 +174,9 @@ public class UI : MonoBehaviour
         // Update the health bar value to reflect the new max health
         healthBar.maxValue = newHealth;
         healthBar.value = playerAttributes.maxHealth;
+
+            FindObjectOfType<PlayerUI>().UpdateMaxHealth(playerAttributes.maxHealth); //update player max health in playerUI so player does not take double first hit after levelling health
+
             HideLevelNotif();
             UpdateStatsUI();
 
@@ -197,6 +200,8 @@ public class UI : MonoBehaviour
 
             staminaBar.maxValue = newStamina;
             staminaBar.value = playerAttributes.maxStamina;
+
+            FindObjectOfType<PlayerUI>().UpdateMaxStamina(playerAttributes.maxStamina); //update player max stamina in playerUI so player does not take double first hit after levelling stamina
 
             HideLevelNotif();
             UpdateStatsUI(); 

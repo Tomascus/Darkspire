@@ -142,7 +142,8 @@ public class PlayerUI : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
-        
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
         animator.SetTrigger("Hit");
         PlayerMovementController.SetMovementEnabled(false);
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
@@ -164,6 +165,19 @@ public class PlayerUI : MonoBehaviour
         //}
         ////start regeneration of health after the corutine delay has passed
         //regeneratingHealth = StartCoroutine(RegenerateHealth());
+    }
+
+    //Updating the max health of the player so that the first hit he takes after levelling does not take double based on old max health
+    public void UpdateMaxHealth(int newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        currentHealth = maxHealth;
+    }
+
+    public void UpdateMaxStamina(int newMaxStamina)
+    {
+        maxStamina = newMaxStamina;
+        currentStamina = maxStamina;
     }
 
     private IEnumerator AllowMovement(float delay)
