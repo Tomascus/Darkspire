@@ -5,12 +5,12 @@ public class PlayHoverSound : MonoBehaviour
     #region Play Sounds for Menus
     public void PlayHoverSoundMenu()
     {
-        SoundManager.PlaySound(SoundType.HOVER);
+        SoundManager.PlayMenuSound(SoundType.HOVER);
     }
 
     public void PlayClickSound()
     {
-        SoundManager.PlaySound(SoundType.CLICK);
+        SoundManager.PlayMenuSound(SoundType.CLICK);
     } 
     #endregion
 }

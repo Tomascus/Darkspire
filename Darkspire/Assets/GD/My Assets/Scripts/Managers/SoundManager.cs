@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
@@ -9,6 +10,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundList[] soundList; // Holds all sounds
     public static SoundManager instance;
     [SerializeField] private AudioSource audioSource;
+
+    private Dictionary<string, AudioClip> soundDictionary;
 
     #endregion
     #region Unity In Built Settings
@@ -24,6 +27,7 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeSoundDictionary();
         }
     }
     #endregion
@@ -33,7 +37,34 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-        instance.audioSource.PlayOneShot(randClip, volume);
+
+        // Randomize pitch and volume to prevent sound fatigue
+        float randomPitch = UnityEngine.Random.Range(0.95f, 1.05f);
+        float randomVolume = volume * UnityEngine.Random.Range(0.95f, 1.05f);
+
+        instance.audioSource.pitch = randomPitch;
+        instance.audioSource.PlayOneShot(randClip, randomVolume);
+    }
+
+    public static void PlayMenuSound(SoundType soundMenu)
+    {
+        AudioClip[] clips = instance.soundList[(int)soundMenu].Sounds;
+        AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+
+        instance.audioSource.pitch = 1.0f; // Ensure pitch is set to default
+        instance.audioSource.PlayOneShot(randClip, 1.0f); // Play at full volume
+    }
+
+    private void InitializeSoundDictionary()
+    {
+        soundDictionary = new Dictionary<string, AudioClip>();
+        foreach (var sound in soundList)
+        {
+            foreach (var clip in sound.Sounds)
+            {
+                soundDictionary[sound.name] = clip;
+            }
+        }
     }
 
 #if UNITY_EDITOR
@@ -42,7 +73,7 @@ public class SoundManager : MonoBehaviour
         UpdateSoundList();
     }
 
-    private void OnValidate()   
+    private void OnValidate()
     {
         UpdateSoundList();
     }
@@ -65,7 +96,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 #endif
-} 
+}
 #endregion
 
 [Serializable]
