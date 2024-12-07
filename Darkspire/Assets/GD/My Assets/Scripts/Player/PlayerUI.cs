@@ -75,11 +75,11 @@ public class PlayerUI : MonoBehaviour
     private void Awake()
     {
         playerAttributes.ResetAttributes();
-        maxHealth = playerAttributes.maxHealth;
-        maxStamina = playerAttributes.maxStamina;
+        currentHealth = playerAttributes.maxHealth;
+        currentStamina = playerAttributes.maxStamina;
 
-        currentHealth = maxHealth;
-        currentStamina = maxStamina;
+        //currentHealth = maxHealth;
+        //currentStamina = maxStamina;
         lastDodgeTime = -dodgeCooldown; // Initialize lastDodgeTime to be able to perform the first dodge
         lastAttackTime = -dodgeCooldown; // Initialize lastAttackTime to be able to perform the first attack
         playerControllerInputs = GetComponent<PlayerControllerInputs>();
@@ -115,20 +115,11 @@ public class PlayerUI : MonoBehaviour
     {
         playerAttributes.AddXP(amout);
         OnXPChange?.Invoke(playerAttributes.currentXP); //notify listeners that XP has changed (UI.cs)
-
-        if (playerAttributes.currentXP >= playerAttributes.xpToNextLevel)
-        {
-            LevelUp(); 
-        }
-    }
-
-    private void LevelUp()
-    {
+        Debug.Log("Added XP");
         
-        OnLevelUp?.Invoke(); //notify listeners that player has leveled up (UI.cs)
     }
 
-        private void CheckStamina()
+    private void CheckStamina()
     {
         if(currentStamina <=0)
         {
@@ -151,6 +142,7 @@ public class PlayerUI : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
+        
         animator.SetTrigger("Hit");
         PlayerMovementController.SetMovementEnabled(false);
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
@@ -224,6 +216,7 @@ public class PlayerUI : MonoBehaviour
             }
             //takeaway from stamina by the sprint amount per second
             currentStamina -= staminaUseSprint * Time.deltaTime;
+           
             //notify whoever is listening to the event that the stamina has changed (in UI.cs)
             OnStaminaChange?.Invoke(currentStamina);
 
@@ -234,7 +227,7 @@ public class PlayerUI : MonoBehaviour
             }
         }
         //when player is not sprinting and stamina is not max then start regenerating stamina after the delay
-        if (!playerControllerInputs.sprint && currentStamina < maxStamina && regeneratingStamina == null)
+        if (!playerControllerInputs.sprint && currentStamina < playerAttributes.maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
             hasPlayedStaminaSound = false;
@@ -257,7 +250,7 @@ public class PlayerUI : MonoBehaviour
             currentStamina -= staminaUseDodge;
             //update to track when the dodge was last used
             lastDodgeTime = Time.time;
-
+          
             //notify whoever is listening to the event that the stamina has changed (in UI.cs)
             OnStaminaChange?.Invoke(currentStamina);
 
@@ -267,7 +260,7 @@ public class PlayerUI : MonoBehaviour
             }
         }
         //when player is not dodging and stamina is not max then start regenerating stamina after the delay
-        if (!playerControllerInputs.dodge && currentStamina < maxStamina && regeneratingStamina == null)
+        if (!playerControllerInputs.dodge && currentStamina < playerAttributes.maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
             hasPlayedStaminaSound = false;
@@ -288,7 +281,7 @@ public class PlayerUI : MonoBehaviour
             currentStamina -= staminaUseAttack;
             //update to track when the dodge was last used
             lastAttackTime = Time.time;
-
+         
             //notify whoever is listening to the event that the stamina has changed (in UI.cs)
             OnStaminaChange?.Invoke(currentStamina);
 
@@ -299,7 +292,7 @@ public class PlayerUI : MonoBehaviour
             }
         }
         //when player is not dodging and stamina is not max then start regenerating stamina after the delay
-        if (!playerControllerInputs.attack && currentStamina < maxStamina && regeneratingStamina == null)
+        if (!playerControllerInputs.attack && currentStamina < playerAttributes.maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
             hasPlayedStaminaSound = false;
@@ -310,9 +303,9 @@ public class PlayerUI : MonoBehaviour
     {
         currentHealth += healAmount; //heal by potion amount 
 
-        if(currentHealth > maxHealth) //heal only until max health 
+        if(currentHealth > playerAttributes.maxHealth) //heal only until max health 
         {
-            currentHealth = maxHealth;
+            currentHealth = playerAttributes.maxHealth;
         }
 
         OnHeal?.Invoke(currentHealth); //notify listeners that health has changed (UI.cs)
@@ -321,7 +314,7 @@ public class PlayerUI : MonoBehaviour
     public void ConsumePotion()
     {
         //check if player has in inventory potion 
-        if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != maxHealth)
+        if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != playerAttributes.maxHealth)
         {
             SoundManager.PlaySound(SoundType.PLAYERHEAL);   //Sound for potion use
 
@@ -347,15 +340,10 @@ public class PlayerUI : MonoBehaviour
         yield return new WaitForSeconds(staminaRegenDelay);
         WaitForSeconds timeToWait = new WaitForSeconds(staminaRegenTimer);
 
-        while (currentStamina < maxStamina)
+        while (currentStamina < playerAttributes.maxStamina)
         {
-
             currentStamina += staminaRegenRate;
-
-            if (currentStamina > maxStamina)
-            {
-                currentStamina = maxStamina;
-            }
+           
 
             OnStaminaChange?.Invoke(currentStamina);
 

@@ -84,7 +84,7 @@ public class UI : MonoBehaviour
     {
         
         healthBar.value = currentHealth;
-        
+        healthBar.maxValue = playerAttributes.maxHealth;
     }
 
     private void UpdateStamina(float currentStamina)
@@ -197,6 +197,7 @@ public class UI : MonoBehaviour
 
             staminaBar.maxValue = newStamina;
             staminaBar.value = playerAttributes.maxStamina;
+
             HideLevelNotif();
             UpdateStatsUI(); 
         }
