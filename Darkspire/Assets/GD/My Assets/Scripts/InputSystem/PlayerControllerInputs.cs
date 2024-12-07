@@ -16,13 +16,15 @@ namespace InputSystem
 
         private PlayerUI playerUI;
         [SerializeField] private InventoryUIManager inventoryUIManager;
-        
+        [SerializeField] private UI ui;
+
 
         [Header("Mouse Cursor Settings")]
         public bool cursorLocked = true;
         public bool cursorInGameLook = true; // True means it is used for ingame look, false means it is used for UI etc.
         public bool inDialogue = false;
         public bool inInventory = false;
+        public bool inStats = false;
 
 
         #endregion
@@ -85,7 +87,7 @@ namespace InputSystem
         public void OnAttack(InputAction.CallbackContext context)
         {
 
-            if (inDialogue || inInventory) //when in dialogue or inventory do not attack 
+            if (inDialogue || inInventory || inStats) //when in dialogue or inventory do not attack 
             {
                 attack = false;
                 return;
@@ -147,7 +149,8 @@ namespace InputSystem
         {
             if (context.performed)
             {
-                //Debug.Log("Toggle Inventory action performed.");
+                
+                Debug.Log("Toggle Inventory action performed.");
                 if (inventoryUIManager != null)
                 {
                     inventoryUIManager.ToggleInventoryPanel();
@@ -169,6 +172,36 @@ namespace InputSystem
             }
         }
 
+        public void OnToggleStats(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                Debug.Log("Toggle Stats action performed.");
+                if (ui != null)
+                {
+                    if (inStats)
+                    {
+                        // Hide the stats window
+                        ui.HideStats(); // Assuming you have a method to hide the stats
+                        HideCursor();
+                      
+                        inStats = false;
+                    }
+                    else
+                    {
+                        // Show the stats window
+                        ui.ShowStats();
+                        ShowCursor();
+
+                        inStats = true;
+                    }
+                }
+                else
+                {
+                    Debug.LogError("UI is not assigned.");
+                }
+            }
+        }
         #endregion
         #region Cursor Settings
 

@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Detection")]
     public Transform player;
+    [SerializeField] private PlayerUI playerUI;
     private bool isPlayerDetected = false;
     private bool inAttackRange = false;
 
@@ -297,6 +298,7 @@ public class EnemyController : MonoBehaviour
         Debug.Log("You killed the enemy");
         animator.SetTrigger("Die");
         agent.isStopped = true; // Stop the enemy movement
+        playerUI.AddXP(attributes.xpReward); // Add XP to the player when the enemy dies
         Destroy(gameObject, 5f); 
     }
 

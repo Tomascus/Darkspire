@@ -13,4 +13,5 @@ public class EnemyAttributes : ScriptableObject
     public float attackRange;
     public float movementSpeed;
     public float detectionRange;
+    public int xpReward;
 }
