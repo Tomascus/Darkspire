@@ -35,8 +35,20 @@ public class WeaponCollider : MonoBehaviour
     {
         // Gets the EnemyController component of hit object to call the TakeDamage method on the enemy
         if (enemy != null)
-        { 
-        enemy.GetComponent<EnemyController>().TakeDamage(playerAttributes.currentStrength);
+        {
+            // Checks if enemy is a regular enemy
+            var enemyController = enemy.GetComponent<EnemyController>();
+            if (enemyController != null)
+            {
+                enemyController.TakeDamage(playerAttributes.currentStrength);
+            }
+
+            // Checks if enemy is a boss
+            var bossController = enemy.GetComponent<BossController>();
+            if (bossController != null)
+            {
+                bossController.TakeDamage(playerAttributes.currentStrength);
+            }
         }
     }
 }
