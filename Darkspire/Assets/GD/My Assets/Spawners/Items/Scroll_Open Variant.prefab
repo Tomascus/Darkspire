@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f555721c53a404eabc1892ebeb723d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: cc3cf122f10b789449e1c8c6576e0bfc, type: 2}
+  itemData: {fileID: 11400000, guid: 9eade3a50d2316940871c3a507f824aa, type: 2}
   pickupUI: {fileID: 2244172473751076884, guid: 0f06e61eb228ec24d8790d35ec75a20d,
     type: 3}
 --- !u!65 &7697064742430281253

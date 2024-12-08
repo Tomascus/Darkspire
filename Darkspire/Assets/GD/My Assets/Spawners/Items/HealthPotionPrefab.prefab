@@ -143,6 +143,21 @@ PrefabInstance:
       propertyPath: pickupUI
       value: 
       objectReference: {fileID: 4478890551461889314}
+    - target: {fileID: 572442541039829557, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 572442541039829557, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 572442541039829557, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -156,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.144166
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
@@ -196,7 +211,7 @@ PrefabInstance:
     - target: {fileID: 2334684456772615894, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
       propertyPath: m_Name
-      value: SM_Item_Wine_01 Variant Variant
+      value: HealthPotionPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

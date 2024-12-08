@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Book-Data
   m_EditorClassIdentifier: 
   itemName: Book
-  itemIcon: {fileID: 21300000, guid: f71c0dc03d067a342aa16a51674f6507, type: 3}
-  description: 
+  itemIcon: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
+  description: Intro Room Book
   prefab: {fileID: 8857087547708882029, guid: fe0723abb44a22048a5c4b7827a314fa, type: 3}
