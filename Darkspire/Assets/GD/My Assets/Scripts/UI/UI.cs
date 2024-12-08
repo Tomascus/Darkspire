@@ -27,6 +27,7 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI strengthText;
     [SerializeField] private TextMeshProUGUI currentLevel;
     [SerializeField] private TextMeshProUGUI availablePoint;
+    [SerializeField] private TextMeshProUGUI valueHoldingXP;
     [SerializeField] private Slider xpBar;
     //Level up buttons
     [SerializeField] private Button LevelUpHealthButton;
@@ -107,6 +108,7 @@ public class UI : MonoBehaviour
     {
         xpBar.maxValue = playerAttributes.xpToNextLevel;
         xpBar.value = currentXP;
+        valueHoldingXP.text = playerAttributes.currentXP.ToString() + " of " + playerAttributes.xpToNextLevel.ToString() + " XP";
     }
 
     private void UpdateKeyAcquired()
