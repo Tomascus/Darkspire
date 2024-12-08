@@ -141,7 +141,7 @@ public class EnemyController : MonoBehaviour
     private void Patrol()
     {
         // Check if the enemy has reached the patrol destination (a point within the patrol area) and also checks if it is still calculating path
-        if (agent.remainingDistance < 0.5f && !agent.pathPending) // 
+        if (agent.remainingDistance < 0.5f && !agent.pathPending) 
         {
             if (!isWaiting)
             {
@@ -197,7 +197,7 @@ public class EnemyController : MonoBehaviour
     }
 
      private void ChasePlayer()
-    {
+     {
         // Move the enemy towards the player if it is not in attack range
         if (!inAttackRange)
         {
@@ -208,7 +208,7 @@ public class EnemyController : MonoBehaviour
         {
             agent.isStopped = true; // Stops moving when in attack range
         }
-    }
+     }
 
     private void PerformAttack()
     {
