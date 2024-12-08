@@ -1,15 +1,13 @@
-using UnityEngine;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
     #region Fields
-    [SerializeField] private SoundList[] soundList; // Holds all sounds
+    [SerializeField] private SoundList[] soundList; // Holds all sound lists with sources
     public static SoundManager instance;
-    [SerializeField] private AudioSource audioSource;
 
     private Dictionary<string, AudioClip> soundDictionary;
 
@@ -35,24 +33,50 @@ public class SoundManager : MonoBehaviour
     #region Sound List Playability and Readability
     public static void PlaySound(SoundType sound, float volume = 1f)    //To play any sound in the list
     {
-        AudioClip[] clips = instance.soundList[(int)sound].Sounds;
+        SoundList soundList = instance.soundList[(int)sound];
+        if (soundList.audioSource == null)
+        {
+            Debug.LogError($"No AudioSource assigned for sound list: {soundList.name}");
+            return;
+        }
+
+        AudioClip[] clips = soundList.Sounds;
+        if (clips.Length == 0)
+        {
+            Debug.LogError($"No audio clips assigned in sound list: {soundList.name}");
+            return;
+        }
+
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
 
         // Randomize pitch and volume to prevent sound fatigue
         float randomPitch = UnityEngine.Random.Range(0.95f, 1.05f);
         float randomVolume = volume * UnityEngine.Random.Range(0.95f, 1.05f);
 
-        instance.audioSource.pitch = randomPitch;
-        instance.audioSource.PlayOneShot(randClip, randomVolume);
+        soundList.audioSource.pitch = randomPitch;
+        soundList.audioSource.PlayOneShot(randClip, randomVolume);
     }
 
     public static void PlayMenuSound(SoundType soundMenu)
     {
-        AudioClip[] clips = instance.soundList[(int)soundMenu].Sounds;
+        SoundList soundList = instance.soundList[(int)soundMenu];
+        if (soundList.audioSource == null)
+        {
+            Debug.LogError($"No AudioSource assigned for sound list: {soundList.name}");
+            return;
+        }
+
+        AudioClip[] clips = soundList.Sounds;
+        if (clips.Length == 0)
+        {
+            Debug.LogError($"No audio clips assigned in sound list: {soundList.name}");
+            return;
+        }
+
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
 
-        instance.audioSource.pitch = 1.0f; // Ensure pitch is set to default
-        instance.audioSource.PlayOneShot(randClip, 1.0f); // Play at full volume
+        soundList.audioSource.pitch = 1.0f; // Ensure pitch is set to default
+        soundList.audioSource.PlayOneShot(randClip, 1.0f); // Play at full volume
     }
 
     private void InitializeSoundDictionary()
@@ -83,6 +107,12 @@ public class SoundManager : MonoBehaviour
         string[] names = Enum.GetNames(typeof(SoundType));
         Array.Resize(ref soundList, names.Length);
 
+        if (soundList == null)
+        {
+            Debug.Log("SoundList is null!");
+            return;
+        }
+
         for (int i = 0; i < names.Length; i++)
         {
             if (soundList[i].name != names[i])
@@ -90,7 +120,8 @@ public class SoundManager : MonoBehaviour
                 soundList[i] = new SoundList
                 {
                     name = names[i], // Assign the enum name to the SoundList's name
-                    sounds = soundList[i].Sounds // Preserve existing sound references
+                    sounds = soundList[i].Sounds, // Preserve existing sound references
+                    audioSource = soundList[i].audioSource
                 };
             }
         }
@@ -103,6 +134,8 @@ public class SoundManager : MonoBehaviour
 public struct SoundList //Method for converting the enum to a list of sounds
 {
     public string name;
-    [SerializeField] public AudioClip[] sounds;
+    public AudioClip[] sounds;
+
+    public AudioSource audioSource;   //Allows each list to have their own sound source. Making it easier to distinguish from Diegetic or Non-Diegetic
     public AudioClip[] Sounds => sounds;
 }
