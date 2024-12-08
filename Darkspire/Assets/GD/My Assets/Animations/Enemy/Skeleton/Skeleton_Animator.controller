@@ -253,9 +253,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -477945719522204651}
     m_Position: {x: 850, y: -320, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 5762003599272019227}
-    m_Position: {x: 885, y: -255, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3351128257322069812}
@@ -529,32 +526,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &5762003599272019227
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Skeleton@Walk01 - Forward - Copy
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8a47422237adbf24f989aba4383e207c, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1101 &6387406013540042860
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 1000981107878035467, guid: f567602e047023b4c8dbbc482488fdc6,
         type: 3}
       propertyPath: m_Name
-      value: CatfishB 1
+      value: CatfishB_NEW
       objectReference: {fileID: 0}
     - target: {fileID: 1000981107878035467, guid: f567602e047023b4c8dbbc482488fdc6,
         type: 3}
@@ -162,6 +162,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8820471923103983128}
+    - targetCorrespondingSourceObject: {fileID: 1000981107878035467, guid: f567602e047023b4c8dbbc482488fdc6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4353210931407459845}
+    - targetCorrespondingSourceObject: {fileID: 1000981107878035467, guid: f567602e047023b4c8dbbc482488fdc6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3538901045896200439}
   m_SourcePrefab: {fileID: 100100000, guid: f567602e047023b4c8dbbc482488fdc6, type: 3}
 --- !u!4 &5026626623502666034 stripped
 Transform:
@@ -211,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: 3a0676690dfbb2442ab818e462e50fa1, type: 2}
   player: {fileID: 0}
+  playerUI: {fileID: 0}
   patrolCenter: {x: 286.33, y: 39.99998, z: 96.82}
   patrolSize: {x: 23, y: 0, z: 16.5}
   attackCooldown: 2
@@ -244,6 +253,115 @@ CapsuleCollider:
   m_Height: 2.532305
   m_Direction: 1
   m_Center: {x: 0, y: 0.7661523, z: 0}
+--- !u!82 &4353210931407459845
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5659330266927567752}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 3878013506692716688, guid: 60fc60f6706feeb43820419ece12f4da,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3538901045896200439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5659330266927567752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df7d97f0cfe2754897054e447e17d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4909057570339510513
 PrefabInstance:
   m_ObjectHideFlags: 0

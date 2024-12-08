@@ -14,6 +14,7 @@ public class SkeletonPlaySounds : MonoBehaviour
 
     public void SkeletonWalk()  //Calls animation event to trigger this method
     {
+        Debug.Log("FishWalk triggered!");
         SoundManager.PlaySound(SoundType.SKELETONWALK);
     }
 

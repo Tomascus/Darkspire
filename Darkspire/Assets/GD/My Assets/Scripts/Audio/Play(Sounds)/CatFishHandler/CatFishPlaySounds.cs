@@ -5,22 +5,30 @@ using UnityEngine;
 public class CatFishPlaySounds : MonoBehaviour
 {
     private Animator animator;
-    private PlayCatFishSounds fishSounds;
+
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        fishSounds = GetComponent<PlayCatFishSounds>();
+
     }
 
 
+    public void FishWak()
+    {
+        Debug.Log("FishWalk triggered!");
+        SoundManager.PlaySound(SoundType.SKELETONWALK);
+    }
+
     public void FishWalk()
     {
+        Debug.Log("FishWalk triggered!");
         SoundManager.PlaySound(SoundType.SKELETONWALK);
     }
 
     public void FishAttack()
     {
+        Debug.Log("FishAttack triggered!");
         SoundManager.PlaySound(SoundType.FISHSWING);
     }
 
