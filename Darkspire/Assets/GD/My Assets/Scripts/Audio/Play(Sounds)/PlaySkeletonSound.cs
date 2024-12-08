@@ -4,14 +4,14 @@ public class PlaySkeletonSound : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
 
-    public void PlaySkeletonWalk()
-    {
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+    //public void PlaySkeletonWalk()
+    //{
+    //    if (audioSource == null)
+    //    {
+    //        audioSource = GetComponent<AudioSource>();
+    //    }
 
-        SoundManager.PlaySound(SoundType.SKELETONWALK);
-    }
+    //    SoundManager.PlaySound(SoundType.SKELETONWALK);
+    //}
 
 }

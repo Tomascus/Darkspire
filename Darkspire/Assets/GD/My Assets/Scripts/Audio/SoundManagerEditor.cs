@@ -10,11 +10,11 @@ public class SoundManagerEditor : Editor
 
         SoundManager soundManager = (SoundManager)target;
 
-        // Force updating of the sound list names
         if (GUILayout.Button("Update Sound Names"))
         {
             soundManager.SendMessage("UpdateSoundList", null, SendMessageOptions.DontRequireReceiver);
             EditorUtility.SetDirty(soundManager); // Mark as dirty to save changes
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(soundManager.gameObject.scene); // Mark the scene dirty
         }
     }
 }

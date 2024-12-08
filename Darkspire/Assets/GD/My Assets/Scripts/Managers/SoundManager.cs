@@ -47,14 +47,16 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        AudioSource selectedAudioSource = soundList.audioSource[UnityEngine.Random.Range(0, soundList.audioSource.Count)];
+
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
 
         // Randomize pitch and volume to prevent sound fatigue
         float randomPitch = UnityEngine.Random.Range(0.95f, 1.05f);
         float randomVolume = volume * UnityEngine.Random.Range(0.95f, 1.05f);
 
-        soundList.audioSource.pitch = randomPitch;
-        soundList.audioSource.PlayOneShot(randClip, randomVolume);
+        selectedAudioSource.pitch = randomPitch;
+        selectedAudioSource.PlayOneShot(randClip, randomVolume);
     }
 
     public static void PlayMenuSound(SoundType soundMenu)
@@ -73,10 +75,12 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        AudioSource selectedAudioSource = soundList.audioSource[UnityEngine.Random.Range(0, soundList.audioSource.Count)];
+
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
 
-        soundList.audioSource.pitch = 1.0f; // Ensure pitch is set to default
-        soundList.audioSource.PlayOneShot(randClip, 1.0f); // Play at full volume
+        selectedAudioSource.pitch = 1.0f; // Ensure pitch is set to default
+        selectedAudioSource.PlayOneShot(randClip, 1.0f); // Play at full volume
     }
 
     private void InitializeSoundDictionary()
@@ -102,30 +106,37 @@ public class SoundManager : MonoBehaviour
         UpdateSoundList();
     }
 
-    private void UpdateSoundList()  //Update sound list when the enum is changed
+    private void UpdateSoundList()
     {
         string[] names = Enum.GetNames(typeof(SoundType));
         Array.Resize(ref soundList, names.Length);
 
         if (soundList == null)
         {
-            Debug.Log("SoundList is null!");
+            Debug.LogError("SoundList is null!");
             return;
         }
 
         for (int i = 0; i < names.Length; i++)
         {
+            // Initialize the list if it's null
+            if (soundList[i].audioSource == null)
+            {
+                soundList[i].audioSource = new List<AudioSource>();
+            }
+
             if (soundList[i].name != names[i])
             {
                 soundList[i] = new SoundList
                 {
                     name = names[i], // Assign the enum name to the SoundList's name
                     sounds = soundList[i].Sounds, // Preserve existing sound references
-                    audioSource = soundList[i].audioSource
+                    audioSource = soundList[i].audioSource // Preserve the list of audio sources
                 };
             }
         }
     }
+
 #endif
 }
 #endregion
@@ -136,6 +147,6 @@ public struct SoundList //Method for converting the enum to a list of sounds
     public string name;
     public AudioClip[] sounds;
 
-    public AudioSource audioSource;   //Allows each list to have their own sound source. Making it easier to distinguish from Diegetic or Non-Diegetic
+    public List<AudioSource> audioSource;   //Allows each list to have their own sound source. Making it easier to distinguish from Diegetic or Non-Diegetic
     public AudioClip[] Sounds => sounds;
 }

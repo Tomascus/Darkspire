@@ -126,7 +126,7 @@ public class PlayerUI : MonoBehaviour
         {
             if(!hasPlayedStaminaSound)
             {
-                SoundManager.PlaySound(SoundType.NO_STAMINA);
+                SoundManager.PlaySound(SoundType.PLAYERNO_STAMINA);
                 hasPlayedStaminaSound = true;
             }
            

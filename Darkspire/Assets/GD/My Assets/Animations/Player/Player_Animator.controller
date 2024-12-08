@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3253595d10ef7a349ba9d80d2b4acf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 18
+  sound: 2
   volume: 1
 --- !u!1101 &-3310771832433559978
 AnimatorStateTransition:
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3253595d10ef7a349ba9d80d2b4acf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 17
+  sound: 1
   volume: 1
 --- !u!1101 &7056690981945289845
 AnimatorStateTransition:

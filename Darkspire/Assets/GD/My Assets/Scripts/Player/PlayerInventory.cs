@@ -63,7 +63,7 @@ public class PlayerInventory : MonoBehaviour
 
             Destroy(nearbyItem.gameObject);
             nearbyItem = null;
-            SoundManager.PlaySound(SoundType.PICKUP);
+            SoundManager.PlaySound(SoundType.PLAYERPICKUP);
         }
     }
 }
