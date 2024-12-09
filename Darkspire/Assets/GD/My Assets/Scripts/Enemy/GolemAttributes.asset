@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Stone Golem
   health: 200
   attackDamage: 30
-  attackRange: 1
+  attackRange: 3
   movementSpeed: 2
-  detectionRange: 1
+  detectionRange: 20
   xpReward: 100
