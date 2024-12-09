@@ -8,6 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1009356640940568766}
     m_Modifications:
+    - target: {fileID: 1436043678984627834, guid: 0f06e61eb228ec24d8790d35ec75a20d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436043678984627834, guid: 0f06e61eb228ec24d8790d35ec75a20d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436043678984627834, guid: 0f06e61eb228ec24d8790d35ec75a20d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2244172473751076884, guid: 0f06e61eb228ec24d8790d35ec75a20d,
         type: 3}
       propertyPath: m_Name
@@ -113,6 +128,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4086801128098333595, guid: 0f06e61eb228ec24d8790d35ec75a20d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086801128098333595, guid: 0f06e61eb228ec24d8790d35ec75a20d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086801128098333595, guid: 0f06e61eb228ec24d8790d35ec75a20d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -143,6 +173,36 @@ PrefabInstance:
       propertyPath: pickupUI
       value: 
       objectReference: {fileID: 4478890551461889314}
+    - target: {fileID: 572442541039829557, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 572442541039829557, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 572442541039829557, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -156,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.144166
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2334684456772393458, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
@@ -196,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 2334684456772615894, guid: 21a928be3730ada4181b181fc8e6e541,
         type: 3}
       propertyPath: m_Name
-      value: SM_Item_Wine_01 Variant Variant
+      value: HealthPotionPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

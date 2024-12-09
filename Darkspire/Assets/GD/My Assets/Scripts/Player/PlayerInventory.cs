@@ -7,20 +7,13 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private InventoryCollection inventoryCollection;
     private DroppedItem nearbyItem;
 
-    private AudioSource audioSource;
-
-    private void Update()
-    {
-        if (nearbyItem != null && Input.GetKeyDown(KeyCode.E))
-        {
-            PickUpItem();
-        }
-    }
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    //private void Update()
+    //{
+    //    if (nearbyItem != null && Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        PickUpItem();
+    //    }
+    //}
 
     public void SetNearbyItem(DroppedItem item)
     {
@@ -35,7 +28,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    private void PickUpItem()
+    public void PickUpItem()
     {
         if (nearbyItem != null)
         {
@@ -70,7 +63,7 @@ public class PlayerInventory : MonoBehaviour
 
             Destroy(nearbyItem.gameObject);
             nearbyItem = null;
-            SoundManager.PlaySound(SoundType.PLAYERPICKUP, audioSource);
+            SoundManager.PlaySound(SoundType.PICKUP);
         }
     }
 }

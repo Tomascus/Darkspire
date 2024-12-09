@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 936a70783a63d834095e7f4c7f0555ac, type: 3}
-  m_Name: Book-Data
+  m_Name: Scroll Bedroom - data 3
   m_EditorClassIdentifier: 
-  itemName: Book
-  itemIcon: {fileID: 21300000, guid: f71c0dc03d067a342aa16a51674f6507, type: 3}
-  description: 
-  prefab: {fileID: 8857087547708882029, guid: fe0723abb44a22048a5c4b7827a314fa, type: 3}
+  itemName: Scroll
+  itemIcon: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
+  description: Bedroom Scroll
+  prefab: {fileID: 5963802126552814375, guid: 85e0cd29c810fa14cb2e2c6e2e2419f7, type: 3}

@@ -11,7 +11,7 @@ public class ChestBehaviour : MonoBehaviour
     // [RequireComponent(typeof(IInstantiatePrefab))]
     [SerializeField] ScriptableObject item;
 
-    private bool playerInRange = false;
+    public bool playerInRange = false;
     private bool itemGenerated = false; //for dropping only once 
 
     private AudioSource audioSource;
@@ -31,15 +31,6 @@ public class ChestBehaviour : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !itemGenerated) //when player is in range and presses E drop the item
-        {
-            GenerateChestItem();
-            
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -54,7 +45,7 @@ public class ChestBehaviour : MonoBehaviour
     }
 
     //Generate the item, script based on Nial's code from class 
-    private void GenerateChestItem()
+    public void GenerateChestItem()
     {
         if(item == null) Debug.LogError("Item is not set for the chest.");
 
