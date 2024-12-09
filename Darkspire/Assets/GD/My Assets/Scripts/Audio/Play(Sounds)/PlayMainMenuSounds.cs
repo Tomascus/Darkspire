@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class PlayHoverSound : MonoBehaviour
 {
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+
     #region Play Sounds for Menus
     public void PlayHoverSoundMenu()
     {
-        SoundManager.PlaySound(SoundType.HOVER);
+        SoundManager.PlayMenuSound(SoundType.MENUHOVER, audioSource);
     }
 
-    public void PlayClickSound()
+    public void PlayClickSoundMenu()
     {
-        SoundManager.PlaySound(SoundType.CLICK);
+        SoundManager.PlayMenuSound(SoundType.MENUCLICK, audioSource);
     } 
     #endregion
 }

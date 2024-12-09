@@ -19,6 +19,7 @@ public class InGameSettings : MonoBehaviour
 
     #endregion
 
+    [Obsolete]
     private void Start()
     {
         resolutions = Screen.resolutions;

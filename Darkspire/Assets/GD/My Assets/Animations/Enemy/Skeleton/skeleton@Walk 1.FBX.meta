@@ -348,15 +348,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.110412285
-        functionName: WalkSkeleton01
+      - time: 0.087153584
+        functionName: SkeletonWalk
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.57946527
-        functionName: WalkSkeleton002
+      - time: 0.57109857
+        functionName: SkeletonWalk
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

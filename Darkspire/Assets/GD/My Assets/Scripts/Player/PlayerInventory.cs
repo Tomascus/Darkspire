@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private InventoryCollection inventoryCollection;
     private DroppedItem nearbyItem;
+    private AudioSource audioSource;
 
     //private void Update()
     //{
@@ -14,6 +15,11 @@ public class PlayerInventory : MonoBehaviour
     //        PickUpItem();
     //    }
     //}
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void SetNearbyItem(DroppedItem item)
     {
@@ -63,7 +69,7 @@ public class PlayerInventory : MonoBehaviour
 
             Destroy(nearbyItem.gameObject);
             nearbyItem = null;
-            SoundManager.PlaySound(SoundType.PICKUP);
+            SoundManager.PlaySound(SoundType.PLAYERPICKUP,audioSource);
         }
     }
 }

@@ -5,6 +5,7 @@ public class Lever : MonoBehaviour
     [SerializeField] private Gate gate; // Serialize the field to assign in the Inspector
     public bool playerInRange = false;
     private bool pressed = false;
+    [SerializeField]private AudioSource audioSource;
 
     //private void Update()
     //{
@@ -36,7 +37,7 @@ public class Lever : MonoBehaviour
         {
             if (gate != null)
             {
-                SoundManager.PlaySound(SoundType.GATEOPEN);
+                SoundManager.PlaySound(SoundType.GATEOPEN, audioSource);
                 gate.StartMoving();
                 pressed = true;
             }
