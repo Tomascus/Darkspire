@@ -16,10 +16,12 @@ public class DoorBehaviour : MonoBehaviour
     private Quaternion openRotation;
     private Quaternion closedRotation;
 
+    private AudioSource audioSource;
     private void Start()
     {
         closedRotation = doorMesh.localRotation; // Get the initial rotation of the door
         openRotation = Quaternion.Euler(doorMesh.localEulerAngles + new Vector3(0, openAngle, 0)); // Calculate the open rotation of the door
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -32,6 +34,7 @@ public class DoorBehaviour : MonoBehaviour
         {
             TryOpenDoor();
         }
+
     }
 
     private void OnTriggerStay(Collider other) //player is in range 
@@ -58,7 +61,7 @@ public class DoorBehaviour : MonoBehaviour
         {
             playerInventory.Remove(keyItem, 1);
             isOpen = true;
-            SoundManager.PlaySound(SoundType.DOOROPEN);
+            SoundManager.PlaySound(SoundType.DOOROPEN, audioSource);
         }
         else
         {

@@ -57,14 +57,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.2958581
-        functionName: FishWak
+      - time: 0.29382712
+        functionName: FishWalk
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.83875746
+      - time: 0.85185194
         functionName: FishWalk
         data: 
         objectReferenceParameter: {instanceID: 0}

@@ -14,6 +14,8 @@ public class ChestBehaviour : MonoBehaviour
     private bool playerInRange = false;
     private bool itemGenerated = false; //for dropping only once 
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         if(spawningPoint == null)
@@ -25,6 +27,8 @@ public class ChestBehaviour : MonoBehaviour
         {
             Debug.LogError("Item is not set for the chest.");
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -61,7 +65,7 @@ public class ChestBehaviour : MonoBehaviour
         if (newItem == null) Debug.LogError("Item failed to generated.");
 
         itemGenerated = true;
-        SoundManager.PlaySound(SoundType.CHESTOPEN);
+        SoundManager.PlaySound(SoundType.CHESTOPEN, audioSource);
     }
 
 }

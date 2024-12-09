@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: 0
-  volume: 1
+  audioSource: {fileID: 0}
 --- !u!1101 &9176543148847925867
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

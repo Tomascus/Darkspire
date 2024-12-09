@@ -5,46 +5,44 @@ using UnityEngine;
 public class CatFishPlaySounds : MonoBehaviour
 {
     private Animator animator;
-
+    private AudioSource audioSource;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        audioSource = GetComponent<AudioSource>();
     }
 
 
     public void FishWak()
     {
-        Debug.Log("FishWalk triggered!");
-        SoundManager.PlaySound(SoundType.SKELETONWALK);
+        SoundManager.PlaySound(SoundType.FISHFOOTSTEP,audioSource);
     }
 
     public void FishWalk()
     {
-        Debug.Log("FishWalk triggered!");
-        SoundManager.PlaySound(SoundType.SKELETONWALK);
+
+        SoundManager.PlaySound(SoundType.FISHFOOTSTEP, audioSource);
     }
 
     public void FishAttack()
     {
-        Debug.Log("FishAttack triggered!");
-        SoundManager.PlaySound(SoundType.FISHSWING);
+        SoundManager.PlaySound(SoundType.FISHSWING, audioSource);
     }
 
     public void FishOverHead()
     {
-        SoundManager.PlaySound(SoundType.FISHOVERHEADSWING);
+        SoundManager.PlaySound(SoundType.FISHOVERHEADSWING, audioSource);
     }
 
     public void FishHit()
     {
-        SoundManager.PlaySound(SoundType.FISHHIT);
+        SoundManager.PlaySound(SoundType.FISHHIT, audioSource);
     }
 
     public void FishDied()
     {
-        SoundManager.PlaySound(SoundType.FISHDIED);
+        SoundManager.PlaySound(SoundType.FISHDIED, audioSource);
     }
 
 

@@ -5,21 +5,22 @@ using UnityEngine;
 public class SkeletonPlaySounds : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource audioSource;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
     public void SkeletonWalk()  //Calls animation event to trigger this method
     {
-        Debug.Log("FishWalk triggered!");
-        SoundManager.PlaySound(SoundType.SKELETONWALK);
+        SoundManager.PlaySound(SoundType.SKELETONWALK, audioSource);
     }
 
     public void SkeletonAttack() 
     { 
-        SoundManager.PlaySound(SoundType.PLAYERSWING);
+        SoundManager.PlaySound(SoundType.PLAYERSWING, audioSource);
     }
 }

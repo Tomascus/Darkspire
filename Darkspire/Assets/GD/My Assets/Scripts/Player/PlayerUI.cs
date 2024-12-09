@@ -55,7 +55,7 @@ public class PlayerUI : MonoBehaviour
 
     //Checking if this sound was played
     private bool hasPlayedStaminaSound = false;
-
+    private AudioSource audioSource;
 
 
     // ***** Event Logic *****
@@ -87,6 +87,7 @@ public class PlayerUI : MonoBehaviour
         PlayerMovementController = GetComponent<PlayerMovementController>();
         PlayerCombatController = GetComponent<PlayerCombatController>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -126,7 +127,7 @@ public class PlayerUI : MonoBehaviour
         {
             if(!hasPlayedStaminaSound)
             {
-                SoundManager.PlaySound(SoundType.PLAYERNO_STAMINA);
+                SoundManager.PlaySound(SoundType.PLAYERNO_STAMINA, audioSource);
                 hasPlayedStaminaSound = true;
             }
            
@@ -331,7 +332,7 @@ public class PlayerUI : MonoBehaviour
         //check if player has in inventory potion 
         if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != playerAttributes.maxHealth)
         {
-            SoundManager.PlaySound(SoundType.PLAYERHEAL);   //Sound for potion use
+            SoundManager.PlaySound(SoundType.PLAYERHEAL, audioSource);   //Sound for potion use
 
             playerInventory.Remove(potionItemData, 1); //after use remove one potion from inv 
 
