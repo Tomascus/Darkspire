@@ -11,7 +11,7 @@ public class ChestBehaviour : MonoBehaviour
     // [RequireComponent(typeof(IInstantiatePrefab))]
     [SerializeField] ScriptableObject item;
 
-    private bool playerInRange = false;
+    public bool playerInRange = false;
     private bool itemGenerated = false; //for dropping only once 
 
     private void Awake()
@@ -24,15 +24,6 @@ public class ChestBehaviour : MonoBehaviour
         if(item == null)
         {
             Debug.LogError("Item is not set for the chest.");
-        }
-    }
-
-    private void Update()
-    {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !itemGenerated) //when player is in range and presses E drop the item
-        {
-            GenerateChestItem();
-            
         }
     }
 
@@ -50,7 +41,7 @@ public class ChestBehaviour : MonoBehaviour
     }
 
     //Generate the item, script based on Nial's code from class 
-    private void GenerateChestItem()
+    public void GenerateChestItem()
     {
         if(item == null) Debug.LogError("Item is not set for the chest.");
 

@@ -26,6 +26,13 @@ namespace InputSystem
         public bool inInventory = false;
         public bool inStats = false;
 
+        [Header("Interactables")]
+        [SerializeField] private NPCDialogue npcDialogue;
+        [SerializeField] private PlayerInventory playerInventory;
+        [SerializeField] private Lever lever;
+        [SerializeField] private ChestBehaviour chestBehaviour;
+        [SerializeField] private DoorBehaviour doorBehaviour;
+
 
         #endregion
         #region Unity Base Methods
@@ -117,6 +124,46 @@ namespace InputSystem
         public void MoveInput(Vector2 newMoveDirection)
         {
             move = newMoveDirection;
+        }
+
+        //One key for all interactions E
+        public void OnInteraction(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                
+                if(npcDialogue != null && npcDialogue.playerInRange)
+                {
+                    npcDialogue.StartDialogue();
+                }
+
+               
+                if (playerInventory != null)
+                {
+                    playerInventory.PickUpItem();
+                }
+
+              
+                if(lever != null && lever.playerInRange)
+                {
+                    lever.PressLever();
+                } else
+                {
+                    Debug.Log("No Lever Found");
+                }
+
+              
+                if (chestBehaviour != null && chestBehaviour.playerInRange)
+                {
+                    chestBehaviour.GenerateChestItem();
+                }
+
+                if (doorBehaviour != null && doorBehaviour.playerInRange)
+                {
+                    doorBehaviour.RotateDoor();
+                    doorBehaviour.TryOpenDoor();
+                }
+            }
         }
 
         public void LookInput(Vector2 newLookDirection)

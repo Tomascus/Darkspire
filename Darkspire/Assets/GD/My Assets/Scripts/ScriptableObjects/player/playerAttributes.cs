@@ -7,7 +7,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerAttributes", menuName = "SO/Player/Player Attributes")]
 public class playerAttributes : ScriptableObject
 {
-   /*Default values to be reset every time starting new game*/
+    #region Variables
+    /*Default values to be reset every time starting new game*/
     private int defaultLevel = 1;
     private int defaultExperience = 0;
     private int defaultXpToNextLevel = 100;
@@ -24,17 +25,19 @@ public class playerAttributes : ScriptableObject
     public int currentXP;
     public int xpToNextLevel;
     public int availableLevels;
-
+    #endregion
 
 
     public static Action OnLevelUp; //event to notify subscribers that the player has leveled up
 
 
+
+
+    #region Leveling System
+
     /***** Levelling system handled in this script, UI.cs and playerUI all three communicate together, UI updating the visuals such as bars based on level
-     * playerUI updates players stats and their use correctly
-     * *****/
-
-
+  * playerUI updates players stats and their use correctly
+  * *****/
     public void AddXP(int amount) //add experience into the player attribute XP
     {
         currentXP += amount;
@@ -86,6 +89,7 @@ public class playerAttributes : ScriptableObject
       
     }
 
+    #endregion
     public void ResetAttributes() //reset every time we start new game (called in playerUI)
     {
         currentLevel = defaultLevel;
