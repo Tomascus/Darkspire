@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936a70783a63d834095e7f4c7f0555ac, type: 3}
   m_Name: Journal-Data
   m_EditorClassIdentifier: 
-  itemName: Survivors Journal 2
+  itemName: Survivors Journal
   itemIcon: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
-  description: Survivors Journal 2
+  description: Part 1
   prefab: {fileID: 8857087547708882029, guid: fe0723abb44a22048a5c4b7827a314fa, type: 3}
