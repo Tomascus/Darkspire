@@ -16,7 +16,7 @@ public class PlayHoverSound : MonoBehaviour
         SoundManager.PlayMenuSound(SoundType.MENUHOVER, audioSource);
     }
 
-    public void PlayClickSound()
+    public void PlayClickSoundMenu()
     {
         SoundManager.PlayMenuSound(SoundType.MENUCLICK, audioSource);
     } 

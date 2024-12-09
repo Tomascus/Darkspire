@@ -135,7 +135,6 @@ public class SoundManager : MonoBehaviour
             }
         }
 
-        Debug.Log("SoundList updated successfully!");
     }
 #endif
 }
