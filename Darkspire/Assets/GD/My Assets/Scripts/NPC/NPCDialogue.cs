@@ -17,17 +17,6 @@ public class NPCDialogue : MonoBehaviour
         playerControllerInputs = FindObjectOfType<PlayerControllerInputs>();
     }
 
-    private void Update()
-    {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !inDialogue)
-        {
-            inDialogue = true;
-            ConversationManager.Instance.StartConversation(dialogueNPC); //start the conversation when in range
-            playerControllerInputs.ShowCursor(); // show cursor for dialogue 
-            // playerControllerInputs.inDialogue = true; // set attacking off
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -41,6 +30,16 @@ public class NPCDialogue : MonoBehaviour
     {
         playerInRange = false;
         playerControllerInputs.inDialogue = false;
+    }
+
+    public void StartDialogue()
+    {
+        if (!inDialogue)
+        {
+            inDialogue = true;
+            ConversationManager.Instance.StartConversation(dialogueNPC); // start the conversation, create instance of the conversation manager
+            playerControllerInputs.ShowCursor(); // show cursor for dialogue
+        }
     }
 
     public void EndDialogue()

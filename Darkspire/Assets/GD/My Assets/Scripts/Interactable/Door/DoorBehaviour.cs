@@ -12,7 +12,7 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private Transform doorMesh; // Reference to the door mesh
     [SerializeField] private Image noKeyImage;
     private bool isOpen = false;
-    private bool playerInRange = false;
+    public bool playerInRange = false;
     private Quaternion openRotation;
     private Quaternion closedRotation;
 
@@ -22,15 +22,11 @@ public class DoorBehaviour : MonoBehaviour
         openRotation = Quaternion.Euler(doorMesh.localEulerAngles + new Vector3(0, openAngle, 0)); // Calculate the open rotation of the door
     }
 
-    private void Update()
+    public void RotateDoor()
     {
-        if (isOpen) //do the rotation of the door
+        if (isOpen)
         {
-            doorMesh.localRotation = Quaternion.Slerp(doorMesh.localRotation, openRotation, Time.deltaTime * openSpeed);
-        }
-        else if (playerInRange && Input.GetKeyDown(KeyCode.E)) //try open when player is in range and presses E, inventory check in function 
-        {
-            TryOpenDoor();
+          doorMesh.localRotation = Quaternion.Slerp(doorMesh.localRotation, openRotation, Time.deltaTime * openSpeed);
         }
     }
 
@@ -52,7 +48,7 @@ public class DoorBehaviour : MonoBehaviour
         noKeyImage.gameObject.SetActive(false); //when leaving just turn off
     }
 
-    private void TryOpenDoor()
+    public void TryOpenDoor()
     {
         if (playerInventory.Count(keyItem) > 0) //will open door if player has a key in inventory 
         {

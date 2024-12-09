@@ -3,16 +3,16 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     [SerializeField] private Gate gate; // Serialize the field to assign in the Inspector
-    private bool playerInRange = false;
+    public bool playerInRange = false;
     private bool pressed = false;
 
-    private void Update()
-    {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            PressLever();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (playerInRange && Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        PressLever();
+    //    }
+    //}
 
     private void OnTriggerStay(Collider other)
     {
@@ -30,7 +30,7 @@ public class Lever : MonoBehaviour
         }
     }
 
-    private void PressLever()
+    public void PressLever()
     {
         if(!pressed)
         {
