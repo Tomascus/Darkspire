@@ -19,7 +19,6 @@ public class MusicManager : MonoBehaviour
     #region Unity In Built Methods
     private void Awake()
     {
-        //Code to prevent audio manager from being destroyed when changing scenes
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -29,15 +28,13 @@ public class MusicManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-
     }
     #endregion
     #region Music Playability
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
     {
-        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));   //Play Music Based
+        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));   //Play Music Based on scene
     }
 
     //Music That Can Change Flawlessly

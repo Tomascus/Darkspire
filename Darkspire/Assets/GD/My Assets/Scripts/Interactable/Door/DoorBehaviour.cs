@@ -17,11 +17,26 @@ public class DoorBehaviour : MonoBehaviour
     private Quaternion closedRotation;
 
     private AudioSource audioSource;
+    private AudioSource audioForKeyTwist;
     private void Start()
     {
         closedRotation = doorMesh.localRotation; // Get the initial rotation of the door
         openRotation = Quaternion.Euler(doorMesh.localEulerAngles + new Vector3(0, openAngle, 0)); // Calculate the open rotation of the door
         audioSource = GetComponent<AudioSource>();
+
+        Transform doorTwist = transform.Find("DoorAudioSource");    //This code allows for sound to play on the door when key is put in, Audio Sources only allow one sound to play at a time
+        if (doorTwist != null)
+        {
+            audioForKeyTwist = doorTwist.GetComponent<AudioSource>();
+            if (audioForKeyTwist == null)
+            {
+                Debug.LogError("Audio Source not found for Key twist. Add componenet for It");
+            }
+        }
+        else
+        {
+            Debug.LogError($"'DoorAudioSource' GameObject not found as a child of {gameObject.name}. Check the hierarchy and name.");
+        }
     }
 
     public void RotateDoor()
@@ -54,14 +69,16 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (playerInventory.Count(keyItem) > 0) //will open door if player has a key in inventory 
         {
+            SoundManager.PlaySound(SoundType.KEYTWIST, audioForKeyTwist);    //PLay sound for when key is used
             playerInventory.Remove(keyItem, 1);
             isOpen = true;
-            SoundManager.PlaySound(SoundType.DOOROPEN, audioSource);
+            SoundManager.PlaySound(SoundType.DOOROPEN, audioSource);    //Sound of the door opening
         }
         else
         {
             noKeyImage.gameObject.SetActive(true); //if player does not have key, show no key image
         }
     }
+    
 }
 
