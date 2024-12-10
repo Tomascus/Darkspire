@@ -26,13 +26,7 @@ namespace InputSystem
         public bool inInventory = false;
         public bool inStats = false;
 
-        [Header("Interactables")]
-        [SerializeField] private NPCDialogue npcDialogue;
-        [SerializeField] private PlayerInventory playerInventory;
-        [SerializeField] private Lever lever;
-        [SerializeField] private ChestBehaviour chestBehaviour;
-        [SerializeField] private DoorBehaviour doorBehaviour;
-
+        private DoorBehaviour currentDoor;
 
         #endregion
         #region Unity Base Methods
@@ -48,6 +42,14 @@ namespace InputSystem
         }
         #endregion
         #region Setup New Actions in Input System
+
+        private void Update()
+        {
+            if(currentDoor != null)
+            {
+                currentDoor.RotateDoor();
+            }
+        }
 
         // Input Actions - These are used to set up the input actions in the input system
         public void OnMove(InputAction.CallbackContext context)
@@ -131,40 +133,48 @@ namespace InputSystem
         {
             if (context.performed)
             {
-                
-                if(npcDialogue != null && npcDialogue.playerInRange)
-                {
-                    npcDialogue.StartDialogue();
-                }
+                float interactionRadius = 2.0f; //create invisible sphere around player to check for interactions colliders
+                Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionRadius); //store all colliders in the sphere
 
-               
-                if (playerInventory != null)
-                {
-                    playerInventory.PickUpItem();
-                }
+                foreach (var hitCollider in hitColliders)
+                { //check all stored colliders and see if they have any of the following components
 
-              
-                if(lever != null && lever.playerInRange)
-                {
-                    lever.PressLever();
-                } else
-                {
-                    Debug.Log("No Lever Found");
-                }
+                    NPCDialogue npcDialogue = hitCollider.GetComponent<NPCDialogue>();
+                    if (npcDialogue != null && npcDialogue.playerInRange)
+                    {
+                        npcDialogue.StartDialogue();
+                        return; //return so we do not check for other interactions
+                    }
 
-              
-                if (chestBehaviour != null && chestBehaviour.playerInRange)
-                {
-                    chestBehaviour.GenerateChestItem();
-                }   else
-                {
-                    Debug.Log("No Chest Found");
-                }
+                    PlayerInventory playerInventory = hitCollider.GetComponent<PlayerInventory>();
+                    if (playerInventory != null)
+                    {
+                        playerInventory.PickUpItem();
+                        return;
+                    }
 
-                if (doorBehaviour != null && doorBehaviour.playerInRange)
-                {
-                    doorBehaviour.RotateDoor();
-                    doorBehaviour.TryOpenDoor();
+                    Lever lever = hitCollider.GetComponent<Lever>();
+                    if (lever != null && lever.playerInRange)
+                    {
+                        lever.PressLever();
+                        return;
+                    }          
+
+                    ChestBehaviour chestBehaviour = hitCollider.GetComponent<ChestBehaviour>();
+                    if (chestBehaviour != null && chestBehaviour.playerInRange)
+                    {
+                        chestBehaviour.GenerateChestItem();
+                        return;
+                    }
+                    
+                    DoorBehaviour doorBehaviour = hitCollider.GetComponent<DoorBehaviour>();
+                    if (doorBehaviour != null && doorBehaviour.playerInRange)
+                    {
+                        
+                        doorBehaviour.TryOpenDoor();
+                        currentDoor = doorBehaviour;
+                        return;
+                    }
                 }
             }
         }
