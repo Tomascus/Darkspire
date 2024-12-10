@@ -7,6 +7,17 @@ public class PlaySoundEnter : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (audioSource == null)
+        {
+            audioSource = animator.GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                Debug.LogError("AudioSource component not found on the animator's GameObject.");
+                return;
+            }
+
+        }
+
         SoundManager.PlaySound(sound, audioSource);
     }
 }

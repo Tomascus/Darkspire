@@ -118,7 +118,8 @@ public class PlayerUI : MonoBehaviour
         playerAttributes.AddXP(amout); //function from playerAttributes.cs
         OnXPChange?.Invoke(playerAttributes.currentXP); //notify listeners that XP has changed (UI.cs)
         Debug.Log("Added XP");
-        
+        SoundManager.PlaySound(SoundType.XPPICKUP, audioSource); //Sound for xp pickup
+
     }
 
     private void CheckStamina()

@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     #region Unity Method Codes
     private void Start()
     {
+        
         pauseMenu.SetActive(false);     //turn off the pause object
         playerControllerInputs = FindObjectOfType<PlayerControllerInputs>();    //find the player controller inputs script
     }

@@ -24,5 +24,7 @@ public enum SoundType
     DOOROPEN,
     CHESTOPEN,
     SKELETONSWING,
-    SKELETONWALK
+    SKELETONWALK,
+    KEYTWIST,
+    XPPICKUP
 }   //Enum of all sounds in the game
