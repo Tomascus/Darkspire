@@ -25,6 +25,10 @@ public class Inventory : SerializedScriptableObject, IEnumerable<KeyValuePair<It
     [Tooltip("Event to raise when the inventory is cleared.")]
     private GameEvent onInventoryClear;
 
+    [SerializeField]
+    [Tooltip("The default sword to add to the inventory at start.")]
+    ItemData defaultSword;
+
     #endregion Fields
 
     #region Properties
@@ -54,6 +58,7 @@ public class Inventory : SerializedScriptableObject, IEnumerable<KeyValuePair<It
         onInventoryChange?.Raise(); // Tell interested parties that the inventory has changed
 
     }
+
 
     /// <summary>
     /// Removes the specified amount of items from the inventory.
@@ -113,6 +118,16 @@ public class Inventory : SerializedScriptableObject, IEnumerable<KeyValuePair<It
         onInventoryClear?.Raise();
         onInventoryChange?.Raise();
         return contents.Count == 0;
+    }
+
+    public void InitializeInventory()
+    {
+        //clear the inventory at start of every game and just have deafault sword in 
+        Clear();
+        if (defaultSword != null)
+        {
+            Add(defaultSword, 1);
+        }
     }
 
     [ContextMenu("Raise OnChange")]

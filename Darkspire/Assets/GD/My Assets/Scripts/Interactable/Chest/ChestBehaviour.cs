@@ -49,6 +49,8 @@ public class ChestBehaviour : MonoBehaviour
     {
         if(item == null) Debug.LogError("Item is not set for the chest.");
 
+        if(itemGenerated) return; //do not spawn multiples
+
         var generator = item as IInstantiatePrefab;
         if (generator == null) Debug.LogError("Item doesnt implement IInstantiatePrefab.");
 

@@ -11,7 +11,7 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private float openSpeed = 1.0f;
     [SerializeField] private Transform doorMesh; // Reference to the door mesh
     [SerializeField] private Image noKeyImage;
-    private bool isOpen = false;
+    public bool isOpen = false;
     public bool playerInRange = false;
     private Quaternion openRotation;
     private Quaternion closedRotation;
@@ -28,9 +28,8 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (isOpen)
         {
-          doorMesh.localRotation = Quaternion.Slerp(doorMesh.localRotation, openRotation, Time.deltaTime * openSpeed);
+            doorMesh.localRotation = Quaternion.Slerp(doorMesh.localRotation, openRotation, Time.deltaTime * openSpeed);
         }
-
     }
 
     private void OnTriggerStay(Collider other) //player is in range 
