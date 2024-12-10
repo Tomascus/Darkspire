@@ -52,80 +52,85 @@ MonoBehaviour:
   soundList:
   - name: PLAYERSWING
     sounds:
-    - {fileID: 8300000, guid: fe51c2468afb41b4988b536dfebf3b73, type: 3}
-  - name: HIT
-    sounds:
-    - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
-  - name: DODGE
-    sounds:
-    - {fileID: 8300000, guid: bd61f1a64a36df14daa81fef4d2fde17, type: 3}
-  - name: TALK
-    sounds:
-    - {fileID: 8300000, guid: 355a5db44cdb74145ac7df605100bc39, type: 3}
-  - name: FOOTSTEP
-    sounds:
-    - {fileID: 8300000, guid: 71c2a35ae22d7204d95f104788f97d8c, type: 3}
-    - {fileID: 8300000, guid: 94c1419d8bc2b1a4eaeb2b9208f79ea5, type: 3}
-  - name: RUN
-    sounds:
-    - {fileID: 8300000, guid: 59c6edcb89ab9fe4183e2b0589ad4fca, type: 3}
-    - {fileID: 8300000, guid: 1b7d469f0210f4f40b38943fe51c8ee8, type: 3}
-  - name: PICKUP
-    sounds:
-    - {fileID: 8300000, guid: c12b688e15fd00c499353a544b91bcd9, type: 3}
-  - name: NO_STAMINA
-    sounds:
-    - {fileID: 8300000, guid: 6fa5bfd707e3ab64889734ecee823842, type: 3}
-  - name: LOW_HEALTH
-    sounds:
-    - {fileID: 8300000, guid: 04d9b865c9b564b45bea83b81cc5c6cc, type: 3}
-  - name: HOVER
-    sounds:
-    - {fileID: 8300000, guid: d0da80866c6ea294b952cc5e1618a118, type: 3}
-  - name: CLICK
-    sounds:
-    - {fileID: 8300000, guid: 0e9a40fc41d388443af7428499f6454b, type: 3}
-  - name: DIED
-    sounds:
-    - {fileID: 8300000, guid: 59afb3beaf9deeb4cbb5c2c59f281922, type: 3}
-  - name: ENEMYSWING
-    sounds:
-    - {fileID: 8300000, guid: 77ca603088be1874984e73ed5bc701b5, type: 3}
-    - {fileID: 8300000, guid: 5bd30c88d32e28046922ebec77223730, type: 3}
-  - name: ENEMYOVERHEADSWING
-    sounds:
-    - {fileID: 8300000, guid: 40100505d93852b48a53115db0cd858e, type: 3}
-  - name: ENEMYHIT
-    sounds:
-    - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
-  - name: ENEMYFOOTSTEP
-    sounds:
-    - {fileID: 8300000, guid: 4e58da93e25564345a2af3bf834b135d, type: 3}
-  - name: ENEMYDIED
-    sounds:
-    - {fileID: 8300000, guid: ab9903f96c4861548b964e0601d6d543, type: 3}
+    - {fileID: 8300000, guid: 7ba055986576c0949ae2132ecf0cc508, type: 3}
   - name: PLAYERPOKE
     sounds:
     - {fileID: 8300000, guid: 43f1ea4eee452e8409445f27661e67f1, type: 3}
   - name: PLAYEROVERHEAD
     sounds:
     - {fileID: 8300000, guid: df4574f43d3737f42beba6a2fde3e674, type: 3}
+  - name: PLAYERHIT
+    sounds:
+    - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
+  - name: PLAYERDODGE
+    sounds:
+    - {fileID: 8300000, guid: bd61f1a64a36df14daa81fef4d2fde17, type: 3}
+  - name: PLAYERRUN
+    sounds:
+    - {fileID: 8300000, guid: 59c6edcb89ab9fe4183e2b0589ad4fca, type: 3}
+    - {fileID: 8300000, guid: 1b7d469f0210f4f40b38943fe51c8ee8, type: 3}
+  - name: PLAYERPICKUP
+    sounds:
+    - {fileID: 8300000, guid: 76e71c7ebc4b9e24ebb1839d3953beb5, type: 3}
+  - name: PLAYERNO_STAMINA
+    sounds:
+    - {fileID: 8300000, guid: f912bee499fbb66429a475a8c3528c93, type: 3}
+  - name: PLAYERLOW_HEALTH
+    sounds:
+    - {fileID: 8300000, guid: 04d9b865c9b564b45bea83b81cc5c6cc, type: 3}
+  - name: PLAYERDIED
+    sounds:
+    - {fileID: 8300000, guid: 59afb3beaf9deeb4cbb5c2c59f281922, type: 3}
+  - name: PLAYERFOOTSTEP
+    sounds:
+    - {fileID: 8300000, guid: 71c2a35ae22d7204d95f104788f97d8c, type: 3}
+    - {fileID: 8300000, guid: 94c1419d8bc2b1a4eaeb2b9208f79ea5, type: 3}
+  - name: PLAYERHEAL
+    sounds:
+    - {fileID: 8300000, guid: 9712e13b0855cc249a117edea5be7ac4, type: 3}
+  - name: MERCHANTTALK
+    sounds:
+    - {fileID: 8300000, guid: 77ca603088be1874984e73ed5bc701b5, type: 3}
+    - {fileID: 8300000, guid: 5bd30c88d32e28046922ebec77223730, type: 3}
+  - name: MENUHOVER
+    sounds:
+    - {fileID: 8300000, guid: d0da80866c6ea294b952cc5e1618a118, type: 3}
+  - name: MENUCLICK
+    sounds:
+    - {fileID: 8300000, guid: 0e9a40fc41d388443af7428499f6454b, type: 3}
+  - name: FISHSWING
+    sounds:
+    - {fileID: 8300000, guid: 77ca603088be1874984e73ed5bc701b5, type: 3}
+    - {fileID: 8300000, guid: 5bd30c88d32e28046922ebec77223730, type: 3}
+  - name: FISHOVERHEADSWING
+    sounds:
+    - {fileID: 8300000, guid: 40100505d93852b48a53115db0cd858e, type: 3}
+  - name: FISHHIT
+    sounds:
+    - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
+  - name: FISHFOOTSTEP
+    sounds:
+    - {fileID: 8300000, guid: 4e58da93e25564345a2af3bf834b135d, type: 3}
+  - name: FISHDIED
+    sounds:
+    - {fileID: 8300000, guid: ab9903f96c4861548b964e0601d6d543, type: 3}
   - name: GATEOPEN
     sounds:
     - {fileID: 8300000, guid: 2a728a445a09ae84889efb69146d0462, type: 3}
   - name: DOOROPEN
     sounds:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: 84b03ca109760274a87a23c58b0f3aba, type: 3}
   - name: CHESTOPEN
     sounds:
     - {fileID: 8300000, guid: 492d39cf8e3a57a40ad6cf8a063a941e, type: 3}
-  - name: HITWALL
+  - name: SKELETONSWING
     sounds:
-    - {fileID: 8300000, guid: 7dca9694858325c4783b5214aebfa2b8, type: 3}
-  - name: HITBARREL
+    - {fileID: 8300000, guid: 7ba055986576c0949ae2132ecf0cc508, type: 3}
+  - name: SKELETONWALK
     sounds:
-    - {fileID: 8300000, guid: 78f0601d01dfcc546beefe15ba2246e8, type: 3}
-  audioSource: {fileID: 1382050825599308293}
+    - {fileID: 8300000, guid: a2e0f4737a1bc6740bbed5d658061de2, type: 3}
+    - {fileID: 8300000, guid: 68b084bdef24b24498dd32b893c34e11, type: 3}
+    - {fileID: 8300000, guid: 95a1a279435040d4d83c12d9ef971ff4, type: 3}
 --- !u!114 &7993212187675069844
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayNPCTalk : MonoBehaviour
 {
+
+    private AudioSource audioSource;
+
     #region Play Sounds for NPC
     public void PlayIntroMerchant()
     {
-        SoundManager.PlaySound(SoundType.TALK);
+        SoundManager.PlaySound(SoundType.MERCHANTTALK, audioSource);
     } 
     #endregion
 }

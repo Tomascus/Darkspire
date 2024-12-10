@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Darkspire/Assets/GD/My Assets/Scripts/Audio/Play(Sounds)/CatFishHandler.meta
+guid: 3ef8379039374de48b8c343c514f03db
+========
 guid: 3e3422df7b090a3468b6fb70b2087a30
+>>>>>>>> main:Darkspire/Assets/GD/Third Party Assets/RPG_inventory_icons.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

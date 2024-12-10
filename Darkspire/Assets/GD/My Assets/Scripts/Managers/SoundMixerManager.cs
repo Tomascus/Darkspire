@@ -29,11 +29,6 @@ public class SoundMixerManager : MonoBehaviour
         }
 
         LoadPreferences();
-
-        Debug.Log($"MasterVolume Loaded: {masterSlider}");
-        Debug.Log($"MusicVolume Loaded: {musicSlider}");
-        Debug.Log($"SoundFXVolume Loaded: {soundFXSlider}");
-
     } 
     #endregion
     #region Load User Preferences

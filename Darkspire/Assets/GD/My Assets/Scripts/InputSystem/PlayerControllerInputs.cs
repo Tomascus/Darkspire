@@ -156,6 +156,9 @@ namespace InputSystem
                 if (chestBehaviour != null && chestBehaviour.playerInRange)
                 {
                     chestBehaviour.GenerateChestItem();
+                }   else
+                {
+                    Debug.Log("No Chest Found");
                 }
 
                 if (doorBehaviour != null && doorBehaviour.playerInRange)

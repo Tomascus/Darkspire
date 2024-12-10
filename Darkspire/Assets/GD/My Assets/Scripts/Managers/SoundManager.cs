@@ -1,17 +1,18 @@
-using UnityEngine;
 using System;
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
     #region Fields
-    [SerializeField] private SoundList[] soundList; // Holds all sounds
+    [SerializeField] private SoundList[] soundList; // Holds all sound lists with clips
     public static SoundManager instance;
-    [SerializeField] private AudioSource audioSource;
 
+    private Dictionary<string, AudioClip> soundDictionary;
     #endregion
-    #region Unity In Built Settings
+
+    #region Unity Built-in Methods
     private void Awake()
     {
         if (!Application.isPlaying) return;
@@ -24,17 +25,87 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeSoundDictionary();
         }
     }
     #endregion
 
     #region Sound List Playability and Readability
-    public static void PlaySound(SoundType sound, float volume = 1f)    //To play any sound in the list
+    public static void PlaySound(SoundType sound, AudioSource audioSource, float volume = 1f)
     {
-        AudioClip[] clips = instance.soundList[(int)sound].Sounds;
+        if (instance == null)
+        {
+            Debug.LogError("SoundManager instance is null! Make sure a SoundManager exists in the scene.");
+            return;
+        }
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource is null! Ensure the calling GameObject has an AudioSource.");
+            return;
+        }
+
+        SoundList soundList = instance.soundList[(int)sound];
+        AudioClip[] clips = soundList.Sounds;
+
+        if (clips == null || clips.Length == 0)
+        {
+            Debug.LogError($"No audio clips assigned in sound list: {soundList.name}");
+            return;
+        }
+
         AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-        instance.audioSource.PlayOneShot(randClip, volume);
+
+        // Randomize pitch and volume to prevent sound fatigue
+        float randomPitch = UnityEngine.Random.Range(0.95f, 1.05f);
+        float randomVolume = volume * UnityEngine.Random.Range(0.95f, 1.05f);
+
+        audioSource.pitch = randomPitch;
+        audioSource.PlayOneShot(randClip, randomVolume);
     }
+
+    public static void PlayMenuSound(SoundType soundMenu, AudioSource audioSource)
+    {
+        if (instance == null)
+        {
+            Debug.LogError("SoundManager instance is null! Make sure a SoundManager exists in the scene.");
+            return;
+        }
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource is null! Ensure the calling GameObject has an AudioSource.");
+            return;
+        }
+
+        SoundList soundList = instance.soundList[(int)soundMenu];
+        AudioClip[] clips = soundList.Sounds;
+
+        if (clips == null || clips.Length == 0)
+        {
+            Debug.LogError($"No audio clips assigned in sound list: {soundList.name}");
+            return;
+        }
+
+        AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+
+        audioSource.pitch = 1.0f; // Reset pitch
+        audioSource.PlayOneShot(randClip, 1.0f); // Play at full volume
+    }
+
+    private void InitializeSoundDictionary()
+    {
+        soundDictionary = new Dictionary<string, AudioClip>();
+        foreach (var sound in soundList)
+        {
+            foreach (var clip in sound.Sounds)
+            {
+                soundDictionary[sound.name] = clip;
+            }
+        }
+    }
+    #endregion
+    #region Updating List
 
 #if UNITY_EDITOR
     private void OnEnable()
@@ -42,12 +113,12 @@ public class SoundManager : MonoBehaviour
         UpdateSoundList();
     }
 
-    private void OnValidate()   
+    private void OnValidate()
     {
         UpdateSoundList();
     }
 
-    private void UpdateSoundList()  //Update sound list when the enum is changed
+    private void UpdateSoundList()
     {
         string[] names = Enum.GetNames(typeof(SoundType));
         Array.Resize(ref soundList, names.Length);
@@ -58,20 +129,24 @@ public class SoundManager : MonoBehaviour
             {
                 soundList[i] = new SoundList
                 {
-                    name = names[i], // Assign the enum name to the SoundList's name
-                    sounds = soundList[i].Sounds // Preserve existing sound references
+                    name = names[i],
+                    sounds = soundList[i].sounds ?? new AudioClip[0], // Preserve sounds or initialize
                 };
             }
         }
+
     }
 #endif
-} 
+}
+
 #endregion
 
+
 [Serializable]
-public struct SoundList //Method for converting the enum to a list of sounds
+public struct SoundList
 {
     public string name;
-    [SerializeField] public AudioClip[] sounds;
+    public AudioClip[] sounds;
+
     public AudioClip[] Sounds => sounds;
 }
