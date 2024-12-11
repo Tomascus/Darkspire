@@ -37,7 +37,7 @@ public class Lever : MonoBehaviour
         {
             if (gate != null)
             {
-                SoundManager.PlaySound(SoundType.GATEOPEN, audioSource);
+                SoundManager.PlaySound(SoundType.GATE_OPEN, audioSource);
                 gate.StartMoving();
                 pressed = true;
             }

@@ -10,7 +10,7 @@ public class PlayNPCTalk : MonoBehaviour
     #region Play Sounds for NPC
     public void PlayIntroMerchant()
     {
-        SoundManager.PlaySound(SoundType.MERCHANTTALK, audioSource);
+        SoundManager.PlaySound(SoundType.MERCHANT_TALK, audioSource);
     } 
     #endregion
 }

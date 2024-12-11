@@ -1,9 +1,7 @@
 using InputSystem;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerUI : MonoBehaviour
@@ -56,6 +54,7 @@ public class PlayerUI : MonoBehaviour
     //Checking if this sound was played
     private bool hasPlayedStaminaSound = false;
     private AudioSource audioSource;
+    private bool isPlayingLowHealthSound = false;
 
 
     // ***** Event Logic *****
@@ -104,8 +103,12 @@ public class PlayerUI : MonoBehaviour
             HandleDodge();
             HandleAttack();
         }
-        
-       
+
+        if (currentHealth < maxHealth * 0.2f && !isPlayingLowHealthSound)   // Play low health sound when health is below 20%
+        {
+            StartCoroutine(PlayLowHealthSoundWithRandomDelay());
+        }
+
     }
 
     private void FixedUpdate()
@@ -118,7 +121,7 @@ public class PlayerUI : MonoBehaviour
         playerAttributes.AddXP(amout); //function from playerAttributes.cs
         OnXPChange?.Invoke(playerAttributes.currentXP); //notify listeners that XP has changed (UI.cs)
         Debug.Log("Added XP");
-        SoundManager.PlaySound(SoundType.XPPICKUP, audioSource); //Sound for xp pickup
+        SoundManager.PlaySound(SoundType.XP_PICKUP, audioSource); //Sound for xp pickup
 
     }
 
@@ -151,6 +154,8 @@ public class PlayerUI : MonoBehaviour
         PlayerMovementController.SetMovementEnabled(false);
         //when the player takes damage, the event OnDamage is called and the current health is passed as a parameter (in this case in UI.cs)
         OnDamage?.Invoke(currentHealth);
+
+        
 
         if (currentHealth <= 0)
         {
@@ -204,6 +209,7 @@ public class PlayerUI : MonoBehaviour
         animator.ResetTrigger("Attack"); // Reset the trigger to avoid the player attacking after dying
         playerControllerInputs.enabled = false;
         Debug.Log("Dead");
+        SoundManager.PlaySound(SoundType.PLAYER_DIED, audioSource); 
         //IMPLEMENT DEATH SCREEN AND RESTART - TO DO 
 
         StartCoroutine(RestartScene(3f));
@@ -333,7 +339,7 @@ public class PlayerUI : MonoBehaviour
         //check if player has in inventory potion 
         if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != playerAttributes.maxHealth)
         {
-            SoundManager.PlaySound(SoundType.PLAYERHEAL, audioSource);   //Sound for potion use
+            SoundManager.PlaySound(SoundType.PLAYER_HEAL, audioSource);   //Sound for potion use
 
             playerInventory.Remove(potionItemData, 1); //after use remove one potion from inv 
 
@@ -367,5 +373,25 @@ public class PlayerUI : MonoBehaviour
             yield return timeToWait;
         }
         regeneratingStamina = null;
+    }
+
+    private IEnumerator PlayLowHealthSoundWithRandomDelay()
+    {
+        isPlayingLowHealthSound = true;
+
+        // Wait for a random duration between 1 and 5 seconds
+        float randomDelay = UnityEngine.Random.Range(1f, 5f);
+        yield return new WaitForSeconds(randomDelay);
+
+        // Play the low health sound
+        SoundManager.PlaySound(SoundType.PLAYERLOW_HEALTH, audioSource);
+
+        // Allow the sound to be queued again only if health is still below 20%
+        if (currentHealth < maxHealth * 0.2f)
+        {
+            yield return new WaitForSeconds(5f); // Enforce a cooldown period before it can play again
+        }
+
+        isPlayingLowHealthSound = false;
     }
 }

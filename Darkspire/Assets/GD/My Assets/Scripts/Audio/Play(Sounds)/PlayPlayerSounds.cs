@@ -15,16 +15,16 @@ public class PlayFootstep : MonoBehaviour
     #region Playing Sound for Player
     public void PlayFootStompSound()
     {
-        SoundManager.PlaySound(SoundType.PLAYERFOOTSTEP, audioSource);
+        SoundManager.PlaySound(SoundType.PLAYER_FOOTSTEP, audioSource);
     }
 
     public void PlaySprintingSound()
     {
-        SoundManager.PlaySound(SoundType.PLAYERRUN, audioSource);
+        SoundManager.PlaySound(SoundType.PLAYER_RUN, audioSource);
     }
     public void PlayDodgeSound()
     {
-        SoundManager.PlaySound(SoundType.PLAYERDODGE, audioSource);
+        SoundManager.PlaySound(SoundType.PLAYER_DODGE, audioSource);
     }
     #endregion
 }
