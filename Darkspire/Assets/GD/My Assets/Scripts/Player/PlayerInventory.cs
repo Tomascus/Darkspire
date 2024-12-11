@@ -51,6 +51,14 @@ public class PlayerInventory : MonoBehaviour
                         Inventory playerInventory = inventoryCollection[0];
                         playerInventory.Add(itemData, 1);
                         Debug.Log($"Item added to inventory: {itemData.ItemName}");
+                        if (itemData.ItemName == "Key")
+                        {
+                            SoundManager.PlaySound(SoundType.PLAYERPICKUP, audioSource);
+                        }
+                        else
+                        {
+                            SoundManager.PlaySound(SoundType.PLAYER_PICKUPJOURNAL, audioSource);
+                        }    
                         
                     }
                     catch (Exception e)
@@ -70,7 +78,10 @@ public class PlayerInventory : MonoBehaviour
 
             Destroy(nearbyItem.gameObject);
             nearbyItem = null;
+
             SoundManager.PlaySound(SoundType.PLAYERPICKUP,audioSource);
         }
     }
+
+    
 }

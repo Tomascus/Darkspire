@@ -58,7 +58,7 @@ public class ChestBehaviour : MonoBehaviour
         if (newItem == null) Debug.LogError("Item failed to generated.");
 
         itemGenerated = true;
-        SoundManager.PlaySound(SoundType.CHESTOPEN, audioSource);
+        SoundManager.PlaySound(SoundType.CHEST_OPEN, audioSource);
     }
 
 }

@@ -16,11 +16,11 @@ public class SkeletonPlaySounds : MonoBehaviour
 
     public void SkeletonWalk()  //Calls animation event to trigger this method
     {
-        SoundManager.PlaySound(SoundType.SKELETONWALK, audioSource);
+        SoundManager.PlaySound(SoundType.SKELETON_WALK, audioSource);
     }
 
     public void SkeletonAttack() 
     { 
-        SoundManager.PlaySound(SoundType.PLAYERSWING, audioSource);
+        SoundManager.PlaySound(SoundType.PLAYER_SWING, audioSource);
     }
 }

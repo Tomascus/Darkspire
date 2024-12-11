@@ -16,33 +16,33 @@ public class CatFishPlaySounds : MonoBehaviour
 
     public void FishWak()
     {
-        SoundManager.PlaySound(SoundType.FISHFOOTSTEP,audioSource);
+        SoundManager.PlaySound(SoundType.FISH_FOOTSTEP,audioSource);
     }
 
     public void FishWalk()
     {
 
-        SoundManager.PlaySound(SoundType.FISHFOOTSTEP, audioSource);
+        SoundManager.PlaySound(SoundType.FISH_FOOTSTEP, audioSource);
     }
 
     public void FishAttack()
     {
-        SoundManager.PlaySound(SoundType.FISHSWING, audioSource);
+        SoundManager.PlaySound(SoundType.FISH_SWING, audioSource);
     }
 
     public void FishOverHead()
     {
-        SoundManager.PlaySound(SoundType.FISHOVERHEADSWING, audioSource);
+        SoundManager.PlaySound(SoundType.FISH_OVERHEADSWING, audioSource);
     }
 
     public void FishHit()
     {
-        SoundManager.PlaySound(SoundType.FISHHIT, audioSource);
+        SoundManager.PlaySound(SoundType.FISH_HIT, audioSource);
     }
 
     public void FishDied()
     {
-        SoundManager.PlaySound(SoundType.FISHDIED, audioSource);
+        SoundManager.PlaySound(SoundType.FISH_DIED, audioSource);
     }
 
 

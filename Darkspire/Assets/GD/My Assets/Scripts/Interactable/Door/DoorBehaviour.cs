@@ -69,10 +69,10 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (playerInventory.Count(keyItem) > 0) //will open door if player has a key in inventory 
         {
-            SoundManager.PlaySound(SoundType.KEYTWIST, audioForKeyTwist);    //PLay sound for when key is used
+            SoundManager.PlaySound(SoundType.KEY_TWIST, audioForKeyTwist);    //PLay sound for when key is used
             playerInventory.Remove(keyItem, 1);
             isOpen = true;
-            SoundManager.PlaySound(SoundType.DOOROPEN, audioSource);    //Sound of the door opening
+            SoundManager.PlaySound(SoundType.DOOR_OPEN, audioSource);    //Sound of the door opening
         }
         else
         {
