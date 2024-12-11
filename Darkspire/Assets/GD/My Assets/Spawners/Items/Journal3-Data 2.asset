@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936a70783a63d834095e7f4c7f0555ac, type: 3}
   m_Name: Journal3-Data 2
   m_EditorClassIdentifier: 
-  itemName: Survivors Jounal
+  itemName: The Arcane Apothecary
   itemIcon: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
-  description: Part 3
+  description: 'There exists a potion said to break the curse of petrification, restoring
+    those turned to stone to their original form. The effects, however, are not guaranteed.
+    Some have claimed to walk again, while others remain frozen, as if the curse
+    resists. The brew is volatile, its true nature hidden in the shadows. Be warned:
+    not all curses are meant to be undone.'
   prefab: {fileID: 8857087547708882029, guid: fe0723abb44a22048a5c4b7827a314fa, type: 3}
