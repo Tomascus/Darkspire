@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Scroll
   itemIcon: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
-  description: Puzzle room Scroll
+  description: "Six treasures lie before your gaze, Each with its own alluring ways.
+    One holds power, though none can see, Its value lies in what it makes thee. Not
+    for the thirsty, not for the bold, Not for the dark or treasures of old. Seek
+    the one that minds adore, And wisdom\u2019s path shall be restored."
   prefab: {fileID: 5963802126552814375, guid: 85e0cd29c810fa14cb2e2c6e2e2419f7, type: 3}

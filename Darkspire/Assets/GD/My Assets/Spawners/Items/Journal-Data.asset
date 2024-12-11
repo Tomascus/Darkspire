@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Survivors Journal
   itemIcon: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
-  description: Part 1
+  description: "The Darkspire is not what we thought\u2014I fear I will never escape..."
   prefab: {fileID: 8857087547708882029, guid: fe0723abb44a22048a5c4b7827a314fa, type: 3}

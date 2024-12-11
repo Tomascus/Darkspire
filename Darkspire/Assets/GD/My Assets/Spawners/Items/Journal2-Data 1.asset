@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936a70783a63d834095e7f4c7f0555ac, type: 3}
   m_Name: Journal2-Data 1
   m_EditorClassIdentifier: 
-  itemName: Survivors Jounal
+  itemName: The Forbidden Elixirs
   itemIcon: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
-  description: Part 2
+  description: 'Ingredients: 3 drops of Moonlight Essence, 1 crushed Phoenix Feather,
+    5 leaves of Nightshade, 1 vial of Darkspire Ashes. Instructions: Heat the Moonlight
+    Essence under a silver flame until it shimmers. Add the crushed Phoenix Feather
+    and stir gently. Mix in the Nightshade leaves until the liquid turns a deep purple.
+    Finally, sprinkle the Darkspire Ashes into the concoction. The liquid will turn
+    black. Drink in one swift motion for a peaceful, eternal slumber.'
   prefab: {fileID: 8857087547708882029, guid: fe0723abb44a22048a5c4b7827a314fa, type: 3}
