@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,10 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     private Dictionary<string, AudioClip> soundDictionary;
+
+    [SerializeField] private PlayerDialogueLibrary dialogueLibrary;
+    private static bool isPlayingDialogue = false;
+
     #endregion
 
     #region Unity Built-in Methods
@@ -93,6 +98,51 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(randClip, 1.0f); // Play at full volume
     }
 
+    public static void PlayDialogueSound(string dialogue, AudioSource audioSource)
+    {
+        if (instance == null)
+        {
+            Debug.LogError("SoundManager instance is null! Make sure a SoundManager exists in the scene.");
+            return;
+        }
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource is null! Ensure the calling GameObject has an AudioSource.");
+            return;
+        }
+
+        if (isPlayingDialogue)
+        {
+            return;
+        }
+
+        AudioClip clip = instance.dialogueLibrary.GetClipFromName(dialogue);
+
+        if (clip == null)
+        {
+            Debug.LogError($"No audio clip assigned in dialogue library: {dialogue}");
+            return;
+        }
+
+        audioSource.pitch = 1.0f; // Reset pitch
+        instance.StartCoroutine(PlayClipOnce(audioSource, clip));
+    }
+
+    private static IEnumerator PlayClipOnce(AudioSource audioSource, AudioClip clip)    //Checks if player dialogue is playing so that it doesn't overlap, i.e prevents ear damage
+    {
+        isPlayingDialogue = true;
+
+        // Play the clip
+        audioSource.pitch = 1.0f; // Reset pitch
+        audioSource.PlayOneShot(clip, 1.0f); // Play at full volume
+
+        // Wait for the clip to finish
+        yield return new WaitForSeconds(clip.length);
+
+        isPlayingDialogue = false; // Reset flag
+    }   
+
     private void InitializeSoundDictionary()
     {
         soundDictionary = new Dictionary<string, AudioClip>();
@@ -140,6 +190,8 @@ public class SoundManager : MonoBehaviour
 }
 
 #endregion
+
+
 
 
 [Serializable]

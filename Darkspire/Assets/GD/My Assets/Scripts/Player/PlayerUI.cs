@@ -106,6 +106,11 @@ public class PlayerUI : MonoBehaviour
 
         if (currentHealth < maxHealth * 0.2f && !isPlayingLowHealthSound)   // Play low health sound when health is below 20%
         {
+            if (currentHealth == 0)
+            {
+                return;
+            }
+                
             StartCoroutine(PlayLowHealthSoundWithRandomDelay());
         }
 

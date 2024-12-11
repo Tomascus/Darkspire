@@ -73,4 +73,6 @@ public class PlayerInventory : MonoBehaviour
             SoundManager.PlaySound(SoundType.PLAYERPICKUP,audioSource);
         }
     }
+
+    
 }

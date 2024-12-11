@@ -14,6 +14,8 @@ public class InventoryUIManager : MonoBehaviour
     [SerializeField] private GameObject descriptionPanel;
     [SerializeField] private TextMeshProUGUI descriptionText;
 
+    private AudioSource audioSource;    //To play all types of dialogue based on the items name 
+
     /*Explanation
      * Similar working as UI sciprt, on our inventory gameobject in our canvas we put gameEventListener where we put in scriptableobject game event:  InventoryChangeEvent 
      * and create response with dragging the inventory object there and adding InventortUIManager script and selecting OnInventoryChange method
@@ -27,6 +29,7 @@ public class InventoryUIManager : MonoBehaviour
         inventoryPanel.SetActive(false);
         descriptionPanel.SetActive(false);
         UpdateInventoryUI();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnInventoryChange()
@@ -75,6 +78,7 @@ public class InventoryUIManager : MonoBehaviour
         {
             descriptionText.text = item.Description; //set the description text to the item description
             descriptionPanel.SetActive(true); //show the description panel
+            SoundManager.PlayDialogueSound(item.ItemName, audioSource);     //Allows the game to play many dialogues based on the item name
         }
     }
 
