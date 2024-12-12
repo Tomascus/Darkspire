@@ -55,6 +55,7 @@ public class PlayerUI : MonoBehaviour
     private bool hasPlayedStaminaSound = false;
     private AudioSource audioSource;
     private bool isPlayingLowHealthSound = false;
+    private bool deadSoundPlaying = false;
 
 
     // ***** Event Logic *****
@@ -180,6 +181,17 @@ public class PlayerUI : MonoBehaviour
         //regeneratingHealth = StartCoroutine(RegenerateHealth());
     }
 
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public float getCurrentHealth()
+    {
+        return currentHealth;
+    }
+
     //Updating the max health of the player so that the first hit he takes after levelling does not take double based on old max health
     public void UpdateMaxHealth(int newMaxHealth)
     {
@@ -214,7 +226,17 @@ public class PlayerUI : MonoBehaviour
         animator.ResetTrigger("Attack"); // Reset the trigger to avoid the player attacking after dying
         playerControllerInputs.enabled = false;
         Debug.Log("Dead");
-        SoundManager.PlaySound(SoundType.PLAYER_DIED, audioSource); 
+
+        if(deadSoundPlaying)
+        {
+            SoundManager.PlaySound(SoundType.PLAYER_DIED, audioSource);
+            deadSoundPlaying = true;
+        }
+        else
+        {
+            deadSoundPlaying = true;
+        }
+
         //IMPLEMENT DEATH SCREEN AND RESTART - TO DO 
 
         StartCoroutine(RestartScene(3f));
