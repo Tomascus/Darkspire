@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936a70783a63d834095e7f4c7f0555ac, type: 3}
   m_Name: Sword-Darkside
   m_EditorClassIdentifier: 
-  itemName: Darkside Sword
+  itemName: Sword
   itemIcon: {fileID: 21300000, guid: edf92a9292bdb4d1c95712c5e092e5ac, type: 3}
-  description: Sword of the dark lord Darkspire blah blah
+  description: Looks rusty
   prefab: {fileID: 0}
