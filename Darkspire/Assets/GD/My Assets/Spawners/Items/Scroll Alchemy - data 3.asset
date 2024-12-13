@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936a70783a63d834095e7f4c7f0555ac, type: 3}
   m_Name: Scroll Alchemy - data 3
   m_EditorClassIdentifier: 
-  itemName: Survivor's Notes 4
+  itemName: Page 6
   itemIcon: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
   description: I thought the potion would reverse their curse, but it did nothing.
     My companions remain stuck in the stone.
