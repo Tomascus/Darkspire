@@ -1272,6 +1272,21 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayHoverSoundMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3154060824401935056, guid: 3d4a3d8448df462458549b6f39747eb5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154060824401935056, guid: 3d4a3d8448df462458549b6f39747eb5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154060824401935056, guid: 3d4a3d8448df462458549b6f39747eb5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3924085595830184936, guid: 3d4a3d8448df462458549b6f39747eb5,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1385,6 +1400,16 @@ PrefabInstance:
     - target: {fileID: 5550042095027579692, guid: 3d4a3d8448df462458549b6f39747eb5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119637906311433654, guid: 3d4a3d8448df462458549b6f39747eb5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119637906311433654, guid: 3d4a3d8448df462458549b6f39747eb5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7404378315568071104, guid: 3d4a3d8448df462458549b6f39747eb5,

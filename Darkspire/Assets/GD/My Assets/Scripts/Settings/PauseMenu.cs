@@ -6,7 +6,8 @@ public class PauseMenu : MonoBehaviour
 {
     #region Fields
 
-    public GameObject pauseMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject InGameSetting;
     public static bool isPaused;
     private PlayerControllerInputs playerControllerInputs;
     #endregion
@@ -48,6 +49,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true); //Turn on the object
         Time.timeScale = 0f;    //Stops time in the game(in turn stoping everything in the game)
         isPaused = true;    //Cant do anything other than pause menu
+        
     }
 
     public void ResumeGame()
@@ -55,6 +57,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false); //Turn off the object
         Time.timeScale = 1f;    //Resumes time in the game
         isPaused = false;   //Cant do anything other than pause menu
+        InGameSetting.SetActive(false);  //Turn off the object
     }
 
     public void GoToMainMenu()
