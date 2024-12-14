@@ -115,6 +115,7 @@ namespace InputSystem
 
         public void OnHeal(InputAction.CallbackContext context)
         {
+            
             HealInput(context.ReadValueAsButton());
 
             playerUI.ConsumePotion();

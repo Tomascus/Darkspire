@@ -53,6 +53,8 @@ public class SoundManager : MonoBehaviour
         SoundList soundList = instance.soundList[(int)sound];
         AudioClip[] clips = soundList.Sounds;
 
+        
+
         if (clips == null || clips.Length == 0)
         {
             Debug.LogError($"No audio clips assigned in sound list: {soundList.name}");
@@ -65,8 +67,11 @@ public class SoundManager : MonoBehaviour
         float randomPitch = UnityEngine.Random.Range(0.95f, 1.05f);
         float randomVolume = volume * UnityEngine.Random.Range(0.95f, 1.05f);
 
+        
+
         audioSource.pitch = randomPitch;
         audioSource.PlayOneShot(randClip, randomVolume);
+
     }
 
     public static void PlayMenuSound(SoundType soundMenu, AudioSource audioSource)

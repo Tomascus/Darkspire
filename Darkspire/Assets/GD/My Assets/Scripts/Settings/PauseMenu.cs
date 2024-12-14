@@ -2,12 +2,18 @@ using InputSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using DG.Tweening;
+
 public class PauseMenu : MonoBehaviour
 {
     #region Fields
 
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject InGameSetting;
+    [SerializeField] private GameObject RetryMenu;
+
+    public PlayerUI playerUI;
+
     public static bool isPaused;
     private PlayerControllerInputs playerControllerInputs;
     #endregion
@@ -15,13 +21,16 @@ public class PauseMenu : MonoBehaviour
     #region Unity Method Codes
     private void Start()
     {
-        
+        RetryMenu.SetActive(false);     //Turn off the object
         pauseMenu.SetActive(false);     //turn off the pause object
         playerControllerInputs = FindObjectOfType<PlayerControllerInputs>();    //find the player controller inputs script
     }
 
     private void Update()
     {
+
+        CheckDead();    //Check if the player is dead
+
         if (Input.GetKeyDown(KeyCode.Escape))   //Pauses game once escape is pressed or unpause
         {
             //
@@ -42,6 +51,26 @@ public class PauseMenu : MonoBehaviour
 
     }
     #endregion
+
+    void CheckDead()
+    {
+        if (playerUI.IsPlayerDead())
+        {
+            playerControllerInputs.ShowCursor();
+
+            if (RetryMenu != null)
+            {
+                DOTween.Sequence()
+                    .AppendInterval(2f) // Wait for 2 seconds
+                    .AppendCallback(() =>
+                    {
+                        RetryMenu.SetActive(true); // Activate RetryMenu
+                        Time.timeScale = 0f;       // Set game time to 0
+                    });
+            }
+        }
+    }
+
 
     #region Funtionality of Pause Menu Buttons
     public void PauseGame()

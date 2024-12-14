@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerUI : MonoBehaviour
 {
     // *****RESOURCES******** UI based on Comp-3 Interactive available at https://www.youtube.com/watch?v=HMAs9_2yTuo
+    #region Fields
 
     //variable for accesing the player controller inputs
     private PlayerControllerInputs playerControllerInputs;
@@ -53,10 +54,14 @@ public class PlayerUI : MonoBehaviour
 
     //Checking if this sound was played
     private bool hasPlayedStaminaSound = false;
-    private AudioSource audioSource;
+
     private bool isPlayingLowHealthSound = false;
     private bool deadSoundPlaying = false;
 
+    private AudioSource audioSource;
+
+
+    #endregion
 
     // ***** Event Logic *****
     //Event handling for taking damage, only active when OnTakeDamage is called, in this case it is called in the whichever script that deals damage to the player
@@ -211,6 +216,24 @@ public class PlayerUI : MonoBehaviour
         PlayerMovementController.SetMovementEnabled(true); 
     }
 
+    public bool IsPlayerDead()
+    {
+        if (isDead)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    public void ResetPlayerDeath()
+    {
+        isDead = false;
+    }
+
     private void KillPlayer()
     {
         if (isDead) return;
@@ -237,19 +260,7 @@ public class PlayerUI : MonoBehaviour
             deadSoundPlaying = true;
         }
 
-        //IMPLEMENT DEATH SCREEN AND RESTART - TO DO 
-
-        StartCoroutine(RestartScene(3f));
-
     }
-
-    private IEnumerator RestartScene(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-
 
     // ***** Stamina Logic *****
 
@@ -363,6 +374,9 @@ public class PlayerUI : MonoBehaviour
 
     public void ConsumePotion()
     {
+        if(isDead) return; //if player is dead do not allow to consume potion
+
+
         //check if player has in inventory potion 
         if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != playerAttributes.maxHealth)
         {
