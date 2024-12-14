@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GolemAttributes
   m_EditorClassIdentifier: 
   enemyName: Stone Golem
-  health: 200
+  health: 20
   attackDamage: 30
   attackRange: 3
   movementSpeed: 2
