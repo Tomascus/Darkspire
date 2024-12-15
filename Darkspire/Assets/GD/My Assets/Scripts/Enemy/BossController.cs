@@ -155,7 +155,7 @@ public class BossController : MonoBehaviour
 
         if (inAttackRange)
         {
-            StartCoroutine(PerformAttack());
+            PerformAttack();
         }
     }
 
@@ -233,9 +233,9 @@ public class BossController : MonoBehaviour
         //IMPLEMENT CUSTOM ROTATION SPEED ??
     }
 
-    private IEnumerator PerformAttack()
+    private void PerformAttack()
     {
-        yield return new WaitForSeconds(1f); // Wait for 1 second before attacking
+        
         // Checks if the time that has passed since the last attack is greater than the attack cooldown -> executes attack if so and damages the player
         if (Time.time >= lastAttackTime + attackCooldown)
         {
@@ -378,7 +378,7 @@ public class BossController : MonoBehaviour
         // Spawns the NPC after 5 seconds at the boss location
         if (deathSpawn != null)
         {
-            Instantiate(deathSpawn, transform.position, Quaternion.identity);
+            Instantiate(deathSpawn, transform.position, deathSpawn.transform.rotation);
         }
 
         // Destroy the boss object after 5 seconds
