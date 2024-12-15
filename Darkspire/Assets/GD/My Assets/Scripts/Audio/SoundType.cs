@@ -33,5 +33,7 @@ public enum SoundType
     STONEGOLEM_HIT,
     STONEGOLEM_DIED,
     STONEGOLEM_AOEATTACK,
-    PLAYER_PICKUPJOURNAL
+    PLAYER_PICKUPJOURNAL,
+    SKELETON_HIT,
+    SKELETON_DIED
 }   //Enum of all sounds in the game
