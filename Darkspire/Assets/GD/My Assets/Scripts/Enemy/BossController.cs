@@ -365,6 +365,11 @@ public class BossController : MonoBehaviour
         StartCoroutine(SpawnNPC());
     }
 
+    public bool isBossDead()
+    {
+        return isDead;
+    }
+
     private IEnumerator SpawnNPC()
     {
     

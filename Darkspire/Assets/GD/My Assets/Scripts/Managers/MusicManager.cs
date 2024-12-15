@@ -15,6 +15,8 @@ public class MusicManager : MonoBehaviour
     [Tooltip("Put Music Object from Hierarchy")]
     [SerializeField]
     private AudioSource musicSource;
+    private Coroutine currentMusicCoroutine;
+
     #endregion
     #region Unity In Built Methods
     private void Awake()
@@ -34,7 +36,34 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
     {
-        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));   //Play Music Based on scene
+        AudioClip nextClip = musicLibrary.GetClipFromName(trackName);
+
+        if (nextClip != null)
+        {
+            if (currentMusicCoroutine != null)
+            {
+                StopCoroutine(currentMusicCoroutine);
+            }
+
+            // Immediately assign the clip and fade in/out
+            currentMusicCoroutine = StartCoroutine(AnimateMusicCrossfade(nextClip, fadeDuration));
+        }
+    }
+
+
+    public string GetCurrentMusicName()
+    {
+        if (musicSource != null && musicSource.clip != null)
+        {
+            return musicSource.clip.name;
+        }
+        return "No music playing";
+    }
+
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 
     //Music That Can Change Flawlessly

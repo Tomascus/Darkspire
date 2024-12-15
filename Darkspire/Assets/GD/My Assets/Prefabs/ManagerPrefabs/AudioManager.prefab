@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 9099325577755381069}
   - {fileID: 6160603231523277747}
+  - {fileID: 6739577528441343709}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4229324001914237326
@@ -50,22 +51,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundList:
-  - name: PLAYERSWING
+  - name: PLAYER_SWING
     sounds:
     - {fileID: 8300000, guid: 7ba055986576c0949ae2132ecf0cc508, type: 3}
-  - name: PLAYERPOKE
+  - name: PLAYER_POKE
     sounds:
     - {fileID: 8300000, guid: 43f1ea4eee452e8409445f27661e67f1, type: 3}
-  - name: PLAYEROVERHEAD
+  - name: PLAYER_OVERHEAD
     sounds:
     - {fileID: 8300000, guid: df4574f43d3737f42beba6a2fde3e674, type: 3}
-  - name: PLAYERHIT
+  - name: PLAYER_HIT
     sounds:
     - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
-  - name: PLAYERDODGE
+  - name: PLAYER_DODGE
     sounds:
     - {fileID: 8300000, guid: bd61f1a64a36df14daa81fef4d2fde17, type: 3}
-  - name: PLAYERRUN
+  - name: PLAYER_RUN
     sounds:
     - {fileID: 8300000, guid: 59c6edcb89ab9fe4183e2b0589ad4fca, type: 3}
     - {fileID: 8300000, guid: 1b7d469f0210f4f40b38943fe51c8ee8, type: 3}
@@ -78,59 +79,78 @@ MonoBehaviour:
   - name: PLAYERLOW_HEALTH
     sounds:
     - {fileID: 8300000, guid: 04d9b865c9b564b45bea83b81cc5c6cc, type: 3}
-  - name: PLAYERDIED
+  - name: PLAYER_DIED
     sounds:
     - {fileID: 8300000, guid: 59afb3beaf9deeb4cbb5c2c59f281922, type: 3}
-  - name: PLAYERFOOTSTEP
+  - name: PLAYER_FOOTSTEP
     sounds:
     - {fileID: 8300000, guid: 71c2a35ae22d7204d95f104788f97d8c, type: 3}
     - {fileID: 8300000, guid: 94c1419d8bc2b1a4eaeb2b9208f79ea5, type: 3}
-  - name: PLAYERHEAL
+  - name: PLAYER_HEAL
     sounds:
     - {fileID: 8300000, guid: 9712e13b0855cc249a117edea5be7ac4, type: 3}
-  - name: MERCHANTTALK
+  - name: MERCHANT_TALK
     sounds:
     - {fileID: 8300000, guid: 77ca603088be1874984e73ed5bc701b5, type: 3}
     - {fileID: 8300000, guid: 5bd30c88d32e28046922ebec77223730, type: 3}
-  - name: MENUHOVER
+  - name: MENU_HOVER
     sounds:
     - {fileID: 8300000, guid: d0da80866c6ea294b952cc5e1618a118, type: 3}
-  - name: MENUCLICK
+  - name: MENU_CLICK
     sounds:
     - {fileID: 8300000, guid: 0e9a40fc41d388443af7428499f6454b, type: 3}
-  - name: FISHSWING
+  - name: FISH_SWING
     sounds:
     - {fileID: 8300000, guid: 77ca603088be1874984e73ed5bc701b5, type: 3}
     - {fileID: 8300000, guid: 5bd30c88d32e28046922ebec77223730, type: 3}
-  - name: FISHOVERHEADSWING
+  - name: FISH_OVERHEADSWING
     sounds:
     - {fileID: 8300000, guid: 40100505d93852b48a53115db0cd858e, type: 3}
-  - name: FISHHIT
+  - name: FISH_HIT
     sounds:
     - {fileID: 8300000, guid: 6a75ffb16b651a44385b09d68d31b615, type: 3}
-  - name: FISHFOOTSTEP
+  - name: FISH_FOOTSTEP
     sounds:
     - {fileID: 8300000, guid: 4e58da93e25564345a2af3bf834b135d, type: 3}
-  - name: FISHDIED
+  - name: FISH_DIED
     sounds:
     - {fileID: 8300000, guid: ab9903f96c4861548b964e0601d6d543, type: 3}
-  - name: GATEOPEN
+  - name: GATE_OPEN
     sounds:
     - {fileID: 8300000, guid: 2a728a445a09ae84889efb69146d0462, type: 3}
-  - name: DOOROPEN
+  - name: DOOR_OPEN
     sounds:
     - {fileID: 8300000, guid: 84b03ca109760274a87a23c58b0f3aba, type: 3}
-  - name: CHESTOPEN
+  - name: CHEST_OPEN
     sounds:
     - {fileID: 8300000, guid: 492d39cf8e3a57a40ad6cf8a063a941e, type: 3}
-  - name: SKELETONSWING
+  - name: SKELETON_SWING
     sounds:
     - {fileID: 8300000, guid: 7ba055986576c0949ae2132ecf0cc508, type: 3}
-  - name: SKELETONWALK
+  - name: SKELETON_WALK
     sounds:
     - {fileID: 8300000, guid: a2e0f4737a1bc6740bbed5d658061de2, type: 3}
     - {fileID: 8300000, guid: 68b084bdef24b24498dd32b893c34e11, type: 3}
     - {fileID: 8300000, guid: 95a1a279435040d4d83c12d9ef971ff4, type: 3}
+  - name: KEY_TWIST
+    sounds: []
+  - name: XP_PICKUP
+    sounds: []
+  - name: STONEGOLEM_WALK
+    sounds: []
+  - name: STONEGOLEM_SWING
+    sounds: []
+  - name: STONEGOLEM_STOMP
+    sounds: []
+  - name: STONEGOLEM_HIT
+    sounds: []
+  - name: STONEGOLEM_DIED
+    sounds: []
+  - name: STONEGOLEM_AOEATTACK
+    sounds: []
+  - name: PLAYER_PICKUPJOURNAL
+    sounds: []
+  dialogueLibrary: {fileID: 0}
 --- !u!114 &7993212187675069844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,3 +536,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5795095369529913522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6739577528441343709}
+  m_Layer: 0
+  m_Name: AmbiantSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6739577528441343709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795095369529913522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 521382549339097281}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

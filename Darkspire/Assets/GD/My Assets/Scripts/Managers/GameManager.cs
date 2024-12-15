@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
         {
             MusicManager.Instance.PlayMusic("MainMenu");
         }
+        else if(scene.name =="Intro")
+        {
+            MusicManager.Instance.PlayMusic("IntroMusic");
+        }
         else if (scene.name == "MapPrototype")
         {
             MusicManager.Instance.PlayMusic("Gameplay");
