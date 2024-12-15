@@ -155,7 +155,7 @@ public class BossController : MonoBehaviour
 
         if (inAttackRange)
         {
-            PerformAttack();
+            StartCoroutine(PerformAttack());
         }
     }
 
@@ -233,8 +233,9 @@ public class BossController : MonoBehaviour
         //IMPLEMENT CUSTOM ROTATION SPEED ??
     }
 
-    private void PerformAttack()
+    private IEnumerator PerformAttack()
     {
+        yield return new WaitForSeconds(1f); // Wait for 1 second before attacking
         // Checks if the time that has passed since the last attack is greater than the attack cooldown -> executes attack if so and damages the player
         if (Time.time >= lastAttackTime + attackCooldown)
         {

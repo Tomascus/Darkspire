@@ -134,9 +134,10 @@ public class EnemyController : MonoBehaviour
 
         if (inAttackRange)
         {
-            PerformAttack();
+            StartCoroutine(PerformAttack());
         }
     }
+
 
     private void Patrol()
     {
@@ -210,8 +211,9 @@ public class EnemyController : MonoBehaviour
         }
      }
 
-    private void PerformAttack()
+    private IEnumerator PerformAttack()
     {
+        yield return new WaitForSeconds(1f); // Wait before attacking - only for when the enemy first starts attacking
         // Checks if the time that has passed since the last attack is greater than the attack cooldown -> executes attack if so and damages the player
         if (Time.time >= lastAttackTime + attackCooldown) 
         {
