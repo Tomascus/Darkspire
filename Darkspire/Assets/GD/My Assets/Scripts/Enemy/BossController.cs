@@ -37,7 +37,6 @@ public class BossController : MonoBehaviour
     private float lastSpecialTime; // Tracks the last time since the special attack was used
     private bool isCasting = false; 
 
-
     [Header("AI Navigation & Animator")]
     private NavMeshAgent agent;
     private Animator animator;
@@ -50,6 +49,9 @@ public class BossController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private Transform hitPoint;
+
+    [Header("Spawned Object")]
+    [SerializeField] private GameObject deathSpawn;
 
     private bool isDead = false;
 
@@ -359,7 +361,22 @@ public class BossController : MonoBehaviour
         animator.SetTrigger("Die");
         agent.isStopped = true; // Stop the enemy movement
         playerUI.AddXP(attributes.xpReward); // Add XP to the player when the enemy dies
-        Destroy(gameObject, 5f);
+        StartCoroutine(SpawnNPC());
+    }
+
+    private IEnumerator SpawnNPC()
+    {
+    
+        yield return new WaitForSeconds(5f);
+
+        // Spawns the NPC after 5 seconds at the boss location
+        if (deathSpawn != null)
+        {
+            Instantiate(deathSpawn, transform.position, Quaternion.identity);
+        }
+
+        // Destroy the boss object after 5 seconds
+        Destroy(gameObject);
     }
 
     private void InitializeHealthBar()
