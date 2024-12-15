@@ -23,4 +23,14 @@ public class SkeletonPlaySounds : MonoBehaviour
     { 
         SoundManager.PlaySound(SoundType.PLAYER_SWING, audioSource);
     }
+
+    public void SkeletonDied()
+    {
+        SoundManager.PlaySound(SoundType.SKELETON_DIED, audioSource);
+    }
+
+    public void SkeletonHit()
+    {
+        SoundManager.PlaySound(SoundType.SKELETON_HIT, audioSource);
+    }
 }
