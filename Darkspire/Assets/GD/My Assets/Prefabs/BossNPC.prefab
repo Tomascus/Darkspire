@@ -1198,47 +1198,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentIDCounter: 29
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":54.3999939,\"yPos\":170.198868},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"I\u2019ve
-    earned the eternal life promised in the legends.\\\"\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":177.60022,\"yPos\":592.597351},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Why
-    are you here?\\\"\",\"parentUIDs\":[4,6],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":16}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":440.799927,\"yPos\":796.5977},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Got
-    anything to sell, then?\\\"\",\"parentUIDs\":[8],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":170.400146,\"yPos\":795.797668},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Warn
-    me? About what?\\\"\",\"parentUIDs\":[8],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":175.2002,\"yPos\":977.404},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Yeah
-    yeah.. How do I find the Darkspire?\\\"\",\"parentUIDs\":[11],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":265.60022,\"yPos\":1175.796},\"ID\":14,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Lose
-    more than I seek? Like what, my patience with riddles?\\\"\",\"parentUIDs\":[13],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":171.2002,\"yPos\":1251.80164},\"ID\":15,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Thanks,
-    but I\u2019ll take my chances.\\\"\",\"parentUIDs\":[13],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":18}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":431.199951,\"yPos\":981.4035},\"ID\":17,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"What
-    good is wisdom if it doesn\u2019t fill my pack?\\\"\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":495.999756,\"yPos\":1224.59875},\"ID\":19,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"I
-    came for the treasure, of course.\\\"\",\"parentUIDs\":[18],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":22}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":679.9978,\"yPos\":1166.19739},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"The
-    tales, perhaps. A good story is worth more than gold.\\\"\",\"parentUIDs\":[18],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":76.00009,\"yPos\":1308.60364},\"ID\":23,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Was
-    that supposed to scare me?\\\"\",\"parentUIDs\":[13],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":797.599854,\"yPos\":1070.19922},\"ID\":24,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"*Leave*\",\"parentUIDs\":[4,6,20,22],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":508.000122,\"yPos\":170.200043},\"ID\":26,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"I
-    came for the truth about the Darkspire.\\\"\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[{\"__type\":\"EditableBoolParameter:#DialogueEditor\",\"ParameterName\":\"New
-    bool\",\"BoolValue\":false}],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":26}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":231,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"So...
+  CurrentIDCounter: 40
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":15.5999146,\"yPos\":170.1983},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"I\u2019ve
+    earned the eternal life promised in the legends.\\\"\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":469.200928,\"yPos\":170.199524},\"ID\":26,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"I
+    came for the truth about the Darkspire.\\\"\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":30}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":235.599991,\"yPos\":170.1994},\"ID\":29,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"I
+    just want the treasure.\\\"\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":33}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":246.799911,\"yPos\":522.1994},\"ID\":32,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"What
+    is the cost?\\\"\",\"parentUIDs\":[31],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":36}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":94.80003,\"yPos\":716.5996},\"ID\":34,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"No.
+    I\u2019ll walk away with my soul intact.\\\"\",\"parentUIDs\":[33],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":37}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":384.400024,\"yPos\":715.7997},\"ID\":35,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Yes.
+    I accept the price.\\\"\",\"parentUIDs\":[33],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":224.400055,\"yPos\":928.599365},\"ID\":38,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"*End
+    the Game*\",\"parentUIDs\":[36,37],\"SpeechUID\":-1}],\"Parameters\":[{\"__type\":\"EditableBoolParameter:#DialogueEditor\",\"ParameterName\":\"New
+    bool\",\"BoolValue\":false}],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":26},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":29}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":192.200012,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"So...
     you made it this far. You bled, you burned, you fought. Tell me, mortal... do
-    you think you've won?\\\"\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Creature\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":47.19995,\"yPos\":270.396484},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Eternal
+    you think you've won?\\\"\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":31}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":5.19985962,\"yPos\":269.5957},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Eternal
     life? Foolish child. Do you even understand the weight of forever? The Darkspire
     offers no life\u2014it grants endurance, a hollow existence bound to these cursed
     halls. You will linger, yes, but as a shadow, forever shackled to its will. Is
-    that what you desire?\\\"\",\"parentUIDs\":[1,26],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Creature\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":24}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":269.399963,\"yPos\":269.5985},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"[chuckling]
-    \\\"Eternal life, a dangerous lure. Many have sought it, but their stories rarely
-    end as they imagined.\\\"\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":24}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":419.200073,\"yPos\":456.798584},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Answers?
-    Then tread carefully. The Darkspire answers questions with riddles... and sometimes
-    with silence.\\\"\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":282.400146,\"yPos\":691.1977},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Oh,
-    I\u2019m but a humble merchant. It\u2019s my calling to guide, warn, and perhaps
-    trade with the brave\u2014or the foolish\u2014who dare enter the Darkspire.\\\"\",\"parentUIDs\":[7],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":169.60022,\"yPos\":869.5993},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"That
-    not all treasures are worth the price. Remember that as you wander these halls.\\\"\",\"parentUIDs\":[10],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":14},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":15},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":23}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":159.2002,\"yPos\":1050.40747},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Impatient,
-    are we? Then heed my words: the depths hold more than treasure, and what glimmers
-    may not be gold. The Darkspire watches, weighing more than a coin. Step lightly,
-    or lose more than you seek.\\\"\",\"parentUIDs\":[12],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":17}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":414.3999,\"yPos\":874.4007},\"ID\":16,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"I
-    sell no trinkets, nor do I barter in gold. What I offer cannot be held, only
-    heeded. Wisdom is my ware, but not for the impatient or unworthy.\\\"\",\"parentUIDs\":[9],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":19},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":488.800049,\"yPos\":1064.00757},\"ID\":18,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Wisdom
-    weighs lighter than a coin but can save more than a life. Tell me, seeker, do
-    you desire what lies within the Darkspire\u2014or only the tales spun about it?\\\"\",\"parentUIDs\":[17],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":24}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":790.3999,\"yPos\":1271.20544},\"ID\":20,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Then
-    you seek shadows, not truth. Go, if you must. The path ahead will teach you what
-    my words cannot, but remember this: a fool who seeks riches often pays with more
-    than a gold.\\\"\",\"parentUIDs\":[19],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":24}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":983.1975,\"yPos\":1168.00574},\"ID\":22,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Ah,
-    a seeker of truth cloaked in words. Then know this: the tales are threads, but
-    the tapestry is real\u2014and woven with peril. Go forth, but tread lightly,
-    for the Darkspire reveals truths not all are ready to bear.\\\"\",\"parentUIDs\":[21],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Merchant\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
+    that what you desire?\\\"\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":31}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":476.200623,\"yPos\":268.797974},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"The
+    truth, you say? Heh... a noble lie to hide your ambitions. Very well, mortal,
+    here is your truth: The Darkspire consumes all. It cares not for your quest,
+    your dreams or your very soul. It twists your desires, warping them into your
+    undoing. Are you still curious?\\\"\",\"parentUIDs\":[26],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":31}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":239.599991,\"yPos\":270.399231},\"ID\":30,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Ahhh,
+    gold... the lure of greed. A pity. So many before you sought wealth, only to
+    become dust beneath my claws\u2014or worse, eternal slaves to the Spire\u2019s
+    hunger. Is this why you killed? Why you risked your fragile life? For shiny trinkets?\\\"\",\"parentUIDs\":[29],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":32}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":242.799911,\"yPos\":399.999146},\"ID\":31,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Listen
+    closely. This is your final lesson. The Darkspire is not a gift\u2014it is a
+    trap. It offers power, yes, but it takes everything in return. Or you can leave
+    now, with only the scars you\u2019ve earned. The question is, mortal: will you
+    gamble your soul for the promise of greatness?\\\"\",\"parentUIDs\":[2,4,30],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":34},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":35}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":249.200089,\"yPos\":600.7997},\"ID\":33,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"The
+    price? ... Your name. Your face. Your very existence. All that you are will be
+    swallowed whole, leaving only a hollow thing\u2014a guardian, bound to this place
+    for eternity. Do you dare?\\\"\\r\\n\",\"parentUIDs\":[32],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":38}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":93.20006,\"yPos\":807.999451},\"ID\":36,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"A
+    wise choice... for once. Few escape this place with their minds unbroken. Leave
+    now, mortal. And know this: the shadows will watch you, always. You have escaped
+    their grasp today... but not forever.\\\"\",\"parentUIDs\":[34],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":38}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":384.400024,\"yPos\":807.1994},\"ID\":37,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Foolish
+    mortal. The Darkspire welcomes you into its embrace. Your soul is forfeit. Your
+    body, a vessel. Your mind, another link in its chains. Kneel before your new
+    master!\\\"\\r\\n\",\"parentUIDs\":[35],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Darkspire\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":1}]}"
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -1248,27 +1251,18 @@ MonoBehaviour:
   - {fileID: 1684897466504372753}
   - {fileID: 409822416516555564}
   - {fileID: 7908913214557596541}
-  - {fileID: 7641262191950801797}
-  - {fileID: 1513079380375597327}
-  - {fileID: 4270018939287779060}
-  - {fileID: 7217717889420271790}
-  - {fileID: 5563129987638128123}
-  - {fileID: 8575604440412033363}
-  - {fileID: 8751851978383325281}
-  - {fileID: 6783995823555130764}
-  - {fileID: 5010300265562218745}
-  - {fileID: 903263192465133633}
   - {fileID: 4040696427818544989}
   - {fileID: 4829078040169275391}
-  - {fileID: -7012534845967203467}
-  - {fileID: 7136134174149718524}
-  - {fileID: -1917072898713904384}
-  - {fileID: 4013129898744053280}
-  - {fileID: 8745946499486441339}
-  - {fileID: 2843375854845789447}
-  - {fileID: -2386713502198805051}
-  - {fileID: 7836203913708627373}
-  - {fileID: 5265896472727520163}
+  - {fileID: 5264865764914721104}
+  - {fileID: -2436881960976905008}
+  - {fileID: 4252118803334571437}
+  - {fileID: -6540996338292566570}
+  - {fileID: 9191666088880107599}
+  - {fileID: -7281915103831223714}
+  - {fileID: -7787493708831077736}
+  - {fileID: 2686010376704536141}
+  - {fileID: 3899347750290824647}
+  - {fileID: -651557502326389400}
   ContinueFont: {fileID: 0}
   EndConversationFont: {fileID: 0}
   Event:
@@ -2057,6 +2051,17 @@ GameObject:
   - component: {fileID: -2386713502198805051}
   - component: {fileID: 7836203913708627373}
   - component: {fileID: 5265896472727520163}
+  - component: {fileID: 5264865764914721104}
+  - component: {fileID: -2436881960976905008}
+  - component: {fileID: 4252118803334571437}
+  - component: {fileID: -6540996338292566570}
+  - component: {fileID: 9191666088880107599}
+  - component: {fileID: -7281915103831223714}
+  - component: {fileID: -7787493708831077736}
+  - component: {fileID: 2686010376704536141}
+  - component: {fileID: 3899347750290824647}
+  - component: {fileID: -651557502326389400}
+  - component: {fileID: -9036134077256021554}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -2093,24 +2098,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 615705d9120c455449d22b3c7c64e06b,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   NodeID: 0
   TMPFont: {fileID: 0}
-  Icon: {fileID: 21300000, guid: f71c0dc03d067a342aa16a51674f6507, type: 3}
-  Audio: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: 3b974f3dfccab314495707cf33fe8c03, type: 3}
 --- !u!114 &1684897466504372753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,24 +2136,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: bdd27a5b77c653f488c00217004fab97,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   NodeID: 2
   TMPFont: {fileID: 0}
-  Icon: {fileID: 21300000, guid: f71c0dc03d067a342aa16a51674f6507, type: 3}
-  Audio: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: e41ae1d0e63df2b4599162ec18cd79c5, type: 3}
 --- !u!114 &7908913214557596541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2176,24 +2155,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: bdb0bed619e3a7a4d9430d6c5996c0f9,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   NodeID: 4
   TMPFont: {fileID: 0}
-  Icon: {fileID: 21300000, guid: f71c0dc03d067a342aa16a51674f6507, type: 3}
-  Audio: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: aade5839d689b154b9697a470afc0da9, type: 3}
 --- !u!114 &7641262191950801797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2642,6 +2608,228 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 23
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &5264865764914721104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 29
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &-2436881960976905008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 30
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: 2a1eeb4251eb753428a2c2b6fe5fdf28, type: 3}
+--- !u!114 &4252118803334571437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 31
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: fd96ae199a77b65459c28fa7da6bf30e, type: 3}
+--- !u!114 &-6540996338292566570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 32
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &9191666088880107599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 33
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: 71e044bcbd4d7964dbd5618f34f925b4, type: 3}
+--- !u!114 &-7281915103831223714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 34
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &-7787493708831077736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 35
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &2686010376704536141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 36
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: 15755b96752858f4d981ab2dffe5390e, type: 3}
+--- !u!114 &3899347750290824647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 37
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 8300000, guid: 194b0cc38914be44691916e9d6009ae6, type: 3}
+--- !u!114 &-651557502326389400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4068507667435670991, guid: d05335ff5ae0b9a4282aadab97df4896,
+          type: 3}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: GoToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 38
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &-9036134077256021554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395854257157030541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 39
   TMPFont: {fileID: 0}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
@@ -3739,7 +3927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7353479391327960631}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 195.73708, y: 1, z: -20.189787}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 1
@@ -3753,7 +3941,7 @@ Transform:
   - {fileID: 4182700794601441917}
   - {fileID: 601677024228976251}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &6221180117313600800
 Animator:
   serializedVersion: 5
