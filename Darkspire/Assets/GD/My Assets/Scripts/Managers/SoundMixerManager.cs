@@ -1,3 +1,5 @@
+using DialogueEditor;
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using Slider = UnityEngine.UI.Slider;
@@ -40,21 +42,21 @@ public class SoundMixerManager : MonoBehaviour
         {
             float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.8f);
             audioMixer.SetFloat("MasterVolume", Mathf.Log10(masterVolume) * 20f);
-            if (masterSlider != null) masterSlider.value = masterVolume;    //Updating slider
+            if (masterSlider != null) masterSlider.value = masterVolume;    //Updating slider   - Doenst Work between scenes
         }
 
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
             float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.8f);
             audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20f);
-            if (musicSlider != null) musicSlider.value = musicVolume;   // Updating slider
+            if (musicSlider != null) musicSlider.value = musicVolume;   // Updating slider   - Doenst Work between scenes
         }
 
         if (PlayerPrefs.HasKey("SoundFXVolume"))
         {
             float soundFXVolume = PlayerPrefs.GetFloat("SoundFXVolume", 0.8f);
             audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(soundFXVolume) * 20f);
-            if (soundFXSlider != null) soundFXSlider.value = soundFXVolume; // Updating slider
+            if (soundFXSlider != null) soundFXSlider.value = soundFXVolume; // Updating slider - Doenst Work between scenes
         }
     }
     #endregion
@@ -74,12 +76,35 @@ public class SoundMixerManager : MonoBehaviour
         PlayerPrefs.SetFloat("MasterVolume", level);
         PlayerPrefs.Save();
     }
-    public void SetSoundFXVolume(float level)
-    {
-        audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20f);
-        PlayerPrefs.SetFloat("SoundFXVolume", level);
-        PlayerPrefs.Save();
+    //public void SetSoundFXVolume(float level)  
+    //{
+        
+    //    audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20f);
+    //    PlayerPrefs.SetFloat("SoundFXVolume", level);
 
+    //    audioMixer.SetFloat("AmbianceVolume", Mathf.Log10(level) * 20f);
+    //    PlayerPrefs.SetFloat("AmbianceVolume", level);
+
+    //    audioMixer.SetFloat("EnemyVolume", Mathf.Log10(level) * 20f);
+    //    PlayerPrefs.SetFloat("EnemyVolume", level);
+
+    //    PlayerPrefs.Save();
+
+    //}
+
+    private void SetVolumeMultiple(string[] parameters, float sliderValue)  //Allows for multiple controllers
+    {
+        foreach (string param in parameters)
+        {
+            audioMixer.SetFloat(param, Mathf.Log10(sliderValue) * 20);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    public void SetMultipleSounds(float sliderValue)
+    {
+        SetVolumeMultiple(new string[] { "SoundFXVolume", "AmbientVolume" }, sliderValue);
     }
 
     public void SetMusicVolume(float level)
