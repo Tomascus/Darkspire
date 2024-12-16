@@ -6,6 +6,7 @@ using TMPro;
 
 public class UI : MonoBehaviour
 {
+    #region FIELDS
     [SerializeField] private Slider healthBar;
     [SerializeField] private RectTransform healthBarRect;
     [SerializeField] private Slider staminaBar;
@@ -33,7 +34,9 @@ public class UI : MonoBehaviour
     [SerializeField] private Button LevelUpHealthButton;
     [SerializeField] private Button LevelUpStaminaButton;
     [SerializeField] private Button LevelUpStrengthButton;
+#endregion
 
+    /*LISTENERS*/
     private void OnEnable()
     {
         //when player takes damage or heals, update health bar
@@ -84,6 +87,7 @@ public class UI : MonoBehaviour
         UpdateKeyAcquired();
     }
 
+    #region UI/BARS UPDATE
     //**** Bar Updates ****
     private void UpdateHealth(float currentHealth)
     {
@@ -113,8 +117,8 @@ public class UI : MonoBehaviour
 
     private void UpdateKeyAcquired()
     {
-       int keyCountValue = playerInventory.Count(keyItem);
-        keyCount.text = keyCountValue.ToString();
+       int keyCountValue = playerInventory.Count(keyItem); //get number of keys inside the inventory 
+        keyCount.text = keyCountValue.ToString(); //display the number in UI canvas 
     }
 
         public void OnInventoryChange()
@@ -122,7 +126,9 @@ public class UI : MonoBehaviour
         UpdatePotionCount();
         UpdateKeyAcquired();
     }
+    #endregion
 
+    #region LEVEL WINDOW
     //**** Window for showing stats ****
     public void ShowStats() //dispalying our stats
     {
@@ -163,7 +169,9 @@ public class UI : MonoBehaviour
     {
         levelNotification.gameObject.SetActive(false);
     }
+    #endregion
 
+    #region LEVEL STATS 
     private void LevelUpHealth()
     {
         if (playerAttributes.availableLevels > 0) //if we have points to spend we can level health
@@ -224,8 +232,7 @@ public class UI : MonoBehaviour
             playerAttributes.LevelUpStrength();
             HideLevelNotif();
             UpdateStatsUI();
-        }
-       
-            
+        }      
     }
 }
+#endregion
