@@ -2,19 +2,14 @@ using UnityEngine;
 
 public class Lever : MonoBehaviour
 {
+    #region FIELDS
     [SerializeField] private Gate gate; // Serialize the field to assign in the Inspector
     public bool playerInRange = false;
     private bool pressed = false;
     [SerializeField]private AudioSource audioSource;
+    #endregion
 
-    //private void Update()
-    //{
-    //    if (playerInRange && Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        PressLever();
-    //    }
-    //}
-
+    #region COLLISION
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -30,6 +25,7 @@ public class Lever : MonoBehaviour
             playerInRange = false;
         }
     }
+    #endregion
 
     public void PressLever()
     {

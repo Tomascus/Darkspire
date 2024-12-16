@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
+    #region FIELDS
     [Header("Item Data from scriptable object")]
     [SerializeField] private ScriptableObject itemData;
 
     [Header("UI to show when player in range")]
     [SerializeField] private GameObject pickupUI;
+    #endregion
 
     public ScriptableObject ItemData => itemData;
 
@@ -18,6 +20,7 @@ public class DroppedItem : MonoBehaviour
         }
     }
 
+    #region COLLISION
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -60,3 +63,4 @@ public class DroppedItem : MonoBehaviour
         }
     }
 }
+#endregion
