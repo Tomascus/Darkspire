@@ -97,13 +97,8 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-   
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            AddXP(20);
-        }
 
-        if (!PauseMenu.isPaused)
+        if (!PauseMenu.isPaused) //if game is not paused do this 
         {
             HandleSprint();
             HandleDodge();
@@ -136,23 +131,8 @@ public class PlayerUI : MonoBehaviour
 
     }
 
-    private void CheckStamina()
-    {
-        if(currentStamina <=0)
-        {
-            if(!hasPlayedStaminaSound)
-            {
-                SoundManager.PlaySound(SoundType.PLAYERNO_STAMINA, audioSource);
-                hasPlayedStaminaSound = true;
-            }
-           
-        }
-        else if(currentStamina >1)
-        {
-            hasPlayedStaminaSound = false;
-        }
-    }
 
+    #region HEALTH
     // ***** Health Logic *****
     private void ApplyDamage(float damage)
     {
@@ -186,6 +166,35 @@ public class PlayerUI : MonoBehaviour
         //regeneratingHealth = StartCoroutine(RegenerateHealth());
     }
 
+    private void HealPlayer(float healAmount)
+    {
+        currentHealth += healAmount; //heal by potion amount 
+
+        if (currentHealth > playerAttributes.maxHealth) //heal only until max health 
+        {
+            currentHealth = playerAttributes.maxHealth;
+        }
+
+        OnHeal?.Invoke(currentHealth); //notify listeners that health has changed (UI.cs)
+    }
+
+    public void ConsumePotion()
+    {
+        if (isDead) return; //if player is dead do not allow to consume potion
+
+
+        //check if player has in inventory potion 
+        if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != playerAttributes.maxHealth)
+        {
+            SoundManager.PlaySound(SoundType.PLAYER_HEAL, audioSource);   //Sound for potion use
+
+            playerInventory.Remove(potionItemData, 1); //after use remove one potion from inv 
+
+            HealPlayer(potionHealAmount); //heal player 
+
+            StartCoroutine(PotionCooldown()); //start cooldown for potion use
+        }
+    }
 
     public int getMaxHealth()
     {
@@ -196,6 +205,7 @@ public class PlayerUI : MonoBehaviour
     {
         return currentHealth;
     }
+    #endregion
 
     //Updating the max health of the player so that the first hit he takes after levelling does not take double based on old max health
     public void UpdateMaxHealth(int newMaxHealth)
@@ -216,6 +226,7 @@ public class PlayerUI : MonoBehaviour
         PlayerMovementController.SetMovementEnabled(true); 
     }
 
+    #region PLAYER STATE
     public bool IsPlayerDead()
     {
         if (isDead)
@@ -261,9 +272,10 @@ public class PlayerUI : MonoBehaviour
         }
 
     }
+    #endregion
 
+    #region STAMINA
     // ***** Stamina Logic *****
-
     private void HandleSprint()
     {
         //when the player is sprinting and also is not standing still, the stamina is reduced by the sprint rate
@@ -360,38 +372,28 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    private void HealPlayer(float healAmount)
+    private void CheckStamina()
     {
-        currentHealth += healAmount; //heal by potion amount 
-
-        if(currentHealth > playerAttributes.maxHealth) //heal only until max health 
+        if (currentStamina <= 0)
         {
-            currentHealth = playerAttributes.maxHealth;
+            if (!hasPlayedStaminaSound)
+            {
+                SoundManager.PlaySound(SoundType.PLAYERNO_STAMINA, audioSource);
+                hasPlayedStaminaSound = true;
+            }
+
         }
-
-        OnHeal?.Invoke(currentHealth); //notify listeners that health has changed (UI.cs)
-    }
-
-    public void ConsumePotion()
-    {
-        if(isDead) return; //if player is dead do not allow to consume potion
-
-
-        //check if player has in inventory potion 
-        if (playerInventory.Contains(potionItemData) && playerControllerInputs.heal && currentHealth != playerAttributes.maxHealth)
+        else if (currentStamina > 1)
         {
-            SoundManager.PlaySound(SoundType.PLAYER_HEAL, audioSource);   //Sound for potion use
-
-            playerInventory.Remove(potionItemData, 1); //after use remove one potion from inv 
-
-            HealPlayer(potionHealAmount); //heal player 
-
-            StartCoroutine(PotionCooldown()); //start cooldown for potion use
+            hasPlayedStaminaSound = false;
         }
     }
-    
+
+    #endregion
+
+
+    #region CORUTINES
     //CORUTIINES
-
     private IEnumerator PotionCooldown()
     {
         isConsumingPotion = true;
@@ -436,3 +438,4 @@ public class PlayerUI : MonoBehaviour
         isPlayingLowHealthSound = false;
     }
 }
+#endregion
