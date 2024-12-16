@@ -6,17 +6,19 @@ using InputSystem;
 
 public class NPCDialogue : MonoBehaviour
 {
-
+    #region FIELDS
     public bool playerInRange = false;
     [SerializeField] private NPCConversation dialogueNPC; // access the conversation asset created 
     private PlayerControllerInputs playerControllerInputs; // access the player controller inputs script
     private bool inDialogue = false;
+    #endregion
 
     private void Awake()
     {
         playerControllerInputs = FindObjectOfType<PlayerControllerInputs>();
     }
 
+    #region COLLISION
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -31,7 +33,9 @@ public class NPCDialogue : MonoBehaviour
         playerInRange = false;
         playerControllerInputs.inDialogue = false;
     }
+    #endregion
 
+    #region DIALOGUE
     public void StartDialogue()
     {
         if (!inDialogue)
@@ -48,3 +52,4 @@ public class NPCDialogue : MonoBehaviour
         playerControllerInputs.HideCursor(); // hide cursor after dialogue
     }
 }
+#endregion

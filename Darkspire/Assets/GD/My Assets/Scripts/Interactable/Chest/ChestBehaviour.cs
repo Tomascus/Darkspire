@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChestBehaviour : MonoBehaviour
 {
+    #region FIELDS
     [Tooltip("Empty where object will get spawned.")]
     [SerializeField] private Transform spawningPoint;
 
@@ -15,6 +16,7 @@ public class ChestBehaviour : MonoBehaviour
     private bool itemGenerated = false; //for dropping only once 
 
     private AudioSource audioSource;
+    #endregion
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class ChestBehaviour : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    #region COLLISION
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -43,7 +46,9 @@ public class ChestBehaviour : MonoBehaviour
     {
         playerInRange = false;
     }
+    #endregion
 
+    #region GENERATE
     //Generate the item, script based on Nial's code from class 
     public void GenerateChestItem()
     {
@@ -57,8 +62,8 @@ public class ChestBehaviour : MonoBehaviour
         var newItem = generator.Instantiate(spawningPoint);
         if (newItem == null) Debug.LogError("Item failed to generated.");
 
-        itemGenerated = true;
+        itemGenerated = true; //already generate, do not do duplicates  
         SoundManager.PlaySound(SoundType.CHEST_OPEN, audioSource);
     }
-
 }
+#endregion
