@@ -5,7 +5,7 @@ This is our 3D-Game Engine project for our Group.** Squirrel Antics**. <br />The
 **xMaFey:** 3D Modeller, Level Design<br />
 **DovydasJakuciunas:** UX Hightligher, Sound Design<br /><br />
 
-**Mahara Page:** https://mahara.dkit.ie/view/view.php?t=uRJqprdMCsmbSfVolLvi 
+**Mahara Page:** https://mahara.dkit.ie/view/view.php?t=uRJqprdMCsmbSfVolLvi   <br />
 **Youtube Link** https://www.youtube.com/watch?v=HCx17oFkLi8
 
 
