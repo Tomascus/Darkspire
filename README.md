@@ -8,6 +8,8 @@ This is our 3D-Game Engine project for our Group.** Squirrel Antics**. <br />The
 **Mahara Page:** https://mahara.dkit.ie/view/view.php?t=uRJqprdMCsmbSfVolLvi   <br />
 **Youtube Link** https://www.youtube.com/watch?v=HCx17oFkLi8
 
+## Official Trailer
+[![YouTube](http://i.ytimg.com/vi/a0iik89j2Tc/hqdefault.jpg)](https://www.youtube.com/watch?v=a0iik89j2Tc)
 
 ## About
 Test your skills with engaging and realistic combat, navigate dangerous corridors and rooms of the eerie dungeon and prepare to fight unimaginable enemies that lurk inside the Darkspire. 
